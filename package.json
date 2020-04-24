@@ -1,0 +1,40 @@
+{
+  "name": "feige-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts}' --quiet --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+        "pre-commit": "tsc --noEmit && lint-staged"
+    }
+  },
+  "lint-staged": {
+      "*.{js,ts}": [
+          "eslint --fix"
+      ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freedom-git/feige-lib.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freedom-git/feige-lib/issues"
+  },
+  "homepage": "https://github.com/freedom-git/feige-lib#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
+  }
+}
