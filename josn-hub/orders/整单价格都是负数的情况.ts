@@ -1,5 +1,6 @@
+// 总价应该是23.2
 export const order = {
-    _id: '5ea3d49cbb7f81e1654f812b',
+    _id: '5ea3e593bb7f81e1654f817f',
     operatorId: '5e693b5ffd936f0013f6cc45',
     status: 'processing',
     payed: false,
@@ -9,7 +10,7 @@ export const order = {
         {
             delivering: 0,
             finished: 0,
-            _id: '5ea3d49cbb7f81e1654f812e',
+            _id: '5ea3e593bb7f81e1654f8182',
             dishSnapshot: {
                 description: '冰爽可乐添加新鲜柠檬片，提神醒脑，让您胃口大开～',
                 soldOut: false,
@@ -26,14 +27,14 @@ export const order = {
                     {
                         description: '',
                         multi: true,
-                        __v: 2,
+                        __v: 4,
                         content: [
                             {
                                 disable: false,
-                                fare: 0,
-                                fareType: 'fixed',
-                                _id: '5e693bddfd936f0013f6cc50',
-                                name: '不加价',
+                                fare: -200,
+                                fareType: 'percentage',
+                                _id: '5e693bddfd936f0013f6cc52',
+                                name: '减价200%',
                             },
                         ],
                         date: '2020-03-11T19:28:29.273Z',
@@ -43,12 +44,12 @@ export const order = {
                 ],
             },
             count: 1,
-            date: '2020-04-25T06:11:40.385Z',
+            date: '2020-04-25T07:24:03.556Z',
         },
         {
             delivering: 1,
             finished: 0,
-            _id: '5ea3d49cbb7f81e1654f812d',
+            _id: '5ea3e593bb7f81e1654f8181',
             dishSnapshot: {
                 description: '',
                 soldOut: false,
@@ -65,14 +66,14 @@ export const order = {
                     {
                         description: '示例辣度',
                         multi: false,
-                        __v: 1,
+                        __v: 4,
                         content: [
                             {
                                 disable: false,
-                                fare: 0,
+                                fare: -10,
                                 fareType: 'fixed',
-                                _id: '5e693b5ffd936f0013f6cc4a',
-                                name: '微辣',
+                                _id: '5e693b5ffd936f0013f6cc4b',
+                                name: '中辣减价10',
                             },
                         ],
                         date: '2020-03-11T19:26:23.407Z',
@@ -82,14 +83,14 @@ export const order = {
                     {
                         description: '',
                         multi: true,
-                        __v: 2,
+                        __v: 4,
                         content: [
                             {
                                 disable: false,
-                                fare: 0,
-                                fareType: 'fixed',
-                                _id: '5e693bddfd936f0013f6cc50',
-                                name: '不加价',
+                                fare: -200,
+                                fareType: 'percentage',
+                                _id: '5e693bddfd936f0013f6cc52',
+                                name: '减价200%',
                             },
                         ],
                         date: '2020-03-11T19:28:29.273Z',
@@ -99,12 +100,12 @@ export const order = {
                 ],
             },
             count: 1,
-            date: '2020-04-25T06:11:40.385Z',
+            date: '2020-04-25T07:24:03.556Z',
         },
         {
             delivering: 0,
             finished: 0,
-            _id: '5ea3d49cbb7f81e1654f812c',
+            _id: '5ea3e593bb7f81e1654f8180',
             dishSnapshot: {
                 description: '',
                 soldOut: false,
@@ -121,14 +122,14 @@ export const order = {
                     {
                         description: '',
                         multi: true,
-                        __v: 2,
+                        __v: 4,
                         content: [
                             {
                                 disable: false,
-                                fare: 0,
-                                fareType: 'fixed',
-                                _id: '5e693bddfd936f0013f6cc50',
-                                name: '不加价',
+                                fare: -200,
+                                fareType: 'percentage',
+                                _id: '5e693bddfd936f0013f6cc52',
+                                name: '减价200%',
                             },
                         ],
                         date: '2020-03-11T19:28:29.273Z',
@@ -138,7 +139,7 @@ export const order = {
                 ],
             },
             count: 1,
-            date: '2020-04-25T06:11:40.385Z',
+            date: '2020-04-25T07:24:03.556Z',
         },
     ],
     clientId: '72e35590-8476-11ea-a684-c9e2bb9ca932',
@@ -146,11 +147,11 @@ export const order = {
         {
             status: 'finished',
             printed: [],
-            _id: '5ea3d49cbb7f81e1654f812f',
+            _id: '5ea3e593bb7f81e1654f8183',
             type: 'check',
             content: [
                 {
-                    _id: '5ea3d49cbb7f81e1654f8132',
+                    _id: '5ea3e593bb7f81e1654f8186',
                     dishSnapshot: {
                         description: '冰爽可乐添加新鲜柠檬片，提神醒脑，让您胃口大开～',
                         soldOut: false,
@@ -167,14 +168,14 @@ export const order = {
                             {
                                 description: '',
                                 multi: true,
-                                __v: 2,
+                                __v: 4,
                                 content: [
                                     {
                                         disable: false,
-                                        fare: 0,
-                                        fareType: 'fixed',
-                                        _id: '5e693bddfd936f0013f6cc50',
-                                        name: '不加价',
+                                        fare: -200,
+                                        fareType: 'percentage',
+                                        _id: '5e693bddfd936f0013f6cc52',
+                                        name: '减价200%',
                                     },
                                 ],
                                 date: '2020-03-11T19:28:29.273Z',
@@ -184,10 +185,10 @@ export const order = {
                         ],
                     },
                     count: 1,
-                    date: '2020-04-25T06:11:40.386Z',
+                    date: '2020-04-25T07:24:03.557Z',
                 },
                 {
-                    _id: '5ea3d49cbb7f81e1654f8131',
+                    _id: '5ea3e593bb7f81e1654f8185',
                     dishSnapshot: {
                         description: '',
                         soldOut: false,
@@ -204,14 +205,14 @@ export const order = {
                             {
                                 description: '示例辣度',
                                 multi: false,
-                                __v: 1,
+                                __v: 4,
                                 content: [
                                     {
                                         disable: false,
-                                        fare: 0,
+                                        fare: -10,
                                         fareType: 'fixed',
-                                        _id: '5e693b5ffd936f0013f6cc4a',
-                                        name: '微辣',
+                                        _id: '5e693b5ffd936f0013f6cc4b',
+                                        name: '中辣减价10',
                                     },
                                 ],
                                 date: '2020-03-11T19:26:23.407Z',
@@ -221,14 +222,14 @@ export const order = {
                             {
                                 description: '',
                                 multi: true,
-                                __v: 2,
+                                __v: 4,
                                 content: [
                                     {
                                         disable: false,
-                                        fare: 0,
-                                        fareType: 'fixed',
-                                        _id: '5e693bddfd936f0013f6cc50',
-                                        name: '不加价',
+                                        fare: -200,
+                                        fareType: 'percentage',
+                                        _id: '5e693bddfd936f0013f6cc52',
+                                        name: '减价200%',
                                     },
                                 ],
                                 date: '2020-03-11T19:28:29.273Z',
@@ -238,10 +239,10 @@ export const order = {
                         ],
                     },
                     count: 1,
-                    date: '2020-04-25T06:11:40.386Z',
+                    date: '2020-04-25T07:24:03.557Z',
                 },
                 {
-                    _id: '5ea3d49cbb7f81e1654f8130',
+                    _id: '5ea3e593bb7f81e1654f8184',
                     dishSnapshot: {
                         description: '',
                         soldOut: false,
@@ -258,14 +259,14 @@ export const order = {
                             {
                                 description: '',
                                 multi: true,
-                                __v: 2,
+                                __v: 4,
                                 content: [
                                     {
                                         disable: false,
-                                        fare: 0,
-                                        fareType: 'fixed',
-                                        _id: '5e693bddfd936f0013f6cc50',
-                                        name: '不加价',
+                                        fare: -200,
+                                        fareType: 'percentage',
+                                        _id: '5e693bddfd936f0013f6cc52',
+                                        name: '减价200%',
                                     },
                                 ],
                                 date: '2020-03-11T19:28:29.273Z',
@@ -275,36 +276,35 @@ export const order = {
                         ],
                     },
                     count: 1,
-                    date: '2020-04-25T06:11:40.385Z',
+                    date: '2020-04-25T07:24:03.557Z',
                 },
             ],
             valet: true,
-            date: '2020-04-25T06:11:40.386Z',
+            date: '2020-04-25T07:24:03.557Z',
             operatorId: '5e693b5ffd936f0013f6cc45',
         },
         {
             status: 'processing',
             printed: [],
-            _id: '5ea3d49cbb7f81e1654f8133',
+            _id: '5ea3e593bb7f81e1654f8187',
             type: 'clean',
-            date: '2020-04-25T06:11:40.446Z',
+            date: '2020-04-25T07:24:03.605Z',
             content: [],
         },
         {
             status: 'processing',
             printed: [],
-            _id: '5ea3d49cbb7f81e1654f8134',
+            _id: '5ea3e593bb7f81e1654f8188',
             type: 'deliver',
-            dishGroupId: '5ea3d49cbb7f81e1654f812d',
+            dishGroupId: '5ea3e593bb7f81e1654f8181',
             outletNum: null,
             count: 1,
-            date: '2020-04-25T06:11:40.497Z',
+            date: '2020-04-25T07:24:03.656Z',
             content: [],
         },
     ],
     checkout: [],
-    date: '2020-04-25T06:11:40.386Z',
+    date: '2020-04-25T07:24:03.557Z',
     __v: 0,
 };
-
-export const expectPrice = 19;
+export const expectPrice = 0;
