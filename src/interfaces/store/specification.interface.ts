@@ -10,6 +10,6 @@ export interface Specification {
         fare: number;
         fareType: string;
     }[];
-    date: Date;
+    date: Date | string;
     __v: number;
 }
