@@ -1,4 +1,5 @@
 import { Order } from './interfaces/order/order.interface';
+import { CONST } from './const/const';
 /**
  * 利用订单计算总价
  *
@@ -13,9 +14,9 @@ export function calcTotalPrice(order: Order): number {
         const selectedSpecifications = orderContentItem.dishSnapshot.selectedSpecifications || [];
         selectedSpecifications.forEach((specification) => {
             specification.content.forEach((item) => {
-                if (item.fareType == this.constService.FARE_TYPE.FIXED) {
+                if (item.fareType == CONST.FARE_TYPE.FIXED) {
                     addPrice += item.fare;
-                } else if (item.fareType == this.constService.FARE_TYPE.PERCENTAGE) {
+                } else if (item.fareType == CONST.FARE_TYPE.PERCENTAGE) {
                     addPrice += (orderContentItem.dishSnapshot.price * item.fare) / 100;
                 }
             });

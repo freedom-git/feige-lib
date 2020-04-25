@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run test && tsc",
     "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts}' --quiet --fix",
     "test": "jest"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged"
+      "pre-commit": "npm run test && tsc --noEmit && lint-staged"
     }
   },
   "lint-staged": {

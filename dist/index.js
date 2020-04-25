@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var const_1 = require("./const/const");
 /**
  * 利用订单计算总价
  *
@@ -8,17 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *
  */
 function calcTotalPrice(order) {
-    var _this = this;
     var totalPrice = 0;
     order.content.forEach(function (orderContentItem) {
         var addPrice = 0;
         var selectedSpecifications = orderContentItem.dishSnapshot.selectedSpecifications || [];
         selectedSpecifications.forEach(function (specification) {
             specification.content.forEach(function (item) {
-                if (item.fareType == _this.constService.FARE_TYPE.FIXED) {
+                if (item.fareType == const_1.CONST.FARE_TYPE.FIXED) {
                     addPrice += item.fare;
                 }
-                else if (item.fareType == _this.constService.FARE_TYPE.PERCENTAGE) {
+                else if (item.fareType == const_1.CONST.FARE_TYPE.PERCENTAGE) {
                     addPrice += (orderContentItem.dishSnapshot.price * item.fare) / 100;
                 }
             });

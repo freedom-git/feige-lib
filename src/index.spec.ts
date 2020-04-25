@@ -1,5 +1,5 @@
 import { calcTotalPrice } from './index';
-import noAddPriceOrder from '../josn-hub/orders/规格全部不加价';
+import noAddPriceOrder from '../josn-hub/orders/点了未加价规格的订单';
 
 describe('开始运行单元测试', () => {
     // beforeEach(async () => {
@@ -13,7 +13,7 @@ describe('开始运行单元测试', () => {
 
     describe('测试计算订单总价：calcTotalPrice', () => {
         it('不加价规格订单总价检查', () => {
-            expect(calcTotalPrice(noAddPriceOrder)).toBe(20);
+            expect(calcTotalPrice(noAddPriceOrder)).toBe(19);
         });
     });
 });
