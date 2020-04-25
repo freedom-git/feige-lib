@@ -10,6 +10,7 @@ export interface Order {
     readonly status: string;
     readonly operatorId: string;
     readonly __v: number;
+    readonly process?: Process[];
 }
 export interface Content {
     _id: string;
@@ -32,4 +33,10 @@ export interface Task {
     content?: Content[];
     valet?: boolean;
     printed?: string[];
+}
+export interface Process {
+    _id?: string;
+    type: string;
+    value: number;
+    volume?: number;
 }

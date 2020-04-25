@@ -16,7 +16,16 @@ declare class Const {
         MYQR: string;
     };
     RECEIVABLE_PROCESSING_TYPE: {
-        REMOVE_TAILS: string;
+        REMOVE_TAILS: {
+            text: string;
+            type: string;
+            sort: number;
+        };
+        DISCOUNT: {
+            text: string;
+            type: string;
+            sort: number;
+        };
     };
     STORE_TYPE: {
         STALL: string;

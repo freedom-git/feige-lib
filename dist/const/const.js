@@ -19,8 +19,16 @@ var Const = /** @class */ (function () {
             MYQR: 'myqr',
         };
         this.RECEIVABLE_PROCESSING_TYPE = {
-            // 收款处理类型
-            REMOVE_TAILS: 'remove-tails',
+            REMOVE_TAILS: {
+                text: '抹零',
+                type: 'remove_tails',
+                sort: -1000,
+            },
+            DISCOUNT: {
+                text: '打折',
+                type: 'discount',
+                sort: 0,
+            },
         };
         this.STORE_TYPE = {
             STALL: 'stall',
