@@ -11,6 +11,8 @@ export interface Order {
     readonly operatorId: string;
     readonly __v: number;
     readonly process?: Process[];
+    readonly checkout?: Checkout[];
+    readonly payed: boolean;
 }
 
 export interface Content {
@@ -42,4 +44,11 @@ export interface Process {
     type: string;
     value: number;
     volume?: number;
+}
+
+export interface Checkout {
+    _id?: string;
+    type: string;
+    amount: number;
+    date?: Date | string;
 }

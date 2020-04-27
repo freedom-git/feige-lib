@@ -1,7 +1,7 @@
-import { calcTotalPrice, calcReceivablePrice } from './index';
+import { calcTotalPrice, calcReceivablePrice, calcReceived } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
-import * as order3 from '../josn-hub/orders/点了不加价-固定加价-百分比加价规格的订单';
+import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价规格的订单';
 import * as order4 from '../josn-hub/orders/有一个菜的价格是负数的情况';
 import * as order5 from '../josn-hub/orders/整单价格都是负数的情况';
 import { CONST } from './const/const';
@@ -118,6 +118,26 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-33.9675);
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-0.9025);
+        });
+    });
+
+    describe('测试计算已收金额：calcReceived', () => {
+        it('没有该字段返回0', () => {
+            expect(calcReceived(undefined)).toBe(0);
+        });
+        it('计算两笔金额的总数', () => {
+            expect(
+                calcReceived([
+                    {
+                        type: CONST.CHECKOUT_TYPE.CASH,
+                        amount: 45.64,
+                    },
+                    {
+                        type: CONST.CHECKOUT_TYPE.MYQR,
+                        amount: 66.87,
+                    },
+                ]),
+            ).toBe(112.51);
         });
     });
 });

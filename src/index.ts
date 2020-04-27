@@ -1,7 +1,8 @@
-import { Order, Process } from './interfaces/order/order.interface';
-export { Order, Process };
-
+import { Order, Process, Content, Checkout } from './interfaces/order/order.interface';
 import { CONST } from './const/const';
+
+export { Order, Process, Content, Checkout, CONST };
+
 /**
  * 利用订单计算总价
  *
@@ -79,4 +80,21 @@ export function calcReceivablePrice(
         resultProcessArr,
         receivablePrice,
     };
+}
+
+/**
+ * 计算已收金额
+ *
+ * @param {Array} checkoutArr  结账记录
+ * @returns {number} 返回已收总金额
+ */
+export function calcReceived(checkoutArr: Checkout[]): number {
+    if (!checkoutArr) {
+        checkoutArr = [];
+    }
+    let totalPaid = 0;
+    checkoutArr.forEach((checkout) => {
+        totalPaid += checkout.amount;
+    });
+    return totalPaid;
 }

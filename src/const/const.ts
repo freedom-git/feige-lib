@@ -28,8 +28,8 @@ class Const {
         },
     };
     STORE_TYPE = {
-        STALL: 'stall',
-        RESTAURANT: 'restaurant',
+        BASE: 'base',
+        KDS: 'kds',
     };
     STATUS = {
         PENDING: 'pending',
