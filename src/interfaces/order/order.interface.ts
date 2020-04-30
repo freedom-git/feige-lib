@@ -1,7 +1,11 @@
 import { DishSnapshot } from '../store/dishSnapshot.interface';
 export interface Order {
     readonly _id: string;
-    readonly tableNum: string;
+    readonly tableNum?: string;
+    readonly serialNum?: string;
+    readonly phoneNum?: string;
+    readonly address?: string;
+    readonly note?: string;
     readonly content: Content[];
     readonly tasks: Task[];
     readonly storeId: string;
@@ -16,12 +20,12 @@ export interface Order {
 }
 
 export interface Content {
-    _id: string;
+    _id?: string;
     dishSnapshot: DishSnapshot;
     count: number;
     delivering?: number;
     finished?: number;
-    date: Date | string;
+    date?: Date | string;
 }
 
 export interface Task {
