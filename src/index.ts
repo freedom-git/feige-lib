@@ -1,8 +1,9 @@
 import { Order, Process, Content, Checkout } from './interfaces/order/order.interface';
+import { Store } from './interfaces/store/store.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 
-export { Order, Process, Content, Checkout, CONST, DishSnapshot };
+export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store };
 
 /**
  * 利用订单计算总价
