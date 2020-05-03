@@ -1,4 +1,4 @@
-import { calcTotalPrice, calcReceivablePrice, calcReceived } from './index';
+import { calcTotalPrice, calcReceivablePrice, calcReceived, getReadbleProcess } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
 import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价规格的订单';
@@ -38,85 +38,85 @@ describe('开始运行单元测试', () => {
         it('抹零0位', () => {
             const result = calcReceivablePrice(188.888, [
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
                     value: 0,
                 },
             ]);
             expect(result.receivablePrice).toBe(188.88);
             expect(result.resultProcessArr.length).toBe(1);
-            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-0.008);
         });
         it('抹零1位', () => {
             const result = calcReceivablePrice(188.888, [
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
                     value: 1,
                 },
             ]);
             expect(result.receivablePrice).toBe(188.8);
             expect(result.resultProcessArr.length).toBe(1);
-            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-0.088);
         });
         it('抹零3位', () => {
             const result = calcReceivablePrice(188.888, [
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
                     value: 3,
                 },
             ]);
             expect(result.receivablePrice).toBe(180);
             expect(result.resultProcessArr.length).toBe(1);
-            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-8.888);
         });
         it('抹零6位', () => {
             const result = calcReceivablePrice(188.888, [
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
                     value: 6,
                 },
             ]);
             expect(result.receivablePrice).toBe(0);
             expect(result.resultProcessArr.length).toBe(1);
-            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-188.888);
         });
         it('抹零3位 + 打9折', () => {
             const result = calcReceivablePrice(188.888, [
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
                     value: 3,
                 },
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
                     value: 9,
                 },
             ]);
             expect(result.receivablePrice).toBe(160);
             expect(result.resultProcessArr.length).toBe(2);
-            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.type);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-18.8888);
-            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
+            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-9.9992);
         });
         it('打7.5折 + 抹零2位', () => {
             const result = calcReceivablePrice(135.87, [
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
                     value: 7.5,
                 },
                 {
-                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type,
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
                     value: 2,
                 },
             ]);
             expect(result.receivablePrice).toBe(101);
             expect(result.resultProcessArr.length).toBe(2);
-            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.type);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-33.9675);
-            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.type);
+            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-0.9025);
         });
     });
@@ -129,15 +129,36 @@ describe('开始运行单元测试', () => {
             expect(
                 calcReceived([
                     {
-                        type: CONST.CHECKOUT_TYPE.CASH,
+                        type: CONST.CHECKOUT_TYPE.CASH.TYPE,
                         amount: 45.64,
                     },
                     {
-                        type: CONST.CHECKOUT_TYPE.MYQR,
+                        type: CONST.CHECKOUT_TYPE.MYQR.TYPE,
                         amount: 66.87,
                     },
                 ]),
             ).toBe(112.51);
+        });
+    });
+
+    describe('测试可读的订单处理过程：getReadbleProcess', () => {
+        it('输入打折过程，应该返回“打X折字段”', () => {
+            expect(
+                getReadbleProcess({
+                    type: 'discount',
+                    value: 9,
+                    volume: -0.8,
+                }),
+            ).toBe('打9折');
+        });
+        it('输入抹零过程，应该返回“抹零”', () => {
+            expect(
+                getReadbleProcess({
+                    type: 'remove_tails',
+                    value: 2,
+                    volume: -0.20000000000000018,
+                }),
+            ).toBe('抹零');
         });
     });
 });

@@ -12,19 +12,25 @@ class Const {
         APPEND: 'append',
     };
     CHECKOUT_TYPE = {
-        CASH: 'cash',
-        MYQR: 'myqr', //商家自备收费二维码
+        CASH: {
+            TYPE: 'cash',
+            TEXT: '现金',
+        },
+        MYQR: {
+            TYPE: 'myqr',
+            TEXT: '商家收款码',
+        },
     };
     RECEIVABLE_PROCESSING_TYPE = {
         REMOVE_TAILS: {
-            text: '抹零',
-            type: 'remove_tails',
-            sort: -1000,
+            TEXT: '抹零',
+            TYPE: 'remove_tails',
+            SORT: -1000,
         },
         DISCOUNT: {
-            text: '打折',
-            type: 'discount',
-            sort: 0,
+            TEXT: '打折',
+            TYPE: 'discount',
+            SORT: 0,
         },
     };
     STORE_TYPE = {
