@@ -6,6 +6,7 @@ export interface Order {
     readonly phoneNum?: string;
     readonly address?: string;
     readonly note?: string;
+    readonly printed?: string[];
     readonly content: Content[];
     readonly tasks: Task[];
     readonly storeId: string;
