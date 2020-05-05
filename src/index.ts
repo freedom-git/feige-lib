@@ -66,6 +66,14 @@ export function calcReceivablePrice(
                 volume,
             });
             receivablePrice += volume;
+        } else if (process.type === CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE) {
+            const volume = -process.value;
+            resultProcessArr.push({
+                type: process.type,
+                value: process.value,
+                volume,
+            });
+            receivablePrice += volume;
         } else if (process.type === CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE) {
             const pow = Math.pow(10, process.value - 2);
             const result = Math.floor(receivablePrice / pow) * pow;

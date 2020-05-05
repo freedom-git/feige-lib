@@ -32,6 +32,11 @@ class Const {
             TYPE: 'discount',
             SORT: 0,
         },
+        MARKDOWN: {
+            TEXT: '让价',
+            TYPE: 'markdown',
+            SORT: 0,
+        },
     };
     STORE_TYPE = {
         BASE: 'base',

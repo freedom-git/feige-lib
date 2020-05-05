@@ -119,6 +119,30 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-0.9025);
         });
+        it('打8折 + 抹零2位 + 让价10元', () => {
+            const result = calcReceivablePrice(199.99, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                    value: 8,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 2,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
+                    value: 10,
+                },
+            ]);
+            expect(result.receivablePrice).toBe(149);
+            expect(result.resultProcessArr.length).toBe(3);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-39.998);
+            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE);
+            expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
+            expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
+            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0.992);
+        });
     });
 
     describe('测试计算已收金额：calcReceived', () => {
