@@ -1,12 +1,13 @@
 {
-  "name": "feige-lib",
+  "name": "@freedom_sky/feige-lib",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run test && tsc",
     "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts}' --quiet --fix",
-    "test": "jest"
+    "test": "jest",
+    "publish": "npm run build && npm publish --access public"
   },
   "husky": {
     "hooks": {
