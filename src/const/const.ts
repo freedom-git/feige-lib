@@ -62,6 +62,11 @@ class Const {
         CANARY: 'canary',
         PRODUCTION: 'production',
     };
+    CURRENCY_SYMBOL = {
+        RMB: '¥',
+        USD: '$',
+        EUR: '€',
+    };
 }
 
 export const CONST = new Const();
