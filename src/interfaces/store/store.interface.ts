@@ -8,6 +8,7 @@ export interface Store {
     readonly img: string;
     readonly description: string;
     readonly type: string;
+    readonly currency: string;
     readonly autoClean: boolean;
     readonly forceClean: boolean;
     readonly checkoutFirst: boolean;
