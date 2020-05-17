@@ -6,6 +6,7 @@ export const order = {
     payed: false,
     storeId: '5e693b5ffd936f0013f6cc44',
     tableNum: '30',
+    currency: '¥',
     content: [
         {
             delivering: 0,
