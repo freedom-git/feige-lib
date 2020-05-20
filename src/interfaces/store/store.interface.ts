@@ -14,6 +14,7 @@ export interface Store {
     readonly checkoutFirst: boolean;
     readonly userId: string;
     readonly close: boolean;
+    readonly multiLanguage: boolean;
     readonly dishes: Dish[];
     readonly classifications: Classification[];
     readonly specifications: Specification[];

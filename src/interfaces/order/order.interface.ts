@@ -7,7 +7,6 @@ export interface Order {
     readonly address?: string;
     readonly nickName?: string;
     readonly note?: string;
-    readonly currency: string;
     readonly printed?: string[];
     readonly content: Content[];
     readonly tasks: Task[];

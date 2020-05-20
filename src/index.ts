@@ -18,6 +18,9 @@ export function calcTotalPrice(order: Order): number {
         let addPrice = 0;
         const selectedSpecifications = orderContentItem.dishSnapshot.selectedSpecifications || [];
         selectedSpecifications.forEach((specification) => {
+            if (!specification) {
+                return;
+            }
             specification.content.forEach((item) => {
                 if (item.fareType == CONST.FARE_TYPE.FIXED) {
                     addPrice += item.fare;
