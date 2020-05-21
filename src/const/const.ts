@@ -42,6 +42,10 @@ class Const {
         BASE: 'base',
         KDS: 'kds',
     };
+    STORE_TYPE_TEXT = {
+        base: '基础模式',
+        kds: '厨显模式',
+    };
     STATUS = {
         PENDING: 'pending',
         FINISHED: 'finished',
