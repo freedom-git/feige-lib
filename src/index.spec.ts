@@ -1,4 +1,4 @@
-import { calcTotalPrice, calcReceivablePrice, calcReceived, getReadbleProcess } from './index';
+import { calcTotalPrice, calcReceivablePrice, calcReceived, getReadbleProcess, calcLeft } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
 import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价规格的订单';
@@ -183,6 +183,18 @@ describe('开始运行单元测试', () => {
                     volume: -0.20000000000000018,
                 }),
             ).toBe('抹零');
+        });
+    });
+
+    describe('测试计算剩余金额：calcLeft', () => {
+        it('去掉因为js计算的尾数 10.56 - 10', () => {
+            expect(calcLeft(10.56, 10)).toBe(0.56);
+        });
+        it('去掉因为js计算的尾数 10.56 - 10 - 0.56', () => {
+            expect(calcLeft(10.56 - 10, 0.56)).toBe(0);
+        });
+        it('负数情况', () => {
+            expect(calcLeft(10.56, 11)).toBeCloseTo(-0.44);
         });
     });
 });

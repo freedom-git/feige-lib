@@ -113,6 +113,18 @@ export function calcReceived(checkoutArr: Checkout[]): number {
 }
 
 /**
+ * 计算剩余金额,去除尾数
+ *
+ * @param {number} receivablePrice  应收
+ * @param {number} received  已收
+ * @returns {number} 返回已收总金额
+ */
+export function calcLeft(receivablePrice: number, received: number): number {
+    const left = receivablePrice - received;
+    return Math.round(left * 100) / 100;
+}
+
+/**
  * 获得可读的订单处理过程
  *
  * @param {Process} process  订单处理过程
