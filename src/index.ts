@@ -121,7 +121,7 @@ export function calcReceived(checkoutArr: Checkout[]): number {
  */
 export function calcLeft(receivablePrice: number, received: number): number {
     const left = receivablePrice - received;
-    return Math.round(left * 100) / 100;
+    return Math.floor(left * 100) / 100;
 }
 
 /**
