@@ -200,7 +200,7 @@ describe('开始运行单元测试', () => {
 
     describe('测试格式化金额：parseMoney', () => {
         it('尾数高位', () => {
-            expect(parseMoney(10.569999999)).toBe(10.56);
+            expect(parseMoney(10.5650000000001)).toBe(10.57);
         });
         it('尾数低位', () => {
             expect(parseMoney(10.560000000001)).toBe(10.56);

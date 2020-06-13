@@ -12,7 +12,7 @@ export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, Task };
  * @returns {number} 返回只保留两位小数的money
  */
 export function parseMoney(num: number): number {
-    return Math.floor(num * 100) / 100;
+    return Math.round(num * 100) / 100;
 }
 
 /**
