@@ -6,6 +6,16 @@ import { CONST } from './const/const';
 export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, Task };
 
 /**
+ * 小数转化为金额,去除分位之后的尾数，向下取数，不做四舍五入
+ *
+ * @param {number} num  需要转换的数字
+ * @returns {number} 返回只保留两位小数的money
+ */
+export function parseMoney(num: number): number {
+    return Math.floor(num * 100) / 100;
+}
+
+/**
  * 利用订单计算总价
  *
  * @param  {object}  order  订单
@@ -35,7 +45,7 @@ export function calcTotalPrice(order: Order): number {
         }
         totalPrice += orderContentItem.count * dishPrice;
     });
-    return totalPrice;
+    return parseMoney(totalPrice);
 }
 
 /**
@@ -91,7 +101,7 @@ export function calcReceivablePrice(
     });
     return {
         resultProcessArr,
-        receivablePrice,
+        receivablePrice: parseMoney(receivablePrice),
     };
 }
 
@@ -109,7 +119,7 @@ export function calcReceived(checkoutArr: Checkout[]): number {
     checkoutArr.forEach((checkout) => {
         totalPaid += checkout.amount;
     });
-    return totalPaid;
+    return parseMoney(totalPaid);
 }
 
 /**
@@ -121,7 +131,7 @@ export function calcReceived(checkoutArr: Checkout[]): number {
  */
 export function calcLeft(receivablePrice: number, received: number): number {
     const left = receivablePrice - received;
-    return Math.floor(left * 100) / 100;
+    return parseMoney(left);
 }
 
 /**

@@ -1,4 +1,4 @@
-import { calcTotalPrice, calcReceivablePrice, calcReceived, getReadbleProcess, calcLeft } from './index';
+import { calcTotalPrice, calcReceivablePrice, calcReceived, getReadbleProcess, calcLeft, parseMoney } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
 import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价规格的订单';
@@ -195,6 +195,18 @@ describe('开始运行单元测试', () => {
         });
         it('负数情况', () => {
             expect(calcLeft(10.56, 11)).toBeCloseTo(-0.44);
+        });
+    });
+
+    describe('测试格式化金额：parseMoney', () => {
+        it('尾数高位', () => {
+            expect(parseMoney(10.569999999)).toBe(10.56);
+        });
+        it('尾数低位', () => {
+            expect(parseMoney(10.560000000001)).toBe(10.56);
+        });
+        it('负数中位', () => {
+            expect(parseMoney(10.56499999999)).toBeCloseTo(10.56);
         });
     });
 });
