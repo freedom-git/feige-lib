@@ -67,6 +67,10 @@ class Const {
         USD: '$',
         EUR: '€',
     };
+    UPPER_LIMIT = {
+        WAITER_NUM: 10,
+        CHEF_NUM: 5,
+    };
 }
 
 export const CONST = new Const();
