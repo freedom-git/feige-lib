@@ -1,4 +1,14 @@
-import { calcTotalPrice, calcReceivablePrice, calcReceived, getReadbleProcess, calcLeft, parseMoney } from './index';
+import {
+    calcTotalPrice,
+    calcReceivablePrice,
+    calcReceived,
+    getReadbleProcess,
+    calcLeft,
+    parseMoney,
+    checkStoreSubscription,
+    CHECK_STORE_SUBSCRIPTION_REASON,
+    Store,
+} from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
 import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价规格的订单';
@@ -207,6 +217,68 @@ describe('开始运行单元测试', () => {
         });
         it('负数中位', () => {
             expect(parseMoney(10.56499999999)).toBeCloseTo(10.56);
+        });
+    });
+
+    describe('测试店铺开通订阅检查：checkStoreSubscription', () => {
+        it('未购买任何模块的情况', () => {
+            const store = { subscription: undefined };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId).result).toBe(false);
+            expect(checkStoreSubscription(store as Store, moduleId).reason).toBe(
+                CHECK_STORE_SUBSCRIPTION_REASON.NeedBuy,
+            );
+        });
+        it('购买了其他模块的情况', () => {
+            const store = {
+                subscription: {
+                    base: {
+                        expires: '2021-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId).result).toBe(false);
+            expect(checkStoreSubscription(store as Store, moduleId).reason).toBe(
+                CHECK_STORE_SUBSCRIPTION_REASON.NeedBuy,
+            );
+        });
+        it('已过期的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2000-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId).result).toBe(false);
+            expect(checkStoreSubscription(store as Store, moduleId).reason).toBe(
+                CHECK_STORE_SUBSCRIPTION_REASON.Expires,
+            );
+        });
+        it('永久开通的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2000-06-21T15:59:59.999+00:00',
+                        permanent: true,
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId).result).toBe(true);
+        });
+        it('未过期的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId).result).toBe(true);
         });
     });
 });

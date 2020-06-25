@@ -38,6 +38,7 @@ class Const {
             SORT: 0,
         },
     };
+    // TODO:兼容1.9.X 后期删除
     STORE_TYPE = {
         BASE: 'base',
         KDS: 'kds',
@@ -71,6 +72,32 @@ class Const {
         WAITER_NUM: 10,
         CHEF_NUM: 5,
     };
+    BUSINESS = {
+        BASE: {
+            ID: 'base',
+            PRICE: 0.01,
+            NAME: '核心功能',
+            PERMANENT_PRICE: 0.1,
+        },
+        WAITER: {
+            ID: 'waiter',
+            PRICE: 0.01,
+            NAME: '服务员功能',
+            PERMANENT_PRICE: 0.1,
+        },
+        KDS: {
+            ID: 'kds',
+            PRICE: 0.01,
+            NAME: '后厨显示功能',
+            PERMANENT_PRICE: 0.1,
+        },
+        BASE_TAKEAWAY: {
+            ID: 'baseTakeaway',
+            PRICE: 0.02,
+            NAME: '基础外卖功能',
+        },
+    };
+    PROBATION = 1; // 公共试用期，当具体模块下没有该字段时，取这里的数据，单位：月
 }
 
 export const CONST = new Const();

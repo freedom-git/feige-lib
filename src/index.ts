@@ -2,8 +2,8 @@ import { Order, Process, Content, Checkout, Task } from './interfaces/order/orde
 import { Store } from './interfaces/store/store.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
-
-export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, Task };
+import * as moment from 'moment';
+export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, Task, moment };
 
 /**
  * 小数转化为金额,去除分位之后的尾数，向下取数，不做四舍五入
@@ -148,4 +148,44 @@ export function getReadbleProcess(process: Process): string {
         result = CONST.RECEIVABLE_PROCESSING_TYPE[process.type.toUpperCase()].TEXT;
     }
     return result;
+}
+
+export enum CHECK_STORE_SUBSCRIPTION_REASON {
+    NeedBuy = 1,
+    Expires = 2,
+}
+/**
+ * 检查店铺是否开通了特定的功能
+ *
+ * @param {Store} store  店铺
+ * @param {string} moduleId  功能id
+ * @returns {string} 返回可读字符串
+ */
+export function checkStoreSubscription(
+    store: Store,
+    moduleId: string,
+): { result: boolean; reason: CHECK_STORE_SUBSCRIPTION_REASON } {
+    let result;
+    let reason: CHECK_STORE_SUBSCRIPTION_REASON;
+    // 检查永久开通
+    if (store.subscription && store.subscription[moduleId] && store.subscription[moduleId].permanent) {
+        return {
+            result: true,
+            reason,
+        };
+    }
+    // 非永久开通，检查过期时间
+    if (!(store.subscription && store.subscription[moduleId] && store.subscription[moduleId].expires)) {
+        result = false;
+        reason = CHECK_STORE_SUBSCRIPTION_REASON.NeedBuy;
+    } else if (moment(store.subscription[moduleId].expires).isBefore(moment())) {
+        result = false;
+        reason = CHECK_STORE_SUBSCRIPTION_REASON.Expires;
+    } else {
+        result = true;
+    }
+    return {
+        result,
+        reason,
+    };
 }

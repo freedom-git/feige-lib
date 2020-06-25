@@ -1,6 +1,18 @@
 export interface Subscription {
-    package: {
-        level: number;
-        expires: Date | string;
+    base: {
+        expires: string | Date;
+        permanent: boolean;
+    };
+    waiter: {
+        expires: string | Date;
+        permanent: boolean;
+    };
+    kds: {
+        expires: string | Date;
+        permanent: boolean;
+    };
+    baseTakeaway: {
+        expires: string | Date;
+        permanent: boolean;
     };
 }
