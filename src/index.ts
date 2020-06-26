@@ -159,11 +159,13 @@ export enum CHECK_STORE_SUBSCRIPTION_REASON {
  *
  * @param {Store} store  店铺
  * @param {string} moduleId  功能id
+ * @param {string | Date | number} now 对比时间
  * @returns {string} 返回可读字符串
  */
 export function checkStoreSubscription(
     store: Store,
     moduleId: string,
+    now?: string | Date | number,
 ): { result: boolean; reason: CHECK_STORE_SUBSCRIPTION_REASON } {
     let result;
     let reason: CHECK_STORE_SUBSCRIPTION_REASON;
@@ -178,7 +180,7 @@ export function checkStoreSubscription(
     if (!(store.subscription && store.subscription[moduleId] && store.subscription[moduleId].expires)) {
         result = false;
         reason = CHECK_STORE_SUBSCRIPTION_REASON.NeedBuy;
-    } else if (moment(store.subscription[moduleId].expires).isBefore(moment())) {
+    } else if (moment(store.subscription[moduleId].expires).isBefore(now ? moment(now) : moment())) {
         result = false;
         reason = CHECK_STORE_SUBSCRIPTION_REASON.Expires;
     } else {

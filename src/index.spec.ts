@@ -280,5 +280,55 @@ describe('开始运行单元测试', () => {
             const moduleId = 'kds';
             expect(checkStoreSubscription(store as Store, moduleId).result).toBe(true);
         });
+        it('传入对比时间字符串的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId, '2101-06-21T15:59:59.999+00:00').result).toBe(
+                false,
+            );
+        });
+        it('传入对比时间对象的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(
+                checkStoreSubscription(store as Store, moduleId, new Date('2101-06-21T15:59:59.999+00:00')).result,
+            ).toBe(false);
+        });
+        it('传入当前时间戳的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(checkStoreSubscription(store as Store, moduleId, Date.now()).result).toBe(true);
+        });
+        it('传入将来时间戳的情况', () => {
+            const store = {
+                subscription: {
+                    kds: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const moduleId = 'kds';
+            expect(
+                checkStoreSubscription(store as Store, moduleId, Date.parse('2101-06-21T15:59:59.999+00:00')).result,
+            ).toBe(false);
+        });
     });
 });
