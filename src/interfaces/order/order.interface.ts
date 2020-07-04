@@ -27,6 +27,7 @@ export interface Content {
     count: number;
     delivering?: number;
     finished?: number;
+    retreated?: number;
     date?: Date | string;
 }
 
