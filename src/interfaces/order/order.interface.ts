@@ -28,6 +28,7 @@ export interface Content {
     delivering?: number;
     finished?: number;
     retreated?: number;
+    retreatReason?: string;
     date?: Date | string;
 }
 
