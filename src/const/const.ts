@@ -98,6 +98,18 @@ class Const {
         },
     };
     PROBATION = 1; // 公共试用期，当具体模块下没有该字段时，取这里的数据，单位：月
+    LANGUAGE = [
+        {
+            name: '汉语',
+            img: '',
+            code: 'zh',
+        },
+        {
+            name: 'English',
+            img: '',
+            code: 'en',
+        },
+    ];
 }
 
 export const CONST = new Const();
