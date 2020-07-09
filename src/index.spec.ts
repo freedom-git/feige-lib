@@ -173,6 +173,25 @@ describe('开始运行单元测试', () => {
                 ]),
             ).toBe(112.51);
         });
+        it('有退款的情况下计算两笔金额的总数', () => {
+            expect(
+                calcReceived([
+                    {
+                        type: CONST.CHECKOUT_TYPE.CASH.TYPE,
+                        amount: 45.64,
+                    },
+                    {
+                        type: CONST.CHECKOUT_TYPE.MYQR.TYPE,
+                        amount: 66.87,
+                    },
+                    {
+                        type: CONST.CHECKOUT_TYPE.MYQR.TYPE,
+                        amount: 66.87,
+                        retreated: true,
+                    },
+                ]),
+            ).toBe(112.51);
+        });
     });
 
     describe('测试可读的订单处理过程：getReadbleProcess', () => {

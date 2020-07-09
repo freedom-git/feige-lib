@@ -19,6 +19,7 @@ export interface Order {
     readonly process?: Process[];
     readonly checkout?: Checkout[];
     readonly payed: boolean;
+    readonly retreated?: boolean;
 }
 
 export interface Content {
@@ -48,15 +49,16 @@ export interface Task {
 }
 
 export interface Process {
-    _id?: string;
-    type: string;
-    value: number;
-    volume?: number;
+    readonly _id?: string;
+    readonly type: string;
+    readonly value: number;
+    readonly volume?: number;
 }
 
 export interface Checkout {
-    _id?: string;
-    type: string;
-    amount: number;
-    date?: Date | string;
+    readonly _id?: string;
+    readonly type: string;
+    readonly amount: number;
+    readonly retreated?: boolean;
+    readonly date?: Date | string;
 }

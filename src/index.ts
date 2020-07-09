@@ -117,7 +117,9 @@ export function calcReceived(checkoutArr: Checkout[]): number {
     }
     let totalPaid = 0;
     checkoutArr.forEach((checkout) => {
-        totalPaid += checkout.amount;
+        if (!checkout.retreated) {
+            totalPaid += checkout.amount;
+        }
     });
     return parseMoney(totalPaid);
 }
