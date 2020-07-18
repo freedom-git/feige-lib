@@ -91,6 +91,18 @@ class Const {
             NAME: '后厨显示功能',
             PERMANENT_PRICE: 500,
         },
+        MULTI_LANGUAGE: {
+            ID: 'multiLanguage',
+            PRICE: 0.01,
+            NAME: '多语言支持(标准版：中英+1任选)',
+            PERMANENT_PRICE: 0.05,
+        },
+        SUPER_MULTI_LANGUAGE: {
+            ID: 'superMultiLanguage',
+            PRICE: 0.02,
+            NAME: '多语言支持(无限版)',
+            PERMANENT_PRICE: 0.1,
+        },
         // BASE_TAKEAWAY: {
         //     ID: 'baseTakeaway',
         //     PRICE: 0.02,
@@ -110,6 +122,8 @@ class Const {
             code: 'en',
         },
     ];
+    INIT_LANGUAGE = 'zh';
+    DEFALUT_LANGUAGE = 'en';
 }
 
 export const CONST = new Const();

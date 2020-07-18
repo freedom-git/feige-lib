@@ -1,6 +1,7 @@
 export interface Dish {
     readonly _id: string;
-    readonly name: string;
+    name: string;
+    readonly names?: string[];
     readonly price: number;
     readonly description: string;
     readonly img: string;

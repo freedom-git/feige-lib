@@ -15,4 +15,13 @@ export interface Subscription {
         expires: string | Date;
         permanent: boolean;
     };
+    multiLanguage: {
+        expires: string | Date;
+        permanent: boolean;
+        allow: string[];
+    };
+    superMultiLanguage: {
+        expires: string | Date;
+        permanent: boolean;
+    };
 }
