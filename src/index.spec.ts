@@ -8,6 +8,7 @@ import {
     checkStoreSubscription,
     CHECK_STORE_SUBSCRIPTION_REASON,
     Store,
+    getCurrentLangAndRange,
 } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
@@ -348,6 +349,137 @@ describe('开始运行单元测试', () => {
             expect(
                 checkStoreSubscription(store as Store, moduleId, Date.parse('2101-06-21T15:59:59.999+00:00')).result,
             ).toBe(false);
+        });
+    });
+
+    describe('根据店铺获取当前应该用的语言：getCurrentLangAndRange', () => {
+        it('浏览器是中文，什么包都没开通', () => {
+            const browserLang = 'zh';
+            const store = {
+                subscription: {},
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('zh');
+            expect(result.availableLangs.length).toBe(1);
+            expect(result.availableLangs[0]).toBe('zh');
+        });
+        it('浏览器是英语，什么包都没开通', () => {
+            const browserLang = 'en';
+            const store = {
+                subscription: {},
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('zh');
+            expect(result.availableLangs.length).toBe(1);
+            expect(result.availableLangs[0]).toBe('zh');
+        });
+        it('浏览器是英文，开通了标准版语言包,选择语言维语', () => {
+            const browserLang = 'en';
+            const store = {
+                subscription: {
+                    multiLanguage: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                        allow: ['zh', 'en', 'ug'],
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('en');
+            expect(result.availableLangs.length).toBe(3);
+            expect(result.availableLangs.includes('zh')).toBeTruthy();
+            expect(result.availableLangs.includes('en')).toBeTruthy();
+            expect(result.availableLangs.includes('ug')).toBeTruthy();
+        });
+        it('浏览器是维语，开通了标准版语言包,选择语言维语', () => {
+            const browserLang = 'ug';
+            const store = {
+                subscription: {
+                    multiLanguage: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                        allow: ['zh', 'en', 'ug'],
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('ug');
+            expect(result.availableLangs.length).toBe(3);
+            expect(result.availableLangs.includes('zh')).toBeTruthy();
+            expect(result.availableLangs.includes('en')).toBeTruthy();
+            expect(result.availableLangs.includes('ug')).toBeTruthy();
+        });
+        it('浏览器是未知语言，开通了标准版语言包,选择语言维语', () => {
+            const browserLang = undefined;
+            const store = {
+                subscription: {
+                    multiLanguage: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                        allow: ['zh', 'en', 'ug'],
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('en');
+            expect(result.availableLangs.length).toBe(3);
+            expect(result.availableLangs.includes('zh')).toBeTruthy();
+            expect(result.availableLangs.includes('en')).toBeTruthy();
+            expect(result.availableLangs.includes('ug')).toBeTruthy();
+        });
+        it('标准包过期', () => {
+            const browserLang = 'ug';
+            const store = {
+                subscription: {
+                    multiLanguage: {
+                        expires: '2000-06-21T15:59:59.999+00:00',
+                        allow: ['zh', 'en', 'ug'],
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('zh');
+            expect(result.availableLangs.length).toBe(1);
+            expect(result.availableLangs[0]).toBe('zh');
+        });
+        it('浏览器是中文，开通了无限版语言包', () => {
+            const browserLang = 'zh';
+            const store = {
+                subscription: {
+                    superMultiLanguage: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('zh');
+            expect(result.availableLangs.length).toBe(CONST.LANGUAGE.length);
+            expect(result.availableLangs.includes(CONST.LANGUAGE[0].code)).toBeTruthy();
+        });
+        it('浏览器是未知语言，开通了无限版语言包', () => {
+            const browserLang = undefined;
+            const store = {
+                subscription: {
+                    superMultiLanguage: {
+                        expires: '2100-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('en');
+            expect(result.availableLangs.length).toBe(CONST.LANGUAGE.length);
+            expect(result.availableLangs.includes(CONST.LANGUAGE[0].code)).toBeTruthy();
+        });
+        it('无限版语言包过期', () => {
+            const browserLang = 'en';
+            const store = {
+                subscription: {
+                    superMultiLanguage: {
+                        expires: '2000-06-21T15:59:59.999+00:00',
+                    },
+                },
+            };
+            const result = getCurrentLangAndRange(store as Store, browserLang);
+            expect(result.currentLang).toBe('zh');
+            expect(result.availableLangs.length).toBe(1);
+            expect(result.availableLangs[0]).toBe('zh');
         });
     });
 });

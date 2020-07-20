@@ -193,3 +193,34 @@ export function checkStoreSubscription(
         reason,
     };
 }
+
+/**
+ * 根据店铺获取当前应该用的语言
+ *
+ * @param {Store} store  店铺
+ * @param {string} browserLang  设备语言
+ * @param {string | Date | number} now 对比时间
+ * @returns {object} 返回当前语言和可用语言
+ */
+export function getCurrentLangAndRange(
+    store: Store,
+    browserLang: string,
+    now?: string | Date | number,
+): { currentLang: string; availableLangs: string[] } {
+    let result = CONST.DEFALUT_LANGUAGE;
+    let langs: string[] = [CONST.INIT_LANGUAGE]; //可用语言范围
+    if (checkStoreSubscription(store, CONST.BUSINESS.SUPER_MULTI_LANGUAGE.ID, now).result) {
+        langs = CONST.LANGUAGE.map((lang) => lang.code);
+    } else if (checkStoreSubscription(store, CONST.BUSINESS.MULTI_LANGUAGE.ID, now).result) {
+        langs = store.subscription.multiLanguage.allow;
+    } else {
+        result = CONST.INIT_LANGUAGE;
+    }
+    if (browserLang && langs.filter((item) => browserLang.includes(item)).length > 0) {
+        result = browserLang;
+    }
+    return {
+        currentLang: result,
+        availableLangs: langs,
+    };
+}
