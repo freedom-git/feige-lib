@@ -9,6 +9,8 @@ import {
     CHECK_STORE_SUBSCRIPTION_REASON,
     Store,
     getCurrentLangAndRange,
+    getNameFromNames,
+    getStoreByLanguage,
 } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
@@ -480,6 +482,144 @@ describe('开始运行单元测试', () => {
             expect(result.currentLang).toBe('zh');
             expect(result.availableLangs.length).toBe(1);
             expect(result.availableLangs[0]).toBe('zh');
+        });
+    });
+
+    describe('在语言对象中找到当前语言最匹配的值：getNameFromNames', () => {
+        it('目标语言是中文，而且有可用语言有中文', () => {
+            const currentLang = 'zh';
+            const defaultLang = 'en';
+            const names = {
+                zh: '中文',
+                en: 'English',
+            };
+            const result = getNameFromNames(names, currentLang, defaultLang);
+            expect(result).toBe('中文');
+        });
+        it('目标语言是法语，但是不在可用语言列表中，默认是英文', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'en';
+            const names = {
+                zh: '中文',
+                en: 'English',
+            };
+            const result = getNameFromNames(names, currentLang, defaultLang);
+            expect(result).toBe('English');
+        });
+        it('目标语言是法语，但是不在可用语言列表中，默认是中文', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'zh';
+            const names = {
+                zh: '中文',
+                en: 'English',
+            };
+            const result = getNameFromNames(names, currentLang, defaultLang);
+            expect(result).toBe('中文');
+        });
+        it('目标语言是法语，但是不在可用语言列表中，默认是英文，但是英文也不存在', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'en';
+            const names = {
+                zh: '中文',
+                ug: 'Uygur',
+            };
+            const result = getNameFromNames(names, currentLang, defaultLang);
+            expect(result).toBe('中文');
+        });
+        it('目标语言是法语，但是不在可用语言列表中，默认是英文，但是所有语言都不存在', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'en';
+            const names = {};
+            const result = getNameFromNames(names, currentLang, defaultLang);
+            expect(result).toBeUndefined();
+        });
+        it('目标语言是法语，但是不在可用语言列表中，默认是英文，但是多语言对象本身不存在', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'en';
+            const names = undefined;
+            const result = getNameFromNames(names, currentLang, defaultLang);
+            expect(result).toBeUndefined();
+        });
+    });
+
+    describe('根据语言返回处理过的店铺数据：getStoreByLanguage', () => {
+        const store = {
+            classifications: [
+                {
+                    name: '分类旧数据',
+                    names: {
+                        zh: '分类中文',
+                        en: 'classEnglish',
+                    },
+                },
+                {
+                    name: '分类旧数据2',
+                    names: {
+                        en: 'classEnglish2',
+                    },
+                },
+            ],
+            dishes: [
+                {
+                    name: '菜品旧数据',
+                    names: {},
+                },
+                {
+                    name: '菜品旧数据2',
+                },
+            ],
+            specifications: [
+                {
+                    names: { zh: '中', en: 'EN' },
+                    content: [
+                        {
+                            names: { zh: '中1', en: 'en1' },
+                        },
+                        {
+                            names: { zh: '中2', en: 'en2' },
+                        },
+                    ],
+                },
+                {
+                    names: { zh: '中x', en: 'ENx' },
+                    content: [
+                        {
+                            names: { zh: '中x1', en: 'enx1' },
+                        },
+                        {
+                            names: { en: 'enx2' },
+                        },
+                    ],
+                },
+            ],
+        };
+
+        it('目标语言是中文', () => {
+            const currentLang = 'zh';
+            const defaultLang = 'en';
+            const result = getStoreByLanguage(store as Store, currentLang, defaultLang);
+            expect(result.classifications[0].name).toBe('分类中文');
+            expect(result.classifications[1].name).toBe('classEnglish2');
+            expect(result.dishes[0].name).toBe('菜品旧数据');
+            expect(result.dishes[1].name).toBe('菜品旧数据2');
+            expect(result.specifications[0].name).toBe('中');
+            expect(result.specifications[0].content[0].name).toBe('中1');
+            expect(result.specifications[0].content[1].name).toBe('中2');
+            expect(result.specifications[1].content[1].name).toBe('enx2');
+        });
+
+        it('目标语言是法文，默认语言中文', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'zh';
+            const result = getStoreByLanguage(store as Store, currentLang, defaultLang);
+            expect(result.classifications[0].name).toBe('分类中文');
+            expect(result.classifications[1].name).toBe('classEnglish2');
+            expect(result.dishes[0].name).toBe('菜品旧数据');
+            expect(result.dishes[1].name).toBe('菜品旧数据2');
+            expect(result.specifications[0].name).toBe('中');
+            expect(result.specifications[0].content[0].name).toBe('中1');
+            expect(result.specifications[0].content[1].name).toBe('中2');
+            expect(result.specifications[1].content[1].name).toBe('enx2');
         });
     });
 });

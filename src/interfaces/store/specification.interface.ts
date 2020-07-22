@@ -1,13 +1,13 @@
 export interface Specification {
     _id: string;
     name: string;
-    names?: string[];
+    names?: object;
     description: string;
     multi: boolean;
     content: {
         _id: string;
         name: string;
-        names?: string[];
+        names?: object;
         disable: boolean;
         fare: number;
         fareType: string;

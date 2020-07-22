@@ -224,3 +224,46 @@ export function getCurrentLangAndRange(
         availableLangs: langs,
     };
 }
+
+/**
+ * 在语言对象中找到当前语言最匹配的值，
+ * 1. 精确匹配
+ * 2. 如果没有精确匹配，寻找默认语言
+ * 3. 如果默认语言也没有匹配，则返回第一个不为空的语言
+ * 4. 如果都为空，那么返回undefinded
+ *
+ * @param {object} names  语言
+ * @param {string} currentLang  目标语言
+ * @param {string} defaultLang  默认语言
+ * @returns {string} 返回当前语言的值
+ */
+export function getNameFromNames(names: object, currentLang: string, defaultLang: string): string {
+    return (
+        names &&
+        (names[currentLang] || names[defaultLang] || names[Object.keys(names).filter((name) => names[name])[0]])
+    );
+}
+
+/**
+ * 根据语言返回处理过的店铺数据
+ *
+ * @param {Store} store  店铺
+ * @param {string} currentLang  目标语言
+ * @param {string} defaultLang  默认语言
+ * @returns {object} 返回当前语言和可用语言
+ */
+export function getStoreByLanguage(store: Store, currentLang: string, defaultLang: string): Store {
+    store.classifications.forEach((classification) => {
+        classification.name = getNameFromNames(classification.names, currentLang, defaultLang) || classification.name;
+    });
+    store.dishes.forEach((dish) => {
+        dish.name = getNameFromNames(dish.names, currentLang, defaultLang) || dish.name;
+    });
+    store.specifications.forEach((specifications) => {
+        specifications.name = getNameFromNames(specifications.names, currentLang, defaultLang) || specifications.name;
+        specifications.content.forEach((content) => {
+            content.name = getNameFromNames(content.names, currentLang, defaultLang) || content.name;
+        });
+    });
+    return store;
+}
