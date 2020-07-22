@@ -3,7 +3,8 @@ export interface Dish {
     name: string;
     readonly names?: object;
     readonly price: number;
-    readonly description: string;
+    description: string;
+    descriptions?: object;
     readonly img: string;
     readonly soldOut: boolean;
     readonly noCooking: boolean;

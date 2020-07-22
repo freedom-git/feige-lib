@@ -253,11 +253,14 @@ export function getNameFromNames(names: object, currentLang: string, defaultLang
  * @returns {object} 返回当前语言和可用语言
  */
 export function getStoreByLanguage(store: Store, currentLang: string, defaultLang: string): Store {
+    store.name = getNameFromNames(store.names, currentLang, defaultLang) || store.name;
+    store.description = getNameFromNames(store.descriptions, currentLang, defaultLang) || store.description;
     store.classifications.forEach((classification) => {
         classification.name = getNameFromNames(classification.names, currentLang, defaultLang) || classification.name;
     });
     store.dishes.forEach((dish) => {
         dish.name = getNameFromNames(dish.names, currentLang, defaultLang) || dish.name;
+        dish.description = getNameFromNames(dish.descriptions, currentLang, defaultLang) || dish.description;
     });
     store.specifications.forEach((specifications) => {
         specifications.name = getNameFromNames(specifications.names, currentLang, defaultLang) || specifications.name;

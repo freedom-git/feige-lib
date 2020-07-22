@@ -5,9 +5,11 @@ import { Subscription } from './subscription.interface';
 
 export interface Store {
     readonly _id: string;
-    readonly name: string;
+    name: string;
+    readonly names?: object;
     readonly img: string;
-    readonly description: string;
+    description: string;
+    readonly descriptions?: object;
     readonly type: string;
     readonly currency: string;
     readonly autoClean: boolean;

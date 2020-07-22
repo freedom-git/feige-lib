@@ -544,6 +544,15 @@ describe('开始运行单元测试', () => {
 
     describe('根据语言返回处理过的店铺数据：getStoreByLanguage', () => {
         const store = {
+            name: '旧名字',
+            names: {
+                zh: '新店名',
+                en: 'newStoreName',
+            },
+            description: '旧描述',
+            descriptions: {
+                en: 'newDescriptions',
+            },
             classifications: [
                 {
                     name: '分类旧数据',
@@ -563,9 +572,15 @@ describe('开始运行单元测试', () => {
                 {
                     name: '菜品旧数据',
                     names: {},
+                    description: '旧描述1',
+                    descriptions: {
+                        zh: '新描述',
+                        en: 'newDescriptions',
+                    },
                 },
                 {
                     name: '菜品旧数据2',
+                    description: '旧描述2',
                 },
             ],
             specifications: [
@@ -598,10 +613,14 @@ describe('开始运行单元测试', () => {
             const currentLang = 'zh';
             const defaultLang = 'en';
             const result = getStoreByLanguage(store as Store, currentLang, defaultLang);
+            expect(result.name).toBe('新店名');
+            expect(result.description).toBe('newDescriptions');
             expect(result.classifications[0].name).toBe('分类中文');
             expect(result.classifications[1].name).toBe('classEnglish2');
             expect(result.dishes[0].name).toBe('菜品旧数据');
+            expect(result.dishes[0].description).toBe('新描述');
             expect(result.dishes[1].name).toBe('菜品旧数据2');
+            expect(result.dishes[1].description).toBe('旧描述2');
             expect(result.specifications[0].name).toBe('中');
             expect(result.specifications[0].content[0].name).toBe('中1');
             expect(result.specifications[0].content[1].name).toBe('中2');
@@ -612,10 +631,14 @@ describe('开始运行单元测试', () => {
             const currentLang = 'fr';
             const defaultLang = 'zh';
             const result = getStoreByLanguage(store as Store, currentLang, defaultLang);
+            expect(result.name).toBe('新店名');
+            expect(result.description).toBe('newDescriptions');
             expect(result.classifications[0].name).toBe('分类中文');
             expect(result.classifications[1].name).toBe('classEnglish2');
             expect(result.dishes[0].name).toBe('菜品旧数据');
+            expect(result.dishes[0].description).toBe('新描述');
             expect(result.dishes[1].name).toBe('菜品旧数据2');
+            expect(result.dishes[1].description).toBe('旧描述2');
             expect(result.specifications[0].name).toBe('中');
             expect(result.specifications[0].content[0].name).toBe('中1');
             expect(result.specifications[0].content[1].name).toBe('中2');
