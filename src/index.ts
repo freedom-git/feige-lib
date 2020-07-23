@@ -270,3 +270,53 @@ export function getStoreByLanguage(store: Store, currentLang: string, defaultLan
     });
     return store;
 }
+
+/**
+ * 根据语言返回处理过的店铺数据
+ *
+ * @param {Content} content 订单内容
+ * @param {string} currentLang  目标语言
+ * @param {string} defaultLang  默认语言
+ * @returns {Content} 返回当前语言的订单
+ */
+function getContentByLanguage(content: Content, currentLang: string, defaultLang: string): Content {
+    const dish = content.dishSnapshot;
+    dish.name = getNameFromNames(dish.names, currentLang, defaultLang) || dish.name;
+    if (dish.selectedSpecifications) {
+        dish.selectedSpecifications &&
+            dish.selectedSpecifications.forEach((specification) => {
+                specification.name =
+                    getNameFromNames(specification.names, currentLang, defaultLang) || specification.name;
+                specification.content.forEach((tag) => {
+                    tag.name = getNameFromNames(tag.names, currentLang, defaultLang) || tag.name;
+                });
+            });
+    }
+    return content;
+}
+
+/**
+ * 根据语言返回处理过的订单数据
+ *
+ * @param {Order} order  店铺
+ * @param {string} currentLang  目标语言
+ * @param {string} defaultLang  默认语言
+ * @returns {Order} 返回当前语言的订单
+ */
+export function getOrderByLanguage(order: Order, currentLang: string, defaultLang: string): Order {
+    if (order.content) {
+        order.content.map((dishGroup) => {
+            return getContentByLanguage(dishGroup, currentLang, defaultLang);
+        });
+    }
+    if (order.tasks) {
+        order.tasks.forEach((task) => {
+            if (task.content) {
+                task.content.map((dishGroup) => {
+                    return getContentByLanguage(dishGroup, currentLang, defaultLang);
+                });
+            }
+        });
+    }
+    return order;
+}

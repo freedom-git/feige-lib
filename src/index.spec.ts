@@ -11,6 +11,8 @@ import {
     getCurrentLangAndRange,
     getNameFromNames,
     getStoreByLanguage,
+    getOrderByLanguage,
+    Order,
 } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
@@ -643,6 +645,313 @@ describe('开始运行单元测试', () => {
             expect(result.specifications[0].content[0].name).toBe('中1');
             expect(result.specifications[0].content[1].name).toBe('中2');
             expect(result.specifications[1].content[1].name).toBe('enx2');
+        });
+    });
+
+    describe('根据语言返回处理过的订单数据：getOrderByLanguage', () => {
+        const order = {
+            content: [
+                {
+                    dishSnapshot: {
+                        name: '菜名旧数据',
+                        names: {
+                            zh: '菜名中文',
+                            en: 'dishEnglish',
+                        },
+                        selectedSpecifications: [
+                            {
+                                name: '规格旧数据',
+                                names: {
+                                    zh: '规格中文',
+                                    en: 'specificationEnglish',
+                                },
+                                content: [
+                                    {
+                                        name: '规格选项旧数据',
+                                        names: {
+                                            zh: '选项中文',
+                                            en: 'specificationOptionEnglish',
+                                        },
+                                    },
+                                    {
+                                        name: '规格选项旧数据2',
+                                        names: {
+                                            zh: '选项中文2',
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                name: '规格旧数据2',
+                                names: {
+                                    zh: '规格中文2',
+                                },
+                                content: [
+                                    {
+                                        name: '规格2选项旧数据',
+                                        names: {
+                                            zh: '选项2中文',
+                                            en: 'specification2OptionEnglish',
+                                        },
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                },
+                {
+                    dishSnapshot: {
+                        name: '菜名旧数据2',
+                        names: {
+                            en: 'classEnglish2',
+                        },
+                    },
+                },
+            ],
+            tasks: [
+                { _id: '没有content' },
+                {
+                    content: [
+                        {
+                            dishSnapshot: {
+                                names: { zh: '中', en: 'EN' },
+                                selectedSpecifications: [
+                                    {
+                                        names: { en: 'EN' },
+                                        content: [
+                                            {
+                                                names: { zh: '中1', en: 'en1' },
+                                            },
+                                            {
+                                                name: '老数据',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                        {
+                            dishSnapshot: {
+                                names: { zh: '中x', en: 'ENx' },
+                                selectedSpecifications: [
+                                    {
+                                        name: '老名字',
+                                        content: [
+                                            {
+                                                names: { zh: '中x1', en: 'enx1' },
+                                            },
+                                            {
+                                                names: { en: 'enx2' },
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                },
+            ],
+        };
+
+        it('目标语言是英文', () => {
+            const currentLang = 'en';
+            const defaultLang = 'en';
+            const result = getOrderByLanguage(order as Order, currentLang, defaultLang);
+            expect(result.content[0].dishSnapshot.name).toBe('dishEnglish');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].name).toBe('specificationEnglish');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe(
+                'specificationOptionEnglish',
+            );
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('选项中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].name).toBe('规格中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].content[0].name).toBe(
+                'specification2OptionEnglish',
+            );
+            expect(result.content[1].dishSnapshot.name).toBe('classEnglish2');
+            expect(result.tasks[0]['name']).toBeUndefined();
+            expect(result.tasks[1].content[0].dishSnapshot.name).toBe('EN');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].name).toBe('EN');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('en1');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('老数据');
+            expect(result.tasks[1].content[1].dishSnapshot.name).toBe('ENx');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].name).toBe('老名字');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('enx1');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('enx2');
+        });
+
+        it('目标语言是法语，默认语言是中文', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'zh';
+            const result = getOrderByLanguage(order as Order, currentLang, defaultLang);
+            expect(result.content[0].dishSnapshot.name).toBe('菜名中文');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].name).toBe('规格中文');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('选项中文');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('选项中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].name).toBe('规格中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].content[0].name).toBe('选项2中文');
+            expect(result.content[1].dishSnapshot.name).toBe('classEnglish2');
+            expect(result.tasks[0]['name']).toBeUndefined();
+            expect(result.tasks[1].content[0].dishSnapshot.name).toBe('中');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].name).toBe('EN');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('中1');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('老数据');
+            expect(result.tasks[1].content[1].dishSnapshot.name).toBe('中x');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].name).toBe('老名字');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('中x1');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('enx2');
+        });
+    });
+    describe('根据语言返回处理过的订单数据：getOrderByLanguage', () => {
+        const order = {
+            content: [
+                {
+                    dishSnapshot: {
+                        name: '菜名旧数据',
+                        names: {
+                            zh: '菜名中文',
+                            en: 'dishEnglish',
+                        },
+                        selectedSpecifications: [
+                            {
+                                name: '规格旧数据',
+                                names: {
+                                    zh: '规格中文',
+                                    en: 'specificationEnglish',
+                                },
+                                content: [
+                                    {
+                                        name: '规格选项旧数据',
+                                        names: {
+                                            zh: '选项中文',
+                                            en: 'specificationOptionEnglish',
+                                        },
+                                    },
+                                    {
+                                        name: '规格选项旧数据2',
+                                        names: {
+                                            zh: '选项中文2',
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                name: '规格旧数据2',
+                                names: {
+                                    zh: '规格中文2',
+                                },
+                                content: [
+                                    {
+                                        name: '规格2选项旧数据',
+                                        names: {
+                                            zh: '选项2中文',
+                                            en: 'specification2OptionEnglish',
+                                        },
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                },
+                {
+                    dishSnapshot: {
+                        name: '菜名旧数据2',
+                        names: {
+                            en: 'classEnglish2',
+                        },
+                    },
+                },
+            ],
+            tasks: [
+                { _id: '没有content' },
+                {
+                    content: [
+                        {
+                            dishSnapshot: {
+                                names: { zh: '中', en: 'EN' },
+                                selectedSpecifications: [
+                                    {
+                                        names: { en: 'EN' },
+                                        content: [
+                                            {
+                                                names: { zh: '中1', en: 'en1' },
+                                            },
+                                            {
+                                                name: '老数据',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                        {
+                            dishSnapshot: {
+                                names: { zh: '中x', en: 'ENx' },
+                                selectedSpecifications: [
+                                    {
+                                        name: '老名字',
+                                        content: [
+                                            {
+                                                names: { zh: '中x1', en: 'enx1' },
+                                            },
+                                            {
+                                                names: { en: 'enx2' },
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                },
+            ],
+        };
+
+        it('目标语言是英文', () => {
+            const currentLang = 'en';
+            const defaultLang = 'en';
+            const result = getOrderByLanguage(order as Order, currentLang, defaultLang);
+            expect(result.content[0].dishSnapshot.name).toBe('dishEnglish');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].name).toBe('specificationEnglish');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe(
+                'specificationOptionEnglish',
+            );
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('选项中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].name).toBe('规格中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].content[0].name).toBe(
+                'specification2OptionEnglish',
+            );
+            expect(result.content[1].dishSnapshot.name).toBe('classEnglish2');
+            expect(result.tasks[0]['name']).toBeUndefined();
+            expect(result.tasks[1].content[0].dishSnapshot.name).toBe('EN');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].name).toBe('EN');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('en1');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('老数据');
+            expect(result.tasks[1].content[1].dishSnapshot.name).toBe('ENx');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].name).toBe('老名字');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('enx1');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('enx2');
+        });
+
+        it('目标语言是法语，默认语言是中文', () => {
+            const currentLang = 'fr';
+            const defaultLang = 'zh';
+            const result = getOrderByLanguage(order as Order, currentLang, defaultLang);
+            expect(result.content[0].dishSnapshot.name).toBe('菜名中文');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].name).toBe('规格中文');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('选项中文');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('选项中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].name).toBe('规格中文2');
+            expect(result.content[0].dishSnapshot.selectedSpecifications[1].content[0].name).toBe('选项2中文');
+            expect(result.content[1].dishSnapshot.name).toBe('classEnglish2');
+            expect(result.tasks[0]['name']).toBeUndefined();
+            expect(result.tasks[1].content[0].dishSnapshot.name).toBe('中');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].name).toBe('EN');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('中1');
+            expect(result.tasks[1].content[0].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('老数据');
+            expect(result.tasks[1].content[1].dishSnapshot.name).toBe('中x');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].name).toBe('老名字');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('中x1');
+            expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('enx2');
         });
     });
 });
