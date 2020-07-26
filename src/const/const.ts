@@ -124,6 +124,9 @@ class Const {
     ];
     INIT_LANGUAGE = 'zh';
     DEFALUT_LANGUAGE = 'en';
+    CUSTOM_HEADERS = {
+        GEPHENOM_APP_ADMIN_CONTENT_VERSION: 'Gephenom-App-Admin-Content-Version',
+    };
 }
 
 export const CONST = new Const();
