@@ -126,6 +126,7 @@ class Const {
     DEFALUT_LANGUAGE = 'en';
     CUSTOM_HEADERS = {
         GEPHENOM_APP_ADMIN_CONTENT_VERSION: 'Gephenom-App-Admin-Content-Version',
+        GEPHENOM_H5_CLIENT_VERSION: 'Gephenom-H5-Client-Version',
     };
 }
 
