@@ -94,7 +94,7 @@ class Const {
         MULTI_LANGUAGE: {
             ID: 'multiLanguage',
             PRICE: 0.01,
-            NAME: '多语言支持(标准版：中英+1任选)',
+            NAME: '多语言支持(标准版)',
             PERMANENT_PRICE: 0.05,
         },
         SUPER_MULTI_LANGUAGE: {
