@@ -121,6 +121,11 @@ class Const {
             img: '',
             code: 'en',
         },
+        {
+            name: '维语(本处需要翻译)',
+            img: '',
+            code: 'ug',
+        },
     ];
     INIT_LANGUAGE = 'zh';
     DEFALUT_LANGUAGE = 'en';
