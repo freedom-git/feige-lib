@@ -93,15 +93,13 @@ class Const {
         },
         MULTI_LANGUAGE: {
             ID: 'multiLanguage',
-            PRICE: 0.01,
+            PRICE: 100,
             NAME: '多语言支持(标准版)',
-            PERMANENT_PRICE: 0.05,
         },
         SUPER_MULTI_LANGUAGE: {
             ID: 'superMultiLanguage',
-            PRICE: 0.02,
+            PRICE: 500,
             NAME: '多语言支持(无限版)',
-            PERMANENT_PRICE: 0.1,
         },
         // BASE_TAKEAWAY: {
         //     ID: 'baseTakeaway',
@@ -117,14 +115,14 @@ class Const {
             code: 'zh',
         },
         {
-            name: '漢語',
-            img: '',
-            code: 'zh-tw',
-        },
-        {
             name: 'English',
             img: '',
             code: 'en',
+        },
+        {
+            name: '漢語',
+            img: '',
+            code: 'zh-tw',
         },
         {
             name: 'Español',
