@@ -122,9 +122,9 @@ class Const {
             code: 'en',
         },
         {
-            name: '维语(本处需要翻译)',
+            name: '漢語',
             img: '',
-            code: 'ug',
+            code: 'zh-tw',
         },
     ];
     INIT_LANGUAGE = 'zh';
