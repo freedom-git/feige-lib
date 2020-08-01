@@ -117,14 +117,44 @@ class Const {
             code: 'zh',
         },
         {
+            name: '漢語',
+            img: '',
+            code: 'zh-tw',
+        },
+        {
             name: 'English',
             img: '',
             code: 'en',
         },
         {
-            name: '漢語',
+            name: 'Español',
             img: '',
-            code: 'zh-tw',
+            code: 'es',
+        },
+        {
+            name: '日本語',
+            img: '',
+            code: 'ja',
+        },
+        {
+            name: '한국어',
+            img: '',
+            code: 'ko',
+        },
+        {
+            name: 'Português',
+            img: '',
+            code: 'pt',
+        },
+        {
+            name: 'Français',
+            img: '',
+            code: 'fr',
+        },
+        {
+            name: 'Italiano',
+            img: '',
+            code: 'it',
         },
     ];
     INIT_LANGUAGE = 'zh';
