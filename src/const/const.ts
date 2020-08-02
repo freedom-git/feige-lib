@@ -154,6 +154,11 @@ class Const {
             img: '',
             code: 'it',
         },
+        {
+            name: 'ئۇيغۇرچە',
+            img: '',
+            code: 'ug',
+        },
     ];
     INIT_LANGUAGE = 'zh';
     DEFALUT_LANGUAGE = 'en';
