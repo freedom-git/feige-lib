@@ -71,6 +71,7 @@ class Const {
     UPPER_LIMIT = {
         WAITER_NUM: 10,
         CHEF_NUM: 5,
+        DISH_PRICE: 10000,
     };
     BUSINESS = {
         BASE: {
@@ -167,7 +168,23 @@ class Const {
         GEPHENOM_H5_CLIENT_VERSION: 'Gephenom-H5-Client-Version',
     };
     SOCKET_CHANNEL = {
-        Order: 'order',
+        ORDER: 'order',
+    };
+    ORDER_EVENT = {
+        CREATE: 'create',
+        ABANDON: 'abandon',
+        CHECKOUT: 'checkout',
+        REFUND: 'refund',
+        RETREAT: 'retreat',
+        FINISH: 'finish',
+        APPEND: 'append',
+        CONFIRM: 'confirm',
+        DELIVER: 'deliver',
+        CALL: 'call',
+        CALL_FINISHED: 'callFinished',
+        APPEND_CONFIRM: 'appendConfirm',
+        APPEND_ABANDON: 'appendAbandon',
+        CLEAN_FINISHED: 'cleanFinished',
     };
 }
 
