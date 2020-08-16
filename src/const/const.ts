@@ -196,6 +196,26 @@ class Const {
         WAITER_OFFLINE_CHANGE_ORDER_OPERATOR_FINISHED: 'waiterOfflineChangeOrderOperatorFinished',
         WAITER_ONLINE_CHANGE_ORDER_OPERATOR_FINISHED: 'waiterOnlineChangeOrderOperatorFinished',
     };
+    CERTIFICATE_TYPE = {
+        IDCARD_FRONT: {
+            DESCRIPTION: '法人身份证正面',
+        },
+        IDCARD_BACK: {
+            DESCRIPTION: '法人身份证反面',
+        },
+        SETTLE_BANKCARD: {
+            DESCRIPTION: '结算银行卡',
+        },
+        HAND_IDCARD: {
+            DESCRIPTION: '法人手持营业执照及身份证（个人只手持身份证）',
+        },
+        UNI_CREDIT_CODE: {
+            DESCRIPTION: '统一社会信用代码证',
+        },
+        OP_BANK_CODE: {
+            DESCRIPTION: '银行开户许可证',
+        },
+    };
 }
 
 export const CONST = new Const();
