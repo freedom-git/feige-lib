@@ -168,6 +168,7 @@ class Const {
             name: 'ئۇيغۇرچە',
             img: '',
             code: 'ug',
+            speechCode: 'ug-CN',
         },
     ];
     INIT_LANGUAGE = 'zh';
