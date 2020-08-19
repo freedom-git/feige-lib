@@ -144,6 +144,7 @@ class Const {
         {
             name: '한국어',
             img: '',
+            code: 'ko',
             speechCode: 'ko-KR',
         },
         {
