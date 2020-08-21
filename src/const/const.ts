@@ -73,6 +73,8 @@ class Const {
         WAITER_NUM: 10,
         CHEF_NUM: 5,
         DISH_PRICE: 10000,
+        DISH_NAME_MAX_LENGTH: 30,
+        STORE_NAME_MAX_LENGTH: 30,
     };
     BUSINESS = {
         BASE: {
