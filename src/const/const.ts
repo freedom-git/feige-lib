@@ -211,21 +211,39 @@ class Const {
     CERTIFICATE_TYPE = {
         IDCARD_FRONT: {
             DESCRIPTION: '法人身份证正面',
+            KEY: 'IDCARD_FRONT',
         },
         IDCARD_BACK: {
             DESCRIPTION: '法人身份证反面',
+            KEY: 'IDCARD_BACK',
         },
         SETTLE_BANKCARD: {
             DESCRIPTION: '结算银行卡',
+            KEY: 'SETTLE_BANKCARD',
         },
         HAND_IDCARD: {
             DESCRIPTION: '法人手持营业执照及身份证（个人只手持身份证）',
+            KEY: 'HAND_IDCARD',
         },
         UNI_CREDIT_CODE: {
             DESCRIPTION: '统一社会信用代码证',
+            KEY: 'UNI_CREDIT_CODE',
         },
         OP_BANK_CODE: {
             DESCRIPTION: '银行开户许可证',
+            KEY: 'OP_BANK_CODE',
+        },
+        BUSINESS_PLACE: {
+            DESCRIPTION: '门头照',
+            KEY: 'BUSINESS_PLACE',
+        },
+        BUSINESS_SITE: {
+            DESCRIPTION: '经营场所照',
+            KEY: 'BUSINESS_SITE',
+        },
+        CASHIER_SCENE: {
+            DESCRIPTION: '收银台场景照',
+            KEY: 'CASHIER_SCENE',
         },
     };
 }

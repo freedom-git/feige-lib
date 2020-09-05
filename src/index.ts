@@ -1,9 +1,10 @@
 import { Order, Process, Content, Checkout, Task } from './interfaces/order/order.interface';
 import { Store } from './interfaces/store/store.interface';
+import { User } from './interfaces/user/user.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import * as moment from 'moment';
-export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, Task, moment };
+export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, User, Task, moment };
 
 /**
  * 小数转化为金额,去除分位之后的尾数，向下取数，不做四舍五入

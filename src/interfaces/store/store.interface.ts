@@ -22,4 +22,7 @@ export interface Store {
     readonly specifications: Specification[];
     readonly subscription: Subscription;
     readonly date: string | Date;
+    readonly setting: {
+        autoConfirm: boolean;
+    };
 }
