@@ -1,4 +1,4 @@
-interface CertificatePath {
+export interface CertificatePath {
     origin: string;
     yeepay: string;
 }
