@@ -20,6 +20,14 @@ class Const {
             TYPE: 'myqr',
             TEXT: '商家收款码',
         },
+        WECHAT: {
+            TYPE: 'wechat',
+            TEXT: '微信',
+        },
+        ALIPAY: {
+            TYPE: 'alipay',
+            TEXT: '支付宝',
+        },
     };
     RECEIVABLE_PROCESSING_TYPE = {
         REMOVE_TAILS: {
