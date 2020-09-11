@@ -61,4 +61,5 @@ export interface Checkout {
     readonly amount: number;
     readonly retreated?: boolean;
     readonly date?: Date | string;
+    readonly payRecordId: string;
 }

@@ -46,5 +46,6 @@ export interface User {
     readonly yeepay: {
         merchantNo: string;
         merNetInOutStatus: string;
+        merHmacKey: string;
     };
 }
