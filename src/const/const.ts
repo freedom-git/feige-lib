@@ -190,6 +190,7 @@ class Const {
     };
     SOCKET_CHANNEL = {
         ORDER: 'order',
+        PAY: 'pay',
     };
     ORDER_EVENT = {
         CREATE: 'create',
