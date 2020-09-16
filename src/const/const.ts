@@ -255,6 +255,11 @@ class Const {
             KEY: 'CASHIER_SCENE',
         },
     };
+    REFUND_STATUS = {
+        PROCESSING: 'PROCESSING',
+        SUCCESS: 'SUCCESS',
+        FAILED: 'FAILED',
+    };
 }
 
 export const CONST = new Const();
