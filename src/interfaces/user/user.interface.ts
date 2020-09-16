@@ -47,5 +47,8 @@ export interface User {
         merchantNo: string;
         merNetInOutStatus: string;
         merHmacKey: string;
+        reportStatus: string;
+        configStatus: string;
+        active: boolean;
     };
 }
