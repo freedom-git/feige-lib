@@ -87,35 +87,26 @@ class Const {
     BUSINESS = {
         BASE: {
             ID: 'base',
-            PRICE: 15,
             NAME: '核心功能',
-            PERMANENT_PRICE: 500,
         },
         WAITER: {
             ID: 'waiter',
-            PRICE: 10,
             NAME: '服务员功能',
-            PERMANENT_PRICE: 300,
         },
         KDS: {
             ID: 'kds',
-            PRICE: 15,
             NAME: '后厨显示功能',
-            PERMANENT_PRICE: 500,
         },
         MULTI_LANGUAGE: {
             ID: 'multiLanguage',
-            PRICE: 100,
             NAME: '多语言支持(标准版)',
         },
         SUPER_MULTI_LANGUAGE: {
             ID: 'superMultiLanguage',
-            PRICE: 500,
             NAME: '多语言支持(无限版)',
         },
         // BASE_TAKEAWAY: {
         //     ID: 'baseTakeaway',
-        //     PRICE: 0.02,
         //     NAME: '基础外卖功能',
         // },
     };
@@ -233,6 +224,10 @@ class Const {
         HAND_IDCARD: {
             DESCRIPTION: '法人手持营业执照及身份证（个人只手持身份证）',
             KEY: 'HAND_IDCARD',
+        },
+        CORP_CODE: {
+            DESCRIPTION: '营业执照',
+            KEY: 'CORP_CODE',
         },
         UNI_CREDIT_CODE: {
             DESCRIPTION: '统一社会信用代码证',

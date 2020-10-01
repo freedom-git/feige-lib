@@ -9,8 +9,8 @@ export interface User {
     readonly arrearsCountdown: number;
     readonly online: boolean;
     readonly clientId: string;
-    readonly paidTurnover: number;
-    readonly freeTurnover: number;
+    readonly originAgentId: string;
+    readonly responseAgentId: string;
     readonly certificate: {
         IDCARD_FRONT: CertificatePath;
         IDCARD_BACK: CertificatePath;
