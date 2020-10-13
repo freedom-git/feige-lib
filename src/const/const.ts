@@ -255,6 +255,7 @@ class Const {
         SUCCESS: 'SUCCESS',
         FAILED: 'FAILED',
     };
+    OFFICIAL_AGENT_ID: '5f8580b1bdc7e90a343d16eb';
 }
 
 export const CONST = new Const();
