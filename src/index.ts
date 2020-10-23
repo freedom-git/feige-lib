@@ -23,7 +23,7 @@ export function parseMoney(num: number): number {
  * @returns {number} 返回订单总金额
  *
  */
-export function calcTotalPrice(order: Order): number {
+export function calcTotalPrice(order: { content: Content[] }): number {
     let totalPrice = 0;
     order.content.forEach((orderContentItem) => {
         let addPrice = 0;

@@ -46,6 +46,7 @@ export interface Task {
     content?: Content[];
     valet?: boolean;
     printed?: string[];
+    clientId: string;
 }
 
 export interface Process {
