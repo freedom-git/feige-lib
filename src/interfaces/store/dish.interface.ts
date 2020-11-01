@@ -7,7 +7,6 @@ export interface Dish {
     descriptions?: object;
     readonly img: string;
     readonly soldOut: boolean;
-    readonly noCooking: boolean;
     readonly chef: string;
     readonly specifications: string[];
     readonly __v: number;

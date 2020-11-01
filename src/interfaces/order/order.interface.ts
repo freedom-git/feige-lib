@@ -14,6 +14,7 @@ export interface Order {
     readonly clientId: string;
     readonly date: Date | string;
     readonly status: string;
+    readonly checkoutFirst: boolean;
     readonly operatorId: string;
     readonly __v: number;
     readonly process?: Process[];

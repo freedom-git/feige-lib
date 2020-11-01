@@ -24,5 +24,7 @@ export interface Store {
     readonly date: string | Date;
     readonly setting: {
         autoConfirm: boolean;
+        clientPay: boolean;
+        waiterCheckout: boolean;
     };
 }

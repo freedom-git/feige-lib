@@ -15,7 +15,6 @@ export const order = {
             dishSnapshot: {
                 description: '冰爽可乐添加新鲜柠檬片，提神醒脑，让您胃口大开～',
                 soldOut: false,
-                noCooking: false,
                 specifications: ['5e693bddfd936f0013f6cc4f'],
                 __v: 5,
                 date: '2020-03-11T19:26:23.359Z',
@@ -54,7 +53,6 @@ export const order = {
             dishSnapshot: {
                 description: '',
                 soldOut: false,
-                noCooking: true,
                 specifications: ['5e693b5ffd936f0013f6cc49', '5e693bddfd936f0013f6cc4f'],
                 __v: 2,
                 date: '2020-03-11T19:27:43.221Z',
@@ -110,7 +108,6 @@ export const order = {
             dishSnapshot: {
                 description: '',
                 soldOut: false,
-                noCooking: false,
                 specifications: ['5e693bddfd936f0013f6cc4f'],
                 __v: 3,
                 date: '2020-03-31T04:53:04.263Z',
@@ -156,7 +153,6 @@ export const order = {
                     dishSnapshot: {
                         description: '冰爽可乐添加新鲜柠檬片，提神醒脑，让您胃口大开～',
                         soldOut: false,
-                        noCooking: false,
                         specifications: ['5e693bddfd936f0013f6cc4f'],
                         __v: 5,
                         date: '2020-03-11T19:26:23.359Z',
@@ -193,7 +189,6 @@ export const order = {
                     dishSnapshot: {
                         description: '',
                         soldOut: false,
-                        noCooking: true,
                         specifications: ['5e693b5ffd936f0013f6cc49', '5e693bddfd936f0013f6cc4f'],
                         __v: 2,
                         date: '2020-03-11T19:27:43.221Z',
@@ -247,7 +242,6 @@ export const order = {
                     dishSnapshot: {
                         description: '',
                         soldOut: false,
-                        noCooking: false,
                         specifications: ['5e693bddfd936f0013f6cc4f'],
                         __v: 3,
                         date: '2020-03-31T04:53:04.263Z',
