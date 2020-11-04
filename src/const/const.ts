@@ -184,6 +184,14 @@ class Const {
             printCode: 'img',
             fontFamily: 'UG',
         },
+        {
+            name: 'Tiếng Việt',
+            img: '',
+            code: 'vi',
+            speechCode: 'vi-VN',
+            printCode: 'img',
+            fontFamily: 'cp936',
+        },
     ];
     INIT_LANGUAGE = 'zh';
     DEFALUT_LANGUAGE = 'en';
