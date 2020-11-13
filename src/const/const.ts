@@ -77,6 +77,7 @@ class Const {
         USD: '$',
         EUR: '€',
         PHP: '₱',
+        VND: 'đ',
     };
     UPPER_LIMIT = {
         WAITER_NUM: 10,
