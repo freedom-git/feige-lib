@@ -120,6 +120,7 @@ class Const {
             code: 'zh',
             speechCode: 'zh-CN',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'English',
@@ -127,6 +128,7 @@ class Const {
             code: 'en',
             speechCode: 'en-US',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: '漢語',
@@ -134,6 +136,7 @@ class Const {
             code: 'zh-tw',
             speechCode: 'zh-tw',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'Español',
@@ -141,6 +144,7 @@ class Const {
             code: 'es',
             speechCode: 'es-ES',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: '日本語',
@@ -148,6 +152,7 @@ class Const {
             code: 'ja',
             speechCode: 'ja-JP',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: '한국어',
@@ -155,6 +160,7 @@ class Const {
             code: 'ko',
             speechCode: 'ko-KR',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'Português',
@@ -162,6 +168,7 @@ class Const {
             code: 'pt',
             speechCode: 'pt-PT',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'Français',
@@ -169,6 +176,7 @@ class Const {
             code: 'fr',
             speechCode: 'fr-FR',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'Italiano',
@@ -176,6 +184,7 @@ class Const {
             code: 'it',
             speechCode: 'it-IT',
             printCode: 'cp936',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'ئۇيغۇرچە',
@@ -184,6 +193,7 @@ class Const {
             speechCode: 'ug-CN',
             printCode: 'img',
             fontFamily: 'UG',
+            dateFormat: 'NORMAL',
         },
         {
             name: 'Tiếng Việt',
@@ -192,8 +202,13 @@ class Const {
             speechCode: 'vi-VN',
             printCode: 'img',
             fontFamily: 'cp936',
+            dateFormat: 'REVERSE',
         },
     ];
+    DATE_FORMAT = {
+        NORMAL: 'YYYY-MM-DD HH:mm:ss',
+        REVERSE: 'DD-MM-YYYY HH:mm:ss',
+    };
     INIT_LANGUAGE = 'zh';
     DEFALUT_LANGUAGE = 'en';
     CUSTOM_HEADERS = {
