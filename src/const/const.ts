@@ -206,8 +206,14 @@ class Const {
         },
     ];
     DATE_FORMAT = {
-        NORMAL: 'YYYY-MM-DD HH:mm:ss',
-        REVERSE: 'DD-MM-YYYY HH:mm:ss',
+        NORMAL: {
+            dateTime: 'YYYY-MM-DD HH:mm:ss',
+            date: 'YYYY-MM-DD',
+        },
+        REVERSE: {
+            dateTime: 'DD-MM-YYYY HH:mm:ss',
+            date: 'DD-MM-YYYY',
+        },
     };
     INIT_LANGUAGE = 'zh';
     DEFALUT_LANGUAGE = 'en';
