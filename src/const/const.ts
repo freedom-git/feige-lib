@@ -120,7 +120,7 @@ class Const {
             code: 'zh',
             speechCode: 'zh-CN',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'YEAR_MONTH_DAY',
         },
         {
             name: 'English',
@@ -128,7 +128,7 @@ class Const {
             code: 'en',
             speechCode: 'en-US',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'DAY_MONTH_YEAR',
         },
         {
             name: '漢語',
@@ -136,7 +136,7 @@ class Const {
             code: 'zh-tw',
             speechCode: 'zh-tw',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'YEAR_MONTH_DAY',
         },
         {
             name: 'Español',
@@ -144,7 +144,7 @@ class Const {
             code: 'es',
             speechCode: 'es-ES',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'YEAR_MONTH_DAY',
         },
         {
             name: '日本語',
@@ -152,7 +152,7 @@ class Const {
             code: 'ja',
             speechCode: 'ja-JP',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'YEAR_MONTH_DAY',
         },
         {
             name: '한국어',
@@ -160,7 +160,7 @@ class Const {
             code: 'ko',
             speechCode: 'ko-KR',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'YEAR_MONTH_DAY',
         },
         {
             name: 'Português',
@@ -168,7 +168,7 @@ class Const {
             code: 'pt',
             speechCode: 'pt-PT',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'DAY_MONTH_YEAR',
         },
         {
             name: 'Français',
@@ -176,7 +176,7 @@ class Const {
             code: 'fr',
             speechCode: 'fr-FR',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'DAY_MONTH_YEAR',
         },
         {
             name: 'Italiano',
@@ -184,7 +184,7 @@ class Const {
             code: 'it',
             speechCode: 'it-IT',
             printCode: 'cp936',
-            dateFormat: 'NORMAL',
+            dateFormat: 'DAY_MONTH_YEAR',
         },
         {
             name: 'ئۇيغۇرچە',
@@ -193,7 +193,7 @@ class Const {
             speechCode: 'ug-CN',
             printCode: 'img',
             fontFamily: 'UG',
-            dateFormat: 'NORMAL',
+            dateFormat: 'YEAR_MONTH_DAY',
         },
         {
             name: 'Tiếng Việt',
@@ -201,15 +201,15 @@ class Const {
             code: 'vi',
             speechCode: 'vi-VN',
             printCode: 'windows1258',
-            dateFormat: 'REVERSE',
+            dateFormat: 'DAY_MONTH_YEAR',
         },
     ];
     DATE_FORMAT = {
-        NORMAL: {
+        YEAR_MONTH_DAY: {
             dateTime: 'YYYY-MM-DD HH:mm:ss',
             date: 'YYYY-MM-DD',
         },
-        REVERSE: {
+        DAY_MONTH_YEAR: {
             dateTime: 'DD-MM-YYYY HH:mm:ss',
             date: 'DD-MM-YYYY',
         },
