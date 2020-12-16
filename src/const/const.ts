@@ -112,7 +112,7 @@ class Const {
         //     NAME: '基础外卖功能',
         // },
     };
-    PROBATION = 1; // 公共试用期，当具体模块下没有该字段时，取这里的数据，单位：月
+    PROBATION = 0.33; // 公共试用期，当具体模块下没有该字段时，取这里的数据，单位：月
     LANGUAGE = [
         {
             name: '汉语',
@@ -190,8 +190,7 @@ class Const {
             img: '',
             code: 'vi',
             speechCode: 'vi-VN',
-            printCode: 'img',
-            fontFamily: 'cp936',
+            printCode: 'windows1258',
         },
     ];
     INIT_LANGUAGE = 'zh';
