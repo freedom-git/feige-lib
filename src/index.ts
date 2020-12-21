@@ -3,8 +3,24 @@ import { Store } from './interfaces/store/store.interface';
 import { User, CertificatePath } from './interfaces/user/user.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
+import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
 import * as moment from 'moment';
-export { Order, Process, Content, Checkout, CONST, DishSnapshot, Store, User, CertificatePath, Task, moment };
+export {
+    Order,
+    Process,
+    Content,
+    Checkout,
+    CONST,
+    DishSnapshot,
+    Store,
+    User,
+    CertificatePath,
+    Task,
+    moment,
+    PrintStatusEnum,
+    PrinterDeviceTypeEnum,
+    PrinterWidthEnum,
+};
 
 /**
  * 小数转化为金额,去除分位之后的尾数，向下取数，不做四舍五入
