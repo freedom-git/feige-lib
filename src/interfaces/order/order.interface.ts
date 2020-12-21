@@ -1,4 +1,5 @@
 import { DishSnapshot } from '../store/dishSnapshot.interface';
+import { PrintStatusEnum } from '../../enum/printer.enum';
 export interface Order {
     readonly _id: string;
     readonly tableNum?: string;
@@ -8,6 +9,7 @@ export interface Order {
     readonly nickName?: string;
     readonly note?: string;
     readonly printed?: string[];
+    readonly printStatus?: PrintStatusEnum;
     readonly content: Content[];
     readonly tasks: Task[];
     readonly storeId: string;
@@ -47,6 +49,7 @@ export interface Task {
     content?: Content[];
     valet?: boolean;
     printed?: string[];
+    printStatus?: PrintStatusEnum;
     clientId: string;
 }
 
