@@ -8,8 +8,9 @@ export interface Order {
     readonly address?: string;
     readonly nickName?: string;
     readonly note?: string;
-    readonly printed?: string[];
-    readonly printStatus?: PrintStatusEnum;
+    readonly printed: string[];
+    readonly kdsPrinted: string[];
+    readonly printStatus: PrintStatusEnum;
     readonly content: Content[];
     readonly tasks: Task[];
     readonly storeId: string;
@@ -48,8 +49,9 @@ export interface Task {
     callReason?: string;
     content?: Content[];
     valet?: boolean;
-    printed?: string[];
-    printStatus?: PrintStatusEnum;
+    printed: string[];
+    kdsPrinted: string[];
+    printStatus: PrintStatusEnum;
     clientId: string;
 }
 
