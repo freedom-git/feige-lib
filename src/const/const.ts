@@ -200,7 +200,7 @@ class Const {
             img: '',
             code: 'vi',
             speechCode: 'vi-VN',
-            printCode: 'windows1258',
+            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
         },
     ];
