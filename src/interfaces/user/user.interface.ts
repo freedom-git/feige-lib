@@ -2,7 +2,7 @@ export interface CertificatePath {
     origin: string;
     yeepay: string;
 }
-export interface User {
+export interface UserSafe {
     readonly mobile: string;
     readonly _id: string;
     readonly deviceId: string;
@@ -11,6 +11,8 @@ export interface User {
     readonly clientId: string;
     readonly originAgentId: string;
     readonly responseAgentId: string;
+}
+export interface User extends UserSafe {
     readonly certificate: {
         IDCARD_FRONT: CertificatePath;
         IDCARD_BACK: CertificatePath;
