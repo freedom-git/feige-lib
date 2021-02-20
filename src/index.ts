@@ -1,6 +1,6 @@
 import { Order, Process, Content, Checkout, Task } from './interfaces/order/order.interface';
 import { Store } from './interfaces/store/store.interface';
-import { User, CertificatePath } from './interfaces/user/user.interface';
+import { User, UserSafe, CertificatePath } from './interfaces/user/user.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
@@ -14,6 +14,7 @@ export {
     DishSnapshot,
     Store,
     User,
+    UserSafe,
     CertificatePath,
     Task,
     moment,

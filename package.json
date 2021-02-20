@@ -1,6 +1,6 @@
 {
   "name": "@freedom_sky/feige-lib",
-  "version": "1.56.0",
+  "version": "1.56.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -47,6 +47,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "moment": "^2.27.0"
+    "moment": "^2.29.1"
   }
 }
