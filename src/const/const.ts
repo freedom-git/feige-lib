@@ -85,6 +85,8 @@ class Const {
         DISH_PRICE: 5000000,
         DISH_NAME_MAX_LENGTH: 30,
         STORE_NAME_MAX_LENGTH: 30,
+        TAKEOUT_STARTING_PRICE: 10000000,
+        TAKEOUT_DELIVERY_FEE: 10000000,
     };
     BUSINESS = {
         BASE: {
