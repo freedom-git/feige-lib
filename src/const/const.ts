@@ -303,6 +303,10 @@ class Const {
         ONLINE_PAY: 'onlinePay',
         CASH_ON_DELIERY: 'cashOnDeliery',
     };
+    TYPE_OF_SALES = {
+        DINE: 'dine',
+        TAKEOUT: 'takeout',
+    };
 }
 
 export const CONST = new Const();
