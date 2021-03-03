@@ -297,6 +297,10 @@ class Const {
         FAILED: 'FAILED',
     };
     OFFICIAL_AGENT_ID = '5f8715be1039e100138df98a';
+    TAKE_OUT_PAY_TYPE = {
+        ONLINE_PAY: 'onlinePay',
+        CASH_ON_DELIERY: 'cashOnDeliery',
+    };
 }
 
 export const CONST = new Const();
