@@ -2,7 +2,8 @@ export interface Dish {
     readonly _id: string;
     name: string;
     readonly names?: object;
-    readonly price: number;
+    price: number;
+    readonly takeoutPrice: number;
     description: string;
     descriptions?: object;
     readonly img: string;
