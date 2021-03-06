@@ -27,4 +27,13 @@ export interface Store {
         clientPay: boolean;
         waiterCheckout: boolean;
     };
+    readonly takeoutSetting: {
+        startingPrice: number;
+        deliveryFee: number;
+        payType: string[];
+        startTime: number;
+        endTime: number;
+        open: boolean;
+        autoConfirm: boolean;
+    };
 }
