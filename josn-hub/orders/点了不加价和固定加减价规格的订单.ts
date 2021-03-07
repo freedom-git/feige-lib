@@ -22,6 +22,8 @@ export const order = {
                 price: 4,
                 img: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/1574590762349-BpEiDmAWpf.jpg',
                 chef: '5e693b5ffd936f0013f6cc46',
+                salesType: ['dine', 'takeout'],
+                takeoutPrice: null,
                 selectedSpecifications: [
                     {
                         description: '',
@@ -67,6 +69,8 @@ export const order = {
                 price: 10,
                 img: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/1583954838114-T7F6fCxxGC.jpg',
                 chef: null,
+                salesType: ['dine', 'takeout'],
+                takeoutPrice: null,
                 selectedSpecifications: [
                     {
                         description: '示例辣度',
@@ -122,6 +126,8 @@ export const order = {
                 price: 5,
                 img: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/1585630263616-AKfk6XTmB6.jpg',
                 chef: '5e82cc3a2aa1beabadb9b905',
+                salesType: ['dine', 'takeout'],
+                takeoutPrice: null,
                 selectedSpecifications: [
                     {
                         description: '',
@@ -174,6 +180,8 @@ export const order = {
                         price: 4,
                         img: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/1574590762349-BpEiDmAWpf.jpg',
                         chef: '5e693b5ffd936f0013f6cc46',
+                        salesType: ['dine', 'takeout'],
+                        takeoutPrice: null,
                         selectedSpecifications: [
                             {
                                 description: '',
@@ -217,6 +225,8 @@ export const order = {
                         price: 10,
                         img: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/1583954838114-T7F6fCxxGC.jpg',
                         chef: null,
+                        salesType: ['dine', 'takeout'],
+                        takeoutPrice: null,
                         selectedSpecifications: [
                             {
                                 description: '示例辣度',
@@ -270,6 +280,8 @@ export const order = {
                         price: 5,
                         img: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/1585630263616-AKfk6XTmB6.jpg',
                         chef: '5e82cc3a2aa1beabadb9b905',
+                        salesType: ['dine', 'takeout'],
+                        takeoutPrice: null,
                         selectedSpecifications: [
                             {
                                 description: '',

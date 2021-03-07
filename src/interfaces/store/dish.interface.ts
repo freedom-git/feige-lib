@@ -10,5 +10,6 @@ export interface Dish {
     readonly soldOut: boolean;
     readonly chef: string;
     readonly specifications: string[];
+    salesType: string[];
     readonly __v: number;
 }
