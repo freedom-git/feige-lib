@@ -40,7 +40,7 @@ export function parseMoney(num: number): number {
  * @returns {number} 返回订单总金额
  *
  */
-export function calcTotalPrice(order: { content: Content[] }): number {
+export function calcTotalPrice(order: { content: Content[]; deliveryFee?: number }): number {
     let totalPrice = 0;
     order.content.forEach((orderContentItem) => {
         let addPrice = 0;
@@ -63,6 +63,9 @@ export function calcTotalPrice(order: { content: Content[] }): number {
         }
         totalPrice += orderContentItem.count * dishPrice;
     });
+    if (order.deliveryFee) {
+        totalPrice += order.deliveryFee;
+    }
     return parseMoney(totalPrice);
 }
 

@@ -5,6 +5,7 @@ export interface Order {
     readonly tableNum?: string;
     readonly serialNum?: string;
     readonly phoneNum?: string;
+    readonly deliveryFee?: number;
     readonly address?: string;
     readonly nickName?: string;
     readonly note?: string;

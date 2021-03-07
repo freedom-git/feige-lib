@@ -19,6 +19,8 @@ import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规
 import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价规格的订单';
 import * as order4 from '../josn-hub/orders/有一个菜的价格是负数的情况';
 import * as order5 from '../josn-hub/orders/整单价格都是负数的情况';
+import * as order6 from '../josn-hub/orders/点了未加价规格的订单并有配送费';
+
 import { CONST } from './const/const';
 
 describe('开始运行单元测试', () => {
@@ -46,6 +48,9 @@ describe('开始运行单元测试', () => {
         });
         it('整单价格都是负数的情况', () => {
             expect(calcTotalPrice(order5.order)).toBe(order5.expectPrice);
+        });
+        it('配送费检查', () => {
+            expect(calcTotalPrice(order6.order)).toBe(order6.expectPrice);
         });
     });
 
