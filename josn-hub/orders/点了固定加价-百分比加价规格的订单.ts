@@ -1,4 +1,4 @@
-export const order = {
+export const order: any = {
     _id: '5ea466267ac95a2aee549672',
     operatorId: null,
     status: 'pending',
@@ -6,6 +6,10 @@ export const order = {
     storeId: '5e693b5ffd936f0013f6cc44',
     tableNum: '31',
     currency: '¥',
+    printed: [],
+    kdsPrinted: [],
+    printStatus: 'Completed',
+    checkoutFirst: false,
     content: [
         {
             delivering: 0,
