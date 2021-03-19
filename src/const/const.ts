@@ -91,7 +91,7 @@ class Const {
     BUSINESS = {
         BASE: {
             ID: 'base',
-            NAME: '核心功能',
+            NAME: '点餐收银',
         },
         WAITER: {
             ID: 'waiter',

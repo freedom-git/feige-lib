@@ -4,6 +4,7 @@ import { User, UserSafe, CertificatePath } from './interfaces/user/user.interfac
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
+export * from './enum/member.enum';
 import * as moment from 'moment';
 export {
     Order,

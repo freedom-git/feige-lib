@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "tsc -w",
     "build": "npm run test && tsc",
     "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts}' --quiet --fix",
     "test": "jest",

@@ -2,6 +2,7 @@ import { Dish } from './dish.interface';
 import { Classification } from './classification.interface';
 import { Specification } from './specification.interface';
 import { Subscription } from './subscription.interface';
+import { MemberSavingRule } from './member.interface';
 
 export interface Store {
     readonly _id: string;
@@ -35,5 +36,12 @@ export interface Store {
         endTime: number;
         open: boolean;
         autoConfirm: boolean;
+    };
+    readonly memberSetting: {
+        savingRules: MemberSavingRule[];
+        security: {
+            paymentVerification: boolean;
+            paymentVerificationLimit: number;
+        };
     };
 }
