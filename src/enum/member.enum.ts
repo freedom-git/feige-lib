@@ -3,6 +3,6 @@ export enum MemberSendTypeEnum {
     Percentage = 'percentage',
 }
 export enum MemberSexEnum {
-    Mail = 'mail',
-    Femail = 'femail',
+    Male = 'male',
+    Female = 'female',
 }
