@@ -5,6 +5,7 @@ import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
 export * from './enum/member.enum';
+export * from './interfaces/member/member.interface';
 import * as moment from 'moment';
 export {
     Order,
