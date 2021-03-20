@@ -7,6 +7,8 @@ export interface Member {
     readonly sex: MemberSexEnum;
     readonly countryCode: string;
     readonly enable: boolean;
+    readonly credit: boolean;
+    readonly note: string;
     readonly balance: number;
     readonly salesman: string;
     readonly birthday: Date;
