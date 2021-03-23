@@ -11,3 +11,10 @@ export enum YeepayContactTypeEnum {
     AGENT = 'AGENT',
     OTHER = 'OTHER',
 }
+
+export enum YeepayTypeEnum {
+    PERSON = 'PERSON',
+    INDIVIDUAL = 'INDIVIDUAL',
+    ENTERPRISE_THREE_CERTIFICATE = 'ENTERPRISE_THREE_CERTIFICATE', //非三证合一
+    ENTERPRISE_ONE_CERTIFICATE = 'ENTERPRISE_ONE_CERTIFICATE', //三证合一
+}
