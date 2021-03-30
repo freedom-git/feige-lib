@@ -5,8 +5,10 @@ import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
 export * from './enum/member.enum';
+export * from './enum/checkout.emum';
 export * from './enum/yeepay.enum';
 export * from './interfaces/member/member.interface';
+export * from './interfaces/member/member-transaction.interface';
 import * as moment from 'moment';
 export {
     Order,
