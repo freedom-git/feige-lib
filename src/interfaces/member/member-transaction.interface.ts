@@ -2,6 +2,7 @@ import { MemberTransactionTypeEnum, MemberSendTypeEnum } from '../../enum/member
 import { CheckoutTypeEnum } from '../../enum/checkout.emum';
 export interface MemberTransaction {
     _id?: string;
+    memberId: string;
     storeId: string;
     type: MemberTransactionTypeEnum;
     balance: number;

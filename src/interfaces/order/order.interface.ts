@@ -70,5 +70,6 @@ export interface Checkout {
     readonly retreated?: boolean;
     readonly date?: Date | string;
     readonly payRecordId?: string;
+    readonly memberTransactionId?: string;
     readonly operatorId?: string;
 }
