@@ -28,6 +28,10 @@ class Const {
             TYPE: 'alipay',
             TEXT: '支付宝',
         },
+        MEMBER: {
+            TYPE: 'member',
+            TEXT: '会员',
+        },
     };
     RECEIVABLE_PROCESSING_TYPE = {
         REMOVE_TAILS: {
