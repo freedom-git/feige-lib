@@ -1,5 +1,5 @@
 import { MemberTransactionTypeEnum, MemberSendTypeEnum } from '../../enum/member.enum';
-import { CheckoutTypeEnum } from '../../enum/checkout.emum';
+import { MemberCheckoutTypeEnum } from '../../enum/checkout.emum';
 export interface MemberTransaction {
     _id?: string;
     memberId: string;
@@ -24,7 +24,7 @@ export interface MemberTransaction {
         description: string;
     };
     checkout: {
-        type: CheckoutTypeEnum;
+        type: MemberCheckoutTypeEnum;
         amount: number;
         retreated: boolean;
         payRecordId: string;
