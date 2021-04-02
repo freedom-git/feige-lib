@@ -232,6 +232,7 @@ class Const {
     };
     SOCKET_CHANNEL = {
         ORDER: 'order',
+        MEMBER: 'member',
         PAY: 'pay',
     };
     ORDER_EVENT = {
