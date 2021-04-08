@@ -9,6 +9,7 @@ export interface Store {
     name: string;
     readonly names?: object;
     readonly img: string;
+    readonly phone: string;
     description: string;
     readonly descriptions?: object;
     readonly type: string;
@@ -43,5 +44,13 @@ export interface Store {
             paymentVerification: boolean;
             paymentVerificationLimit: number;
         };
+    };
+    readonly smsNum: number;
+    readonly smsNotificationSetting: {
+        becomeMember: boolean;
+        memberSave: boolean;
+        memberPayout: boolean;
+        takeoutConfirm: boolean;
+        takeoutCancel: boolean;
     };
 }

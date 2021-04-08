@@ -13,6 +13,7 @@ import {
     getStoreByLanguage,
     getOrderByLanguage,
     Order,
+    getLanguageFromCountryCode,
 } from './index';
 import * as order1 from '../josn-hub/orders/点了未加价规格的订单';
 import * as order2 from '../josn-hub/orders/点了不加价和固定加减价规格的订单';
@@ -957,6 +958,15 @@ describe('开始运行单元测试', () => {
             expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].name).toBe('老名字');
             expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[0].name).toBe('中x1');
             expect(result.tasks[1].content[1].dishSnapshot.selectedSpecifications[0].content[1].name).toBe('enx2');
+        });
+    });
+
+    describe('测试根据区号返回语言码-getLanguageFromCountryCode', () => {
+        it('86应该返回zh', () => {
+            expect(getLanguageFromCountryCode('86')).toBe('zh');
+        });
+        it('非86应该返回en', () => {
+            expect(getLanguageFromCountryCode('94')).toBe('en');
         });
     });
 });

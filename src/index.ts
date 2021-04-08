@@ -5,6 +5,7 @@ import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
 export * from './enum/member.enum';
+export * from './enum/sms.enum';
 export * from './enum/checkout.emum';
 export * from './enum/yeepay.enum';
 export * from './interfaces/member/member.interface';
@@ -345,4 +346,18 @@ export function getOrderByLanguage(order: Order, currentLang: string, defaultLan
         });
     }
     return order;
+}
+
+/**
+ * 根据电话区号返回语言码,如果没找到，返回英文
+ *
+ * @param {string} countryCode  区号
+ * @returns {string} 语言代码的小写格式
+ */
+export function getLanguageFromCountryCode(countryCode): string {
+    const data = {
+        '86': 'zh',
+    };
+    const languageCode = data[String(countryCode)] || 'en';
+    return languageCode;
 }

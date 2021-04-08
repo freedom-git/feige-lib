@@ -4,6 +4,7 @@ export interface CertificatePath {
 }
 export interface UserSafe {
     readonly mobile: string;
+    readonly countryCode: string;
     readonly _id: string;
     readonly deviceId: string;
     readonly arrearsCountdown: number;
