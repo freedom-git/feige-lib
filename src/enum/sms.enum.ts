@@ -3,6 +3,7 @@ export enum SmsTransactionTypeEnum {
     Consumption = 'consumption',
 }
 export enum SmsConsumptionTypeEnum {
+    MemberPayoutVerification = 'memberPayoutVerification',
     BecomeMember = 'becomeMember',
     MemberSave = 'boolean',
     MemberPayout = 'memberPayout',
