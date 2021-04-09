@@ -5,7 +5,7 @@ export enum SmsTransactionTypeEnum {
 export enum SmsConsumptionTypeEnum {
     MemberPayoutVerification = 'memberPayoutVerification',
     BecomeMember = 'becomeMember',
-    MemberSave = 'boolean',
+    MemberSave = 'memberSave',
     MemberPayout = 'memberPayout',
     TakeoutConfirm = 'takeoutConfirm',
     TakeoutCancel = 'takeoutCancel',
