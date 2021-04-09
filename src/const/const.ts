@@ -117,10 +117,10 @@ class Const {
             ID: 'superMultiLanguage',
             NAME: '多语言支持(无限版)',
         },
-        // BASE_TAKEAWAY: {
-        //     ID: 'baseTakeaway',
-        //     NAME: '基础外卖功能',
-        // },
+        SMS: {
+            ID: 'sms',
+            NAME: '短信数量充值',
+        },
     };
     PROBATION = 10; // 公共试用期，当具体模块下没有该字段时，取这里的数据，单位：日
     LANGUAGE = [
