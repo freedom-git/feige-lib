@@ -80,8 +80,10 @@ class Const {
         RMB: '¥',
         USD: '$',
         EUR: '€',
+        GBP: '￡',
         PHP: '₱',
         VND: 'đ',
+        RSD: 'RSD',
     };
     UPPER_LIMIT = {
         WAITER_NUM: 10,
