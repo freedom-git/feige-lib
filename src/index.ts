@@ -40,24 +40,6 @@ export function parseMoney(num: number): number {
 }
 
 /**
- * 利用订单计算总价
- *
- * @param  {object}  order  订单
- * @returns {number} 返回订单总金额
- *
- */
-export function calcTotalPrice(order: Order): number {
-    let totalPrice = 0;
-    order.content.forEach((orderContentItem) => {
-        totalPrice += orderContentItem.count * this.calcDishFinalPrice(orderContentItem);
-    });
-    if (order.deliveryFee) {
-        totalPrice += order.deliveryFee;
-    }
-    return parseMoney(totalPrice);
-}
-
-/**
  * 计算加了规格后的菜品单价
  *
  * @param  {Content}  conent  单个菜品内容
@@ -84,6 +66,24 @@ export function calcDishFinalPrice(conent: Content): number {
         dishPrice = 0;
     }
     return parseMoney(dishPrice);
+}
+
+/**
+ * 利用订单计算总价
+ *
+ * @param  {object}  order  订单
+ * @returns {number} 返回订单总金额
+ *
+ */
+export function calcTotalPrice(order: Order): number {
+    let totalPrice = 0;
+    order.content.forEach((orderContentItem) => {
+        totalPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
+    });
+    if (order.deliveryFee) {
+        totalPrice += order.deliveryFee;
+    }
+    return parseMoney(totalPrice);
 }
 
 /**
