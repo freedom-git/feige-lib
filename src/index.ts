@@ -49,30 +49,41 @@ export function parseMoney(num: number): number {
 export function calcTotalPrice(order: Order): number {
     let totalPrice = 0;
     order.content.forEach((orderContentItem) => {
-        let addPrice = 0;
-        const selectedSpecifications = orderContentItem.dishSnapshot.selectedSpecifications || [];
-        selectedSpecifications.forEach((specification) => {
-            if (!specification) {
-                return;
-            }
-            specification.content.forEach((item) => {
-                if (item.fareType == CONST.FARE_TYPE.FIXED) {
-                    addPrice += item.fare;
-                } else if (item.fareType == CONST.FARE_TYPE.PERCENTAGE) {
-                    addPrice += (orderContentItem.dishSnapshot.price * item.fare) / 100;
-                }
-            });
-        });
-        let dishPrice = orderContentItem.dishSnapshot.price + addPrice;
-        if (dishPrice < 0) {
-            dishPrice = 0;
-        }
-        totalPrice += orderContentItem.count * dishPrice;
+        totalPrice += orderContentItem.count * this.calcDishFinalPrice(orderContentItem);
     });
     if (order.deliveryFee) {
         totalPrice += order.deliveryFee;
     }
     return parseMoney(totalPrice);
+}
+
+/**
+ * 计算加了规格后的菜品单价
+ *
+ * @param  {Content}  conent  单个菜品内容
+ * @returns {number} 返回订单总金额
+ *
+ */
+export function calcDishFinalPrice(conent: Content): number {
+    let addPrice = 0;
+    const selectedSpecifications = conent.dishSnapshot.selectedSpecifications || [];
+    selectedSpecifications.forEach((specification) => {
+        if (!specification) {
+            return;
+        }
+        specification.content.forEach((item) => {
+            if (item.fareType == CONST.FARE_TYPE.FIXED) {
+                addPrice += item.fare;
+            } else if (item.fareType == CONST.FARE_TYPE.PERCENTAGE) {
+                addPrice += (conent.dishSnapshot.price * item.fare) / 100;
+            }
+        });
+    });
+    let dishPrice = conent.dishSnapshot.price + addPrice;
+    if (dishPrice < 0) {
+        dishPrice = 0;
+    }
+    return parseMoney(dishPrice);
 }
 
 /**
