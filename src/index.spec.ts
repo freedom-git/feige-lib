@@ -363,20 +363,22 @@ describe('开始运行单元测试', () => {
     });
 
     describe('根据店铺获取当前应该用的语言：getCurrentLangAndRange', () => {
-        it('浏览器是中文，什么包都没开通', () => {
+        it('浏览器是中文,店铺默认语言中文，什么包都没开通', () => {
             const browserLang = 'zh';
             const store = {
                 subscription: {},
+                defaultLang: 'zh',
             };
             const result = getCurrentLangAndRange(store as Store, browserLang);
             expect(result.currentLang).toBe('zh');
             expect(result.availableLangs.length).toBe(1);
             expect(result.availableLangs[0]).toBe('zh');
         });
-        it('浏览器是英语，什么包都没开通', () => {
+        it('浏览器是英语,店铺默认语言中文，什么包都没开通', () => {
             const browserLang = 'en';
             const store = {
                 subscription: {},
+                defaultLang: 'zh',
             };
             const result = getCurrentLangAndRange(store as Store, browserLang);
             expect(result.currentLang).toBe('zh');
@@ -417,7 +419,7 @@ describe('开始运行单元测试', () => {
             expect(result.availableLangs.includes('en')).toBeTruthy();
             expect(result.availableLangs.includes('ug')).toBeTruthy();
         });
-        it('浏览器是未知语言，开通了标准版语言包,选择语言维语', () => {
+        it('浏览器是未知语言，默认英文，开通了标准版语言包,选择语言维语', () => {
             const browserLang = undefined;
             const store = {
                 subscription: {
@@ -426,6 +428,7 @@ describe('开始运行单元测试', () => {
                         allow: ['zh', 'en', 'ug'],
                     },
                 },
+                defaultLang: 'en',
             };
             const result = getCurrentLangAndRange(store as Store, browserLang);
             expect(result.currentLang).toBe('en');
@@ -443,6 +446,7 @@ describe('开始运行单元测试', () => {
                         allow: ['zh', 'en', 'ug'],
                     },
                 },
+                defaultLang: 'zh',
             };
             const result = getCurrentLangAndRange(store as Store, browserLang);
             expect(result.currentLang).toBe('zh');
@@ -471,6 +475,7 @@ describe('开始运行单元测试', () => {
                         expires: '2100-06-21T15:59:59.999+00:00',
                     },
                 },
+                defaultLang: 'en',
             };
             const result = getCurrentLangAndRange(store as Store, browserLang);
             expect(result.currentLang).toBe('en');
@@ -485,6 +490,7 @@ describe('开始运行单元测试', () => {
                         expires: '2000-06-21T15:59:59.999+00:00',
                     },
                 },
+                defaultLang: 'zh',
             };
             const result = getCurrentLangAndRange(store as Store, browserLang);
             expect(result.currentLang).toBe('zh');

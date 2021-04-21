@@ -14,6 +14,7 @@ export interface Store {
     readonly descriptions?: object;
     readonly type: string;
     readonly currency: string;
+    readonly defaultLang: string;
     readonly autoClean: boolean;
     readonly forceClean: boolean;
     readonly userId: string;
