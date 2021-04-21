@@ -1,3 +1,4 @@
+import { YeepayTypeEnum } from '../../enum/yeepay.enum';
 export interface CertificatePath {
     origin: string;
     yeepay: string;
@@ -27,6 +28,7 @@ export interface User extends UserSafe {
         CASHIER_SCENE: CertificatePath;
     };
     readonly realInfo: {
+        type: YeepayTypeEnum;
         legalName: string;
         merLegalPhone: string;
         legalIdCard: string;
