@@ -20,6 +20,11 @@ export interface User extends UserSafe {
         UNI_CREDIT_CODE: CertificatePath;
         OP_BANK_CODE: CertificatePath;
         HAND_IDCARD: CertificatePath;
+        SETTLE_BANKCARD: CertificatePath;
+        CORP_CODE: CertificatePath;
+        BUSINESS_PLACE: CertificatePath;
+        BUSINESS_SITE: CertificatePath;
+        CASHIER_SCENE: CertificatePath;
     };
     readonly realInfo: {
         legalName: string;
