@@ -151,12 +151,21 @@ class Const {
             dateFormat: 'YEAR_MONTH_DAY',
         },
         {
-            name: 'Español',
+            name: 'ئۇيغۇرچە',
             img: '',
-            code: 'es',
-            speechCode: 'es-ES',
-            printCode: 'cp936',
+            code: 'ug',
+            speechCode: 'ug-CN',
+            printCode: 'img',
+            fontFamily: 'UG',
             dateFormat: 'YEAR_MONTH_DAY',
+        },
+        {
+            name: 'Tiếng Việt',
+            img: '',
+            code: 'vi',
+            speechCode: 'vi-VN',
+            printCode: 'img',
+            dateFormat: 'DAY_MONTH_YEAR',
         },
         {
             name: '日本語',
@@ -171,7 +180,15 @@ class Const {
             img: '',
             code: 'ko',
             speechCode: 'ko-KR',
-            printCode: 'cp936',
+            printCode: 'img',
+            dateFormat: 'YEAR_MONTH_DAY',
+        },
+        {
+            name: 'Español',
+            img: '',
+            code: 'es',
+            speechCode: 'es-ES',
+            printCode: 'img',
             dateFormat: 'YEAR_MONTH_DAY',
         },
         {
@@ -179,7 +196,7 @@ class Const {
             img: '',
             code: 'pt',
             speechCode: 'pt-PT',
-            printCode: 'cp936',
+            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
         },
         {
@@ -187,7 +204,7 @@ class Const {
             img: '',
             code: 'fr',
             speechCode: 'fr-FR',
-            printCode: 'cp936',
+            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
         },
         {
@@ -195,23 +212,6 @@ class Const {
             img: '',
             code: 'it',
             speechCode: 'it-IT',
-            printCode: 'cp936',
-            dateFormat: 'DAY_MONTH_YEAR',
-        },
-        {
-            name: 'ئۇيغۇرچە',
-            img: '',
-            code: 'ug',
-            speechCode: 'ug-CN',
-            printCode: 'img',
-            fontFamily: 'UG',
-            dateFormat: 'YEAR_MONTH_DAY',
-        },
-        {
-            name: 'Tiếng Việt',
-            img: '',
-            code: 'vi',
-            speechCode: 'vi-VN',
             printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
         },
@@ -235,6 +235,7 @@ class Const {
     SOCKET_CHANNEL = {
         ORDER: 'order',
         MEMBER: 'member',
+        SMS_NUM: 'smsNum',
         PAY: 'pay',
     };
     ORDER_EVENT = {
