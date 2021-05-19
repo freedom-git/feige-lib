@@ -173,6 +173,15 @@ class Const {
             defaultAreaCode: '84',
         },
         {
+            name: 'Deutsch',
+            img: '',
+            code: 'de',
+            speechCode: 'de-DE',
+            printCode: 'img',
+            dateFormat: 'DAY_MONTH_YEAR',
+            defaultAreaCode: '49',
+        },
+        {
             name: '日本語',
             img: '',
             code: 'ja',
