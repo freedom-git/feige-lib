@@ -1462,9 +1462,10 @@ class Const {
             phoneCode: '84',
             zhHead: 'Y',
             setting: {
-                showPriceInStore: false,
                 defaultCurrency: 'đ',
+                timeZoneNum: '7',
                 agent: {
+                    showPriceInStore: false,
                     qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/feige/agent/vi-agent-qr.jpeg',
                 },
             },
