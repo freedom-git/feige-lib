@@ -1463,7 +1463,7 @@ class Const {
             zhHead: 'Y',
             setting: {
                 defaultCurrency: 'đ',
-                timeZoneNum: '7',
+                timeZoneNum: 7,
                 agent: {
                     showPriceInStore: false,
                     qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/feige/agent/vi-agent-qr.jpeg',
