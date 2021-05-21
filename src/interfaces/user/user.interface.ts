@@ -54,6 +54,7 @@ export interface User extends UserSafe {
         contactType: string;
     };
     readonly yeepay: {
+        payRate: number;
         userEditLock: boolean;
         merchantNo: string;
         merNetInOutStatus: string;
