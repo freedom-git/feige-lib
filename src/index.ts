@@ -8,6 +8,7 @@ export * from './enum/member.enum';
 export * from './enum/sms.enum';
 export * from './enum/checkout.emum';
 export * from './enum/yeepay.enum';
+export * from './enum/timezone.emum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
 import * as moment from 'moment';
