@@ -1465,6 +1465,7 @@ class Const {
                 defaultCurrency: 'đ',
                 timeZoneNum: 7,
                 agent: {
+                    instruction: '',
                     showPriceInStore: false,
                     qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/feige/agent/vi-agent-qr.jpeg',
                 },
