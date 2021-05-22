@@ -405,6 +405,15 @@ class Const {
             zh: '澳大利亚',
             phoneCode: '61',
             zhHead: 'A',
+            setting: {
+                defaultCurrency: '$',
+                timeZoneNum: 10,
+                agent: {
+                    instruction: 'qrorder.au@gmail.com',
+                    showPriceInStore: false,
+                    qrCode: '',
+                },
+            },
         },
         {
             en: 'Austria',
