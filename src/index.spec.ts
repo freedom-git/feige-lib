@@ -36,22 +36,28 @@ describe('开始运行单元测试', () => {
 
     describe('测试计算订单总价：calcTotalPrice', () => {
         it('不加价规格订单总价检查', () => {
-            expect(calcTotalPrice(order1.order)).toBe(order1.expectPrice);
+            expect(calcTotalPrice(order1.order).totalPrice).toBe(order1.expectPrice);
         });
         it('点了不加价和固定加减价规格的订单', () => {
-            expect(calcTotalPrice(order2.order)).toBe(order2.expectPrice);
+            expect(calcTotalPrice(order2.order).totalPrice).toBe(order2.expectPrice);
         });
         it('点了不加价-固定加价-百分比加价规格的订单', () => {
-            expect(calcTotalPrice(order3.order)).toBe(order3.expectPrice);
+            expect(calcTotalPrice(order3.order).totalPrice).toBe(order3.expectPrice);
         });
         it('有一个菜的价格是负数的情况', () => {
-            expect(calcTotalPrice(order4.order)).toBe(order4.expectPrice);
+            expect(calcTotalPrice(order4.order).totalPrice).toBe(order4.expectPrice);
         });
         it('整单价格都是负数的情况', () => {
-            expect(calcTotalPrice(order5.order)).toBe(order5.expectPrice);
+            expect(calcTotalPrice(order5.order).totalPrice).toBe(order5.expectPrice);
         });
         it('配送费检查', () => {
-            expect(calcTotalPrice(order6.order)).toBe(order6.expectPrice);
+            expect(calcTotalPrice(order6.order).totalPrice).toBe(order6.expectPrice);
+        });
+        it('没有不打折分类菜品的时候，不参与打折的价格为0', () => {
+            expect(calcTotalPrice(order1.order).noFullOrderDiscountPrice).toBe(0);
+        });
+        it('有参与不打折分类菜品的时候，不参与打折的价格应该正确', () => {
+            expect(calcTotalPrice(order2.order).noFullOrderDiscountPrice).toBe(order2.expectNoFullOrderDiscountPrice);
         });
     });
 
@@ -159,6 +165,34 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr.length).toBe(3);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
             expect(result.resultProcessArr[0].volume).toBeCloseTo(-39.998);
+            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE);
+            expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
+            expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
+            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0.992);
+        });
+        it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折', () => {
+            const result = calcReceivablePrice(
+                199.99,
+                [
+                    {
+                        type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                        value: 8,
+                    },
+                    {
+                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                        value: 2,
+                    },
+                    {
+                        type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
+                        value: 10,
+                    },
+                ],
+                100,
+            );
+            expect(result.receivablePrice).toBe(169);
+            expect(result.resultProcessArr.length).toBe(3);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-19.998);
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);

@@ -54,6 +54,7 @@ export const order: any = {
                         name: '测试规格',
                     },
                 ],
+                noFullOrderDiscount: true,
             },
             count: 1,
             date: '2020-04-25T07:02:21.992Z',
@@ -346,3 +347,4 @@ export const order: any = {
     __v: 0,
 };
 export const expectPrice = 20;
+export const expectNoFullOrderDiscountPrice = 5;

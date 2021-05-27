@@ -76,15 +76,22 @@ export function calcDishFinalPrice(conent: Content): number {
  * @returns {number} 返回订单总金额
  *
  */
-export function calcTotalPrice(order: Order): number {
+export function calcTotalPrice(order: Order): { totalPrice: number; noFullOrderDiscountPrice: number } {
     let totalPrice = 0;
+    let noFullOrderDiscountPrice = 0;
     order.content.forEach((orderContentItem) => {
         totalPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
+        if (orderContentItem.dishSnapshot.noFullOrderDiscount) {
+            noFullOrderDiscountPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
+        }
     });
     if (order.deliveryFee) {
         totalPrice += order.deliveryFee;
     }
-    return parseMoney(totalPrice);
+    return {
+        totalPrice: parseMoney(totalPrice),
+        noFullOrderDiscountPrice: parseMoney(noFullOrderDiscountPrice),
+    };
 }
 
 /**
@@ -92,11 +99,13 @@ export function calcTotalPrice(order: Order): number {
  *
  * @param {number} totalPrice  订单总额
  * @param {Array} processArr  结账处理过程
+ * @param noFullOrderDiscountPrice
  * @returns {object} 返回应收订单总金额，以及处理计算过程
  */
 export function calcReceivablePrice(
     totalPrice: number,
     processArr: Process[],
+    noFullOrderDiscountPrice = 0,
 ): {
     resultProcessArr: Process[];
     receivablePrice: number;
@@ -111,7 +120,7 @@ export function calcReceivablePrice(
     });
     sortedProcessArr.forEach((process) => {
         if (process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE) {
-            const volume = (-(10 - process.value) / 10) * totalPrice;
+            const volume = (-(10 - process.value) / 10) * (totalPrice - noFullOrderDiscountPrice);
             resultProcessArr.push({
                 type: process.type,
                 value: process.value,
