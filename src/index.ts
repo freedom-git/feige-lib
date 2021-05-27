@@ -105,7 +105,7 @@ export function calcTotalPrice(order: Order): { totalPrice: number; noFullOrderD
 export function calcReceivablePrice(
     totalPrice: number,
     processArr: Process[],
-    noFullOrderDiscountPrice = 0,
+    noFullOrderDiscountPrice: number,
 ): {
     resultProcessArr: Process[];
     receivablePrice: number;
