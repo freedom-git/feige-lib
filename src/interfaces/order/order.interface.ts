@@ -1,7 +1,9 @@
 import { DishSnapshot } from '../store/dishSnapshot.interface';
 import { PrintStatusEnum } from '../../enum/printer.enum';
+import { OrderTypeEnum } from '../../enum/order.enum';
 export interface Order {
     readonly _id: string;
+    readonly type: OrderTypeEnum;
     readonly tableNum?: string;
     readonly serialNum?: string;
     readonly phoneNum?: string;
