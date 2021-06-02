@@ -240,10 +240,14 @@ class Const {
         YEAR_MONTH_DAY: {
             dateTime: 'YYYY-MM-DD HH:mm:ss',
             date: 'YYYY-MM-DD',
+            yearMonth: 'YYYY-MM',
+            yearMonthDayHourMinute: 'YYYY-MM-DD HH:mm',
         },
         DAY_MONTH_YEAR: {
             dateTime: 'DD-MM-YYYY HH:mm:ss',
             date: 'DD-MM-YYYY',
+            yearMonth: 'MM-YYYY',
+            yearMonthDayHourMinute: 'DD-MM-YYYY HH:mm',
         },
     };
     INIT_LANGUAGE = 'zh';
