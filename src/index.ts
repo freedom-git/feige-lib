@@ -77,41 +77,39 @@ export function calcDishFinalPrice(conent: Content): number {
  * @returns {number} 返回订单总金额
  *
  */
-export function calcTotalPrice(order: Order): { totalPrice: number; noFullOrderDiscountPrice: number } {
+export function calcTotalPrice(order: Order): number {
     let totalPrice = 0;
-    let noFullOrderDiscountPrice = 0;
+    const noFullOrderDiscountPrice = 0;
     order.content.forEach((orderContentItem) => {
         totalPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
-        if (orderContentItem.dishSnapshot.noFullOrderDiscount) {
-            noFullOrderDiscountPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
-        }
     });
     if (order.deliveryFee) {
         totalPrice += order.deliveryFee;
     }
-    return {
-        totalPrice: parseMoney(totalPrice),
-        noFullOrderDiscountPrice: parseMoney(noFullOrderDiscountPrice),
-    };
+    return parseMoney(totalPrice);
 }
 
 /**
  * 计算处理后的应收金额
  *
- * @param {number} totalPrice  订单总额
+ * @param  {object}  order  订单
  * @param {Array} processArr  结账处理过程
- * @param noFullOrderDiscountPrice
  * @returns {object} 返回应收订单总金额，以及处理计算过程
  */
 export function calcReceivablePrice(
-    totalPrice: number,
+    order: Order,
     processArr: Process[],
-    noFullOrderDiscountPrice: number,
 ): {
     resultProcessArr: Process[];
     receivablePrice: number;
+    taxArr: {
+        name: string;
+        volume: number;
+    }[];
+    totalPrice: number;
 } {
     const resultProcessArr = [];
+    const totalPrice = calcTotalPrice(order);
     let receivablePrice = totalPrice;
     const sortedProcessArr = processArr.sort((a, b) => {
         return (
@@ -119,15 +117,26 @@ export function calcReceivablePrice(
             CONST.RECEIVABLE_PROCESSING_TYPE[a.type.toUpperCase()].SORT
         );
     });
+    let totalMarkDown = 0;
+    let receivablePriceAfterDiscount = receivablePrice;
     sortedProcessArr.forEach((process) => {
         if (process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE) {
-            const volume = (-(10 - process.value) / 10) * (totalPrice - noFullOrderDiscountPrice);
+            const rate = -(10 - process.value) / 10;
+            let volume = 0;
+            order.content.forEach((orderContentItem) => {
+                if (orderContentItem.dishSnapshot.noFullOrderDiscount) {
+                    return;
+                }
+                const dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
+                volume += dishTotalPrice * rate;
+            });
             resultProcessArr.push({
                 type: process.type,
                 value: process.value,
                 volume,
             });
             receivablePrice += volume;
+            receivablePriceAfterDiscount = receivablePrice;
         } else if (process.type === CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE) {
             const volume = -process.value;
             resultProcessArr.push({
@@ -136,6 +145,7 @@ export function calcReceivablePrice(
                 volume,
             });
             receivablePrice += volume;
+            totalMarkDown += -volume;
         } else if (process.type === CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE) {
             const pow = Math.pow(10, process.value - 2);
             const result = Math.floor(receivablePrice / pow) * pow;
@@ -146,11 +156,42 @@ export function calcReceivablePrice(
                 volume,
             });
             receivablePrice += volume;
+            totalMarkDown += -volume;
         }
     });
+    const taxObj = {};
+    order.content.forEach((orderContentItem) => {
+        if (!orderContentItem.dishSnapshot.taxes || orderContentItem.dishSnapshot.taxes.length === 0) {
+            return;
+        }
+        const discountValue = sortedProcessArr.find(
+            (process) => process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+        )?.value;
+        let dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
+        if (discountValue && !orderContentItem.dishSnapshot.noFullOrderDiscount) {
+            const rate = -(10 - discountValue) / 10;
+            dishTotalPrice += dishTotalPrice * rate;
+        }
+        const sharedMarkDown = (totalMarkDown * dishTotalPrice) / receivablePriceAfterDiscount;
+        orderContentItem.dishSnapshot.taxes.forEach((tax) => {
+            const taxFare = (dishTotalPrice - sharedMarkDown) * tax.rate;
+            taxObj[tax.name] = (taxObj[tax.name] || 0) + parseMoney(taxFare);
+        });
+    });
+    const taxArr = [];
+    for (const name in taxObj) {
+        taxArr.push({
+            name,
+            volume: taxObj[name],
+        });
+        receivablePrice += taxObj[name];
+    }
+    taxArr.sort((item1, item2) => item1.name - item2.name);
     return {
         resultProcessArr,
         receivablePrice: parseMoney(receivablePrice),
+        taxArr,
+        totalPrice,
     };
 }
 

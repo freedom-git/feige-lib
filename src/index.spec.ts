@@ -21,6 +21,7 @@ import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价�
 import * as order4 from '../josn-hub/orders/有一个菜的价格是负数的情况';
 import * as order5 from '../josn-hub/orders/整单价格都是负数的情况';
 import * as order6 from '../josn-hub/orders/点了未加价规格的订单并有配送费';
+import * as taxOrder from '../josn-hub/orders/tax-order';
 
 import { CONST } from './const/const';
 
@@ -36,195 +37,159 @@ describe('开始运行单元测试', () => {
 
     describe('测试计算订单总价：calcTotalPrice', () => {
         it('不加价规格订单总价检查', () => {
-            expect(calcTotalPrice(order1.order).totalPrice).toBe(order1.expectPrice);
+            expect(calcTotalPrice(order1.order)).toBe(order1.expectPrice);
         });
         it('点了不加价和固定加减价规格的订单', () => {
-            expect(calcTotalPrice(order2.order).totalPrice).toBe(order2.expectPrice);
+            expect(calcTotalPrice(order2.order)).toBe(order2.expectPrice);
         });
         it('点了不加价-固定加价-百分比加价规格的订单', () => {
-            expect(calcTotalPrice(order3.order).totalPrice).toBe(order3.expectPrice);
+            expect(calcTotalPrice(order3.order)).toBe(order3.expectPrice);
         });
         it('有一个菜的价格是负数的情况', () => {
-            expect(calcTotalPrice(order4.order).totalPrice).toBe(order4.expectPrice);
+            expect(calcTotalPrice(order4.order)).toBe(order4.expectPrice);
         });
         it('整单价格都是负数的情况', () => {
-            expect(calcTotalPrice(order5.order).totalPrice).toBe(order5.expectPrice);
+            expect(calcTotalPrice(order5.order)).toBe(order5.expectPrice);
         });
         it('配送费检查', () => {
-            expect(calcTotalPrice(order6.order).totalPrice).toBe(order6.expectPrice);
-        });
-        it('没有不打折分类菜品的时候，不参与打折的价格为0', () => {
-            expect(calcTotalPrice(order1.order).noFullOrderDiscountPrice).toBe(0);
-        });
-        it('有参与不打折分类菜品的时候，不参与打折的价格应该正确', () => {
-            expect(calcTotalPrice(order2.order).noFullOrderDiscountPrice).toBe(order2.expectNoFullOrderDiscountPrice);
+            expect(calcTotalPrice(order6.order)).toBe(order6.expectPrice);
         });
     });
 
     describe('测试计算应收金额：calcReceivablePrice', () => {
         it('抹零0位', () => {
-            const result = calcReceivablePrice(
-                188.888,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 0,
-                    },
-                ],
-                0,
-            );
-            expect(result.receivablePrice).toBe(188.88);
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 0,
+                },
+            ]);
+            expect(result.totalPrice).toBe(order1.expectPrice);
+            expect(result.receivablePrice).toBe(order1.expectPrice);
             expect(result.resultProcessArr.length).toBe(1);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-0.008);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(0);
         });
         it('抹零1位', () => {
-            const result = calcReceivablePrice(
-                188.888,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 1,
-                    },
-                ],
-                0,
-            );
-            expect(result.receivablePrice).toBe(188.8);
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 1,
+                },
+            ]);
+            expect(result.receivablePrice).toBe(19.5);
             expect(result.resultProcessArr.length).toBe(1);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-0.088);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-0.05);
         });
         it('抹零3位', () => {
-            const result = calcReceivablePrice(
-                188.888,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 3,
-                    },
-                ],
-                0,
-            );
-            expect(result.receivablePrice).toBe(180);
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 3,
+                },
+            ]);
+            expect(result.receivablePrice).toBe(10);
             expect(result.resultProcessArr.length).toBe(1);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-8.888);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-9.55);
         });
         it('抹零6位', () => {
-            const result = calcReceivablePrice(
-                188.888,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 6,
-                    },
-                ],
-                0,
-            );
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 6,
+                },
+            ]);
             expect(result.receivablePrice).toBe(0);
             expect(result.resultProcessArr.length).toBe(1);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-188.888);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-19.55);
         });
         it('抹零3位 + 打9折', () => {
-            const result = calcReceivablePrice(
-                188.888,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 3,
-                    },
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
-                        value: 9,
-                    },
-                ],
-                0,
-            );
-            expect(result.receivablePrice).toBe(160);
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 3,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                    value: 9,
+                },
+            ]);
+            expect(result.receivablePrice).toBe(10);
             expect(result.resultProcessArr.length).toBe(2);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-18.8888);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-1.955);
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[1].volume).toBeCloseTo(-9.9992);
+            expect(result.resultProcessArr[1].volume).toBeCloseTo(-7.595);
         });
         it('打7.5折 + 抹零2位', () => {
-            const result = calcReceivablePrice(
-                135.87,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
-                        value: 7.5,
-                    },
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 2,
-                    },
-                ],
-                0,
-            );
-            expect(result.receivablePrice).toBe(101);
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                    value: 7.5,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 2,
+                },
+            ]);
+            expect(result.receivablePrice).toBe(14);
             expect(result.resultProcessArr.length).toBe(2);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-33.9675);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-4.8875);
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[1].volume).toBeCloseTo(-0.9025);
+            expect(result.resultProcessArr[1].volume).toBeCloseTo(-0.6625);
         });
         it('打8折 + 抹零2位 + 让价10元', () => {
-            const result = calcReceivablePrice(
-                199.99,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
-                        value: 8,
-                    },
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 2,
-                    },
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
-                        value: 10,
-                    },
-                ],
-                0,
-            );
-            expect(result.receivablePrice).toBe(149);
+            const result = calcReceivablePrice(order1.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                    value: 8,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 2,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
+                    value: 10,
+                },
+            ]);
+            expect(result.receivablePrice).toBe(5);
             expect(result.resultProcessArr.length).toBe(3);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-39.998);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-3.91);
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0.992);
+            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0.64);
         });
-        it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折', () => {
-            const result = calcReceivablePrice(
-                199.99,
-                [
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
-                        value: 8,
-                    },
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
-                        value: 2,
-                    },
-                    {
-                        type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
-                        value: 10,
-                    },
-                ],
-                100,
-            );
-            expect(result.receivablePrice).toBe(169);
+        it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折, 计算税额', () => {
+            const result = calcReceivablePrice(taxOrder.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                    value: 8,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 2,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
+                    value: 10,
+                },
+            ]);
+            expect(result.totalPrice).toBe(20);
+            expect(result.receivablePrice).toBe(7.76);
             expect(result.resultProcessArr.length).toBe(3);
             expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
-            expect(result.resultProcessArr[0].volume).toBeCloseTo(-19.998);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-3);
             expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE);
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
-            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0.992);
+            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0);
         });
     });
 

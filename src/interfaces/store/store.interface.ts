@@ -30,6 +30,10 @@ export interface Store {
         autoConfirm: boolean;
         clientPay: boolean;
         waiterCheckout: boolean;
+        cashBox: boolean;
+        openCashBoxWhenPay: boolean;
+        closeTime: number;
+        enableTaxes: boolean;
     };
     readonly takeoutSetting: {
         startingPrice: number;
@@ -55,4 +59,9 @@ export interface Store {
         takeoutConfirm: boolean;
         takeoutCancel: boolean;
     };
+    readonly taxes: {
+        name: string;
+        rate: number;
+        dishIds: string[];
+    }[];
 }
