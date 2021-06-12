@@ -79,7 +79,6 @@ export function calcDishFinalPrice(conent: Content): number {
  */
 export function calcTotalPrice(order: Order): number {
     let totalPrice = 0;
-    const noFullOrderDiscountPrice = 0;
     order.content.forEach((orderContentItem) => {
         totalPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
     });

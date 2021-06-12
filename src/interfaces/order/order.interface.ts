@@ -27,6 +27,10 @@ export interface Order {
     readonly checkout?: Checkout[];
     readonly payed: boolean;
     readonly retreated?: boolean;
+    readonly taxes?: {
+        name: string;
+        volume: number;
+    }[];
 }
 
 export interface Content {
