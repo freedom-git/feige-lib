@@ -106,7 +106,9 @@ export function calcReceivablePrice(
         volume: number;
     }[];
     totalPrice: number;
+    totalDiscountPrice: number;
 } {
+    let totalDiscountPrice = 0;
     const resultProcessArr = [];
     const totalPrice = calcTotalPrice(order);
     let receivablePrice = totalPrice;
@@ -127,6 +129,7 @@ export function calcReceivablePrice(
                     return;
                 }
                 const dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
+                totalDiscountPrice += dishTotalPrice;
                 volume += dishTotalPrice * rate;
             });
             resultProcessArr.push({
@@ -191,6 +194,7 @@ export function calcReceivablePrice(
         receivablePrice: parseMoney(receivablePrice),
         taxArr,
         totalPrice,
+        totalDiscountPrice,
     };
 }
 
