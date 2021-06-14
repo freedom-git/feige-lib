@@ -91,13 +91,15 @@ export function calcTotalPrice(order: Order): number {
 /**
  * 计算处理后的应收金额
  *
- * @param  {object}  order  订单
+ * @param {object} order  订单
  * @param {Array} processArr  结账处理过程
+ * @param taxEnable
  * @returns {object} 返回应收订单总金额，以及处理计算过程
  */
 export function calcReceivablePrice(
     order: Order,
     processArr: Process[],
+    taxEnable = true,
 ): {
     resultProcessArr: Process[];
     receivablePrice: number;
@@ -162,24 +164,26 @@ export function calcReceivablePrice(
         }
     });
     const taxObj = {};
-    order.content.forEach((orderContentItem) => {
-        if (!orderContentItem.dishSnapshot.taxes || orderContentItem.dishSnapshot.taxes.length === 0) {
-            return;
-        }
-        const discountValue = sortedProcessArr.find(
-            (process) => process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
-        )?.value;
-        let dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
-        if (discountValue && !orderContentItem.dishSnapshot.noFullOrderDiscount) {
-            const rate = -(10 - discountValue) / 10;
-            dishTotalPrice += dishTotalPrice * rate;
-        }
-        const sharedMarkDown = (totalMarkDown * dishTotalPrice) / receivablePriceAfterDiscount;
-        orderContentItem.dishSnapshot.taxes.forEach((tax) => {
-            const taxFare = (dishTotalPrice - sharedMarkDown) * tax.rate;
-            taxObj[tax.name] = (taxObj[tax.name] || 0) + parseMoney(taxFare);
+    if (taxEnable) {
+        order.content.forEach((orderContentItem) => {
+            if (!orderContentItem.dishSnapshot.taxes || orderContentItem.dishSnapshot.taxes.length === 0) {
+                return;
+            }
+            const discountValue = sortedProcessArr.find(
+                (process) => process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+            )?.value;
+            let dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
+            if (discountValue && !orderContentItem.dishSnapshot.noFullOrderDiscount) {
+                const rate = -(10 - discountValue) / 10;
+                dishTotalPrice += dishTotalPrice * rate;
+            }
+            const sharedMarkDown = (totalMarkDown * dishTotalPrice) / receivablePriceAfterDiscount;
+            orderContentItem.dishSnapshot.taxes.forEach((tax) => {
+                const taxFare = (dishTotalPrice - sharedMarkDown) * tax.rate;
+                taxObj[tax.name] = (taxObj[tax.name] || 0) + parseMoney(taxFare);
+            });
         });
-    });
+    }
     const taxArr = [];
     for (const name in taxObj) {
         taxArr.push({
