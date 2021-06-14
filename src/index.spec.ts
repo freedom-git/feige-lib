@@ -208,7 +208,7 @@ describe('开始运行单元测试', () => {
                         value: 10,
                     },
                 ],
-                false,
+                true,
             );
             expect(result.totalPrice).toBe(20);
             expect(result.receivablePrice).toBe(7);

@@ -93,13 +93,14 @@ export function calcTotalPrice(order: Order): number {
  *
  * @param {object} order  订单
  * @param {Array} processArr  结账处理过程
+ * @param noTax
  * @param taxEnable
  * @returns {object} 返回应收订单总金额，以及处理计算过程
  */
 export function calcReceivablePrice(
     order: Order,
     processArr: Process[],
-    taxEnable = true,
+    noTax = false,
 ): {
     resultProcessArr: Process[];
     receivablePrice: number;
@@ -164,7 +165,7 @@ export function calcReceivablePrice(
         }
     });
     const taxObj = {};
-    if (taxEnable) {
+    if (!noTax) {
         order.content.forEach((orderContentItem) => {
             if (!orderContentItem.dishSnapshot.taxes || orderContentItem.dishSnapshot.taxes.length === 0) {
                 return;
