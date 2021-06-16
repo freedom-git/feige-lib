@@ -34,6 +34,8 @@ export interface Store {
         openCashBoxWhenPay: boolean;
         closeTime: number;
         enableTaxes: boolean;
+        checkoutFirst: boolean;
+        defalutNoTax: boolean;
     };
     readonly takeoutSetting: {
         startingPrice: number;
