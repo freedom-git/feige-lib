@@ -1,6 +1,7 @@
 import { DishSnapshot } from '../store/dishSnapshot.interface';
 import { PrintStatusEnum } from '../../enum/printer.enum';
 import { OrderTypeEnum } from '../../enum/order.enum';
+import { TaxTypeEnum } from '../../enum/tax.enum';
 export interface Order {
     readonly _id: string;
     readonly type: OrderTypeEnum;
@@ -28,6 +29,7 @@ export interface Order {
     readonly payed: boolean;
     readonly retreated?: boolean;
     readonly noTax?: boolean;
+    readonly taxType?: TaxTypeEnum;
     readonly taxes?: {
         name: string;
         volume: number;
