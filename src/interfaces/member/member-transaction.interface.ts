@@ -1,5 +1,5 @@
 import { MemberTransactionTypeEnum, MemberSendTypeEnum } from '../../enum/member.enum';
-import { MemberCheckoutTypeEnum } from '../../enum/checkout.emum';
+import { MemberCheckoutTypeEnum } from '../../enum/checkout.enum';
 export interface MemberTransaction {
     _id?: string;
     memberId: string;

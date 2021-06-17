@@ -3,6 +3,7 @@ import { Classification } from './classification.interface';
 import { Specification } from './specification.interface';
 import { Subscription } from './subscription.interface';
 import { MemberSavingRule } from './member.interface';
+import { TaxTypeEnum } from '../../enum/tax.enum';
 
 export interface Store {
     readonly _id: string;
@@ -36,6 +37,7 @@ export interface Store {
         enableTaxes: boolean;
         checkoutFirst: boolean;
         defalutNoTax: boolean;
+        taxType: TaxTypeEnum;
     };
     readonly takeoutSetting: {
         startingPrice: number;
@@ -65,5 +67,9 @@ export interface Store {
         name: string;
         rate: number;
         dishIds: string[];
+    }[];
+    readonly priceHaveTaxBindOrderTaxes: {
+        name: string;
+        rate: number;
     }[];
 }
