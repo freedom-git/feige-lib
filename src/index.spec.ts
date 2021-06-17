@@ -191,11 +191,15 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[2].volume).toBeCloseTo(-0);
-            expect(result.taxArr.length).toBe(2);
-            expect(result.taxArr[0].name).toBe('tax1');
-            expect(result.taxArr[0].volume).toBe(0.36);
-            expect(result.taxArr[1].name).toBe('tax2');
-            expect(result.taxArr[1].volume).toBe(0.4);
+            expect(result.taxArr.length).toBe(4);
+            expect(result.taxArr[0].name).toBe('tax1(10%)');
+            expect(result.taxArr[0].volume).toBe(0.21);
+            expect(result.taxArr[1].name).toBe('tax2(5%)');
+            expect(result.taxArr[1].volume).toBe(0.1);
+            expect(result.taxArr[2].name).toBe('tax1(5%)');
+            expect(result.taxArr[2].volume).toBe(0.15);
+            expect(result.taxArr[3].name).toBe('tax2(10%)');
+            expect(result.taxArr[3].volume).toBe(0.3);
         });
         it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折, 免税', () => {
             const result = calcReceivablePrice(
@@ -251,9 +255,9 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[2].volume).toBeCloseTo(-0);
             expect(result.taxArr.length).toBe(2);
-            expect(result.taxArr[0].name).toBe('税1');
+            expect(result.taxArr[0].name).toBe('税1(10%)');
             expect(result.taxArr[0].volume).toBe(0.61);
-            expect(result.taxArr[1].name).toBe('税2');
+            expect(result.taxArr[1].name).toBe('税2(5%)');
             expect(result.taxArr[1].volume).toBe(0.3);
         });
     });

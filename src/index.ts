@@ -183,7 +183,8 @@ export function calcReceivablePrice(
             const sharedMarkDown = (totalMarkDown * dishTotalPrice) / receivablePriceAfterDiscount;
             orderContentItem.dishSnapshot.taxes.forEach((tax) => {
                 const taxFare = (dishTotalPrice - sharedMarkDown) * tax.rate;
-                taxObj[tax.name] = (taxObj[tax.name] || 0) + parseMoney(taxFare);
+                const taxKey = `${tax.name}(${tax.rate * 100}%)`;
+                taxObj[taxKey] = (taxObj[taxKey] || 0) + parseMoney(taxFare);
             });
         });
     } else if (order.taxType === TaxTypeEnum.PriceHaveTaxBindOrder && !noTax) {
@@ -194,7 +195,8 @@ export function calcReceivablePrice(
         const totalTaxFare = receivablePrice - receivablePrice / (totalTaxRate + 1);
         order.priceHaveTaxBindOrderTaxes.forEach((item) => {
             const taxFare = (item.rate / totalTaxRate) * totalTaxFare;
-            taxObj[item.name] = (taxObj[item.name] || 0) + parseMoney(taxFare);
+            const taxKey = `${item.name}(${item.rate * 100}%)`;
+            taxObj[taxKey] = (taxObj[taxKey] || 0) + parseMoney(taxFare);
         });
     }
     const taxArr = [];
