@@ -14,6 +14,7 @@ export * from './enum/tax.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
 import * as moment from 'moment';
+import { TaxTypeEnum } from './enum/tax.enum';
 export {
     Order,
     Process,
@@ -166,7 +167,7 @@ export function calcReceivablePrice(
         }
     });
     const taxObj = {};
-    if (!noTax) {
+    if (order.taxType === TaxTypeEnum.PriceNoTaxBindDish && !noTax) {
         order.content.forEach((orderContentItem) => {
             if (!orderContentItem.dishSnapshot.taxes || orderContentItem.dishSnapshot.taxes.length === 0) {
                 return;
@@ -185,6 +186,16 @@ export function calcReceivablePrice(
                 taxObj[tax.name] = (taxObj[tax.name] || 0) + parseMoney(taxFare);
             });
         });
+    } else if (order.taxType === TaxTypeEnum.PriceHaveTaxBindOrder && !noTax) {
+        let totalTaxRate = 0;
+        order.priceHaveTaxBindOrderTaxes.forEach((item) => {
+            totalTaxRate += item.rate;
+        });
+        const totalTaxFare = receivablePrice - receivablePrice / (totalTaxRate + 1);
+        order.priceHaveTaxBindOrderTaxes.forEach((item) => {
+            const taxFare = (item.rate / totalTaxRate) * totalTaxFare;
+            taxObj[item.name] = (taxObj[item.name] || 0) + parseMoney(taxFare);
+        });
     }
     const taxArr = [];
     for (const name in taxObj) {
@@ -192,7 +203,9 @@ export function calcReceivablePrice(
             name,
             volume: taxObj[name],
         });
-        receivablePrice += taxObj[name];
+        if (order.taxType === TaxTypeEnum.PriceNoTaxBindDish) {
+            receivablePrice += taxObj[name];
+        }
     }
     taxArr.sort((item1, item2) => item1.name - item2.name);
     return {

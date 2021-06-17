@@ -30,6 +30,10 @@ export interface Order {
     readonly retreated?: boolean;
     readonly noTax?: boolean;
     readonly taxType?: TaxTypeEnum;
+    readonly priceHaveTaxBindOrderTaxes?: {
+        name: string;
+        rate: number;
+    }[];
     readonly taxes?: {
         name: string;
         volume: number;

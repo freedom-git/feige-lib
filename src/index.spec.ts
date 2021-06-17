@@ -22,6 +22,7 @@ import * as order4 from '../josn-hub/orders/有一个菜的价格是负数的情
 import * as order5 from '../josn-hub/orders/整单价格都是负数的情况';
 import * as order6 from '../josn-hub/orders/点了未加价规格的订单并有配送费';
 import * as taxOrder from '../josn-hub/orders/tax-order';
+import * as taxHavePriceBindOrder from '../josn-hub/orders/tax-have-price-bind-order';
 
 import { CONST } from './const/const';
 
@@ -166,7 +167,7 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[2].volume).toBeCloseTo(-0.64);
         });
-        it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折, 计算税额', () => {
+        it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折, 商品税单价不含税，计算税额', () => {
             const result = calcReceivablePrice(taxOrder.order, [
                 {
                     type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
@@ -190,6 +191,11 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[2].volume).toBeCloseTo(-0);
+            expect(result.taxArr.length).toBe(2);
+            expect(result.taxArr[0].name).toBe('tax1');
+            expect(result.taxArr[0].volume).toBe(0.36);
+            expect(result.taxArr[1].name).toBe('tax2');
+            expect(result.taxArr[1].volume).toBe(0.4);
         });
         it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折, 免税', () => {
             const result = calcReceivablePrice(
@@ -219,6 +225,36 @@ describe('开始运行单元测试', () => {
             expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
             expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
             expect(result.resultProcessArr[2].volume).toBeCloseTo(-0);
+        });
+        it('打8折 + 抹零2位 + 让价10元, 并且有一部分价格不参与打折, 整单税单价含税，计算税额', () => {
+            const result = calcReceivablePrice(taxHavePriceBindOrder.order, [
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+                    value: 8,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE,
+                    value: 2,
+                },
+                {
+                    type: CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE,
+                    value: 10,
+                },
+            ]);
+            expect(result.totalPrice).toBe(20);
+            expect(result.receivablePrice).toBe(7);
+            expect(result.resultProcessArr.length).toBe(3);
+            expect(result.resultProcessArr[0].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE);
+            expect(result.resultProcessArr[0].volume).toBeCloseTo(-3);
+            expect(result.resultProcessArr[1].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.MARKDOWN.TYPE);
+            expect(result.resultProcessArr[1].volume).toBeCloseTo(-10);
+            expect(result.resultProcessArr[2].type).toBe(CONST.RECEIVABLE_PROCESSING_TYPE.REMOVE_TAILS.TYPE);
+            expect(result.resultProcessArr[2].volume).toBeCloseTo(-0);
+            expect(result.taxArr.length).toBe(2);
+            expect(result.taxArr[0].name).toBe('税1');
+            expect(result.taxArr[0].volume).toBe(0.61);
+            expect(result.taxArr[1].name).toBe('税2');
+            expect(result.taxArr[1].volume).toBe(0.3);
         });
     });
 

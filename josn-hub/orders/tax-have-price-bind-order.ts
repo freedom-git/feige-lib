@@ -11,7 +11,7 @@ export const order: any = {
     kdsPrinted: [],
     printStatus: 'Completed',
     checkoutFirst: false,
-    taxType: TaxTypeEnum.PriceNoTaxBindDish,
+    taxType: TaxTypeEnum.PriceHaveTaxBindOrder,
     content: [
         {
             delivering: 0,
@@ -366,6 +366,16 @@ export const order: any = {
     ],
     checkout: [],
     date: '2020-04-25T07:02:21.993Z',
+    priceHaveTaxBindOrderTaxes: [
+        {
+            name: '税1',
+            rate: 0.1,
+        },
+        {
+            name: '税2',
+            rate: 0.05,
+        },
+    ],
     __v: 0,
 };
 export const expectPrice = 20;
