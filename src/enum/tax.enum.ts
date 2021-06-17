@@ -1,4 +1,4 @@
 export enum TaxTypeEnum {
     PriceNoTaxBindDish = 'priceNoTaxBindDish',
-    PriceHaveTaxBindOrder = 'oriceHaveTaxBindOrder',
+    PriceHaveTaxBindOrder = 'priceHaveTaxBindOrder',
 }
