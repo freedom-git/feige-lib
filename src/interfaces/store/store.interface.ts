@@ -37,7 +37,7 @@ export interface Store {
         enableTaxes: boolean;
         checkoutFirst: boolean;
         defalutNoTax: boolean;
-        taxType: TaxTypeEnum;
+        taxType?: TaxTypeEnum;
     };
     readonly takeoutSetting: {
         startingPrice: number;
