@@ -1,5 +1,4 @@
 import { YeepayTypeEnum } from '../../enum/yeepay.enum';
-import { UserStatusEnum } from '../../../dist';
 export interface CertificatePath {
     origin: string;
     yeepay: string;
