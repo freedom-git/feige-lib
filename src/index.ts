@@ -1,5 +1,6 @@
 import { Order, Process, Content, Checkout, Task } from './interfaces/order/order.interface';
 import { Store } from './interfaces/store/store.interface';
+import { VisitTask } from './interfaces/visit-task/visit-task.interface';
 import { User, UserSafe, CertificatePath } from './interfaces/user/user.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
@@ -11,6 +12,9 @@ export * from './enum/yeepay.enum';
 export * from './enum/timezone.emum';
 export * from './enum/order.enum';
 export * from './enum/tax.enum';
+export * from './enum/user-status.enum';
+export * from './enum/visit-task-status.enum';
+export * from './enum/visit-task-type.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
 import * as moment from 'moment';
@@ -27,6 +31,7 @@ export {
     UserSafe,
     CertificatePath,
     Task,
+    VisitTask,
     moment,
     PrintStatusEnum,
     PrinterDeviceTypeEnum,
