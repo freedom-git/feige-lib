@@ -14,10 +14,10 @@ export interface UserSafe {
     readonly clientId: string;
     readonly originAgentId: string;
     readonly responseAgentId: string;
-    status:string,
-    abandonReason:string,
-    from:string,
-    visitCycle: number
+    status:string;
+    abandonReason:string;
+    from:string;
+    visitCycle: number;
 }
 export interface User extends UserSafe {
     readonly certificate: {
