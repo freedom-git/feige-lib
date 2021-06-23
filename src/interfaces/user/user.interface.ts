@@ -1,4 +1,5 @@
 import { YeepayTypeEnum } from '../../enum/yeepay.enum';
+import { UserStatusEnum } from '../../../dist';
 export interface CertificatePath {
     origin: string;
     yeepay: string;
@@ -13,6 +14,10 @@ export interface UserSafe {
     readonly clientId: string;
     readonly originAgentId: string;
     readonly responseAgentId: string;
+    status:string,
+    abandonReason:string,
+    from:string,
+    visitCycle: number
 }
 export interface User extends UserSafe {
     readonly certificate: {
