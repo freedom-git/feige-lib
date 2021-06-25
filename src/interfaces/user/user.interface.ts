@@ -17,6 +17,7 @@ export interface UserSafe {
     abandonReason:string;
     from:string;
     visitCycle: number;
+    purchased:boolean;
 }
 export interface User extends UserSafe {
     readonly certificate: {
