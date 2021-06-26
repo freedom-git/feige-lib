@@ -17,6 +17,7 @@ export interface UserSafe {
     readonly responseAgentId: string;
     readonly status:UserStatusEnum;
     readonly abandonReason:string;
+    readonly lostReason:string;
     readonly from: FromEnum;
     readonly visitCycle: number;
     readonly purchased:boolean;
