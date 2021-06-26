@@ -3,6 +3,5 @@ export enum UserStatusEnum {
     Abandoned = 'Abandoned',
     Working = 'Working',
     WillLost = 'WillLost',
-    LostWithoutPurchased = 'LostWithoutPurchased',
-    LostWithPurchased = 'LostWithPurchased',
+    Lost = 'Lost'
 }
