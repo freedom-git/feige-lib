@@ -1,6 +1,6 @@
 {
   "name": "@freedom_sky/feige-lib",
-  "version": "3.11.0",
+  "version": "3.12.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -41,7 +41,7 @@
     "eslint-plugin-jsdoc": "^24.0.0",
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
-    "jest": "^25.4.0",
+    "jest": "^25.5.4",
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
