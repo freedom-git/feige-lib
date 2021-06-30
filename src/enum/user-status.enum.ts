@@ -4,4 +4,6 @@ export enum UserStatusEnum {
     Working = 'Working',
     WillLost = 'WillLost',
     Lost = 'Lost',
+    PurchaseIntention = 'PurchaseIntention',
+    NoNeedVisit = 'NoNeedVisit',
 }
