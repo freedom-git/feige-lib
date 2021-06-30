@@ -10,4 +10,5 @@ export enum VisitTaskTypeEnum {
     WillLostVisit = 'WillLostVisit',
     RegularVisit = 'RegularVisit',
     ReviveVisit = 'ReviveVisit',
+    PurchaseIntentionVisit = 'PurchaseIntentionVisit'
 }
