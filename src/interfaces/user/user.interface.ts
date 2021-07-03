@@ -72,4 +72,11 @@ export interface User extends UserSafe {
         configStatus: string;
         active: boolean;
     };
+    readonly mpAlipay?: {
+        authAppId: string;
+        componentAppId: string;
+        appRefreshToken: string;
+        appAuthToken: string;
+        templateVersion: string;
+    };
 }
