@@ -1,4 +1,6 @@
 import { YeepayTypeEnum } from '../../enum/yeepay.enum';
+import { FromEnum } from '../../enum/from.enum';
+import { UserStatusEnum } from '../../enum/user-status.enum';
 export interface CertificatePath {
     origin: string;
     yeepay: string;
@@ -13,6 +15,12 @@ export interface UserSafe {
     readonly clientId: string;
     readonly originAgentId: string;
     readonly responseAgentId: string;
+    readonly status: UserStatusEnum;
+    readonly abandonReason: string;
+    readonly lostReason: string;
+    readonly from: FromEnum;
+    readonly visitCycle: number;
+    readonly purchased: boolean;
 }
 export interface User extends UserSafe {
     readonly certificate: {
@@ -63,5 +71,12 @@ export interface User extends UserSafe {
         reportStatus: string;
         configStatus: string;
         active: boolean;
+    };
+    readonly mpAlipay?: {
+        authAppId: string;
+        componentAppId: string;
+        appRefreshToken: string;
+        appAuthToken: string;
+        templateVersion: string;
     };
 }
