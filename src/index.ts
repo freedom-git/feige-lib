@@ -11,6 +11,7 @@ export * from './enum/yeepay.enum';
 export * from './enum/timezone.emum';
 export * from './enum/order.enum';
 export * from './enum/tax.enum';
+export * from './enum/dish.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
 import * as moment from 'moment';
