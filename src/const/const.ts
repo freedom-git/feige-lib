@@ -268,6 +268,7 @@ class Const {
         CHECKOUT: 'checkout',
         REFUND: 'refund',
         RETREAT: 'retreat',
+        CHANGE_WEIGH: 'changeWeigh',
         FINISH: 'finish',
         APPEND: 'append',
         CONFIRM: 'confirm',
