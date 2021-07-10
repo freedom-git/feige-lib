@@ -5,6 +5,7 @@ import { User, UserSafe, CertificatePath } from './interfaces/user/user.interfac
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
 import { CONST } from './const/const';
 import { PrintStatusEnum, PrinterDeviceTypeEnum, PrinterWidthEnum } from './enum/printer.enum';
+import { DishType } from './enum/dish.enum';
 export * from './enum/member.enum';
 export * from './enum/sms.enum';
 export * from './enum/checkout.enum';
@@ -58,6 +59,10 @@ export function parseMoney(num: number): number {
  */
 export function calcDishFinalPrice(conent: Content): number {
     let addPrice = 0;
+    const originPrice =
+        conent.dishSnapshot.type === DishType.Weigh
+            ? conent.weight * conent.dishSnapshot.price
+            : conent.dishSnapshot.price;
     const selectedSpecifications = conent.dishSnapshot.selectedSpecifications || [];
     selectedSpecifications.forEach((specification) => {
         if (!specification) {
@@ -67,11 +72,11 @@ export function calcDishFinalPrice(conent: Content): number {
             if (item.fareType == CONST.FARE_TYPE.FIXED) {
                 addPrice += item.fare;
             } else if (item.fareType == CONST.FARE_TYPE.PERCENTAGE) {
-                addPrice += (conent.dishSnapshot.price * item.fare) / 100;
+                addPrice += (originPrice * item.fare) / 100;
             }
         });
     });
-    let dishPrice = conent.dishSnapshot.price + addPrice;
+    let dishPrice = originPrice + addPrice;
     if (dishPrice < 0) {
         dishPrice = 0;
     }

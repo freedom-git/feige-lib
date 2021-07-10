@@ -12,5 +12,6 @@ export interface Dish {
     readonly chef: string;
     readonly specifications: string[];
     salesType: string[];
+    type: string;
     readonly __v: number;
 }
