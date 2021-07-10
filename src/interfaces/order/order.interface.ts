@@ -44,6 +44,7 @@ export interface Content {
     _id?: string;
     dishSnapshot: DishSnapshot;
     count: number;
+    weight?: number;
     delivering?: number;
     finished?: number;
     retreated?: number;
