@@ -6,10 +6,12 @@ export interface Dish {
     readonly takeoutPrice: number;
     description: string;
     descriptions?: object;
+    units?: object;
     readonly img: string;
     readonly soldOut: boolean;
     readonly chef: string;
     readonly specifications: string[];
     salesType: string[];
+    type: string;
     readonly __v: number;
 }
