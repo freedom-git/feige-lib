@@ -9,6 +9,7 @@ export interface Dish {
     units?: object;
     readonly img: string;
     readonly soldOut: boolean;
+    readonly required: boolean;
     readonly chef: string;
     readonly specifications: string[];
     salesType: string[];
