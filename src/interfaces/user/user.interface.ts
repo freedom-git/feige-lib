@@ -9,6 +9,7 @@ export interface UserSafe {
     readonly mobile: string;
     readonly countryCode: string;
     readonly password: string;
+    readonly salt: string;
     readonly _id: string;
     readonly deviceId: string;
     readonly arrearsCountdown: number;
