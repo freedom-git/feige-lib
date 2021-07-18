@@ -40,6 +40,7 @@ export interface Store {
         taxType?: TaxTypeEnum;
         orderReminderInterval: number;
         disableAppendInterval: number;
+        canDeleteOrder: boolean;
     };
     readonly takeoutSetting: {
         startingPrice: number;
