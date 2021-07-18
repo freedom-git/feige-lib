@@ -38,10 +38,9 @@ export interface Store {
         checkoutFirst: boolean;
         defalutNoTax: boolean;
         taxType?: TaxTypeEnum;
-        orderReminder: boolean;
         orderReminderInterval: number;
-        disableAppend: boolean;
         disableAppendInterval: number;
+        canDeleteOrder: boolean;
     };
     readonly takeoutSetting: {
         startingPrice: number;
