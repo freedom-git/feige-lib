@@ -12,6 +12,7 @@ export interface Order {
     readonly address?: string;
     readonly nickName?: string;
     readonly note?: string;
+    readonly merchantNote?: string;
     readonly printed: string[];
     readonly kdsPrinted: string[];
     readonly printStatus: PrintStatusEnum;
