@@ -269,6 +269,7 @@ class Const {
         REFUND: 'refund',
         RETREAT: 'retreat',
         CHANGE_WEIGH: 'changeWeigh',
+        MERCHANT_NOTE: 'merchantNote',
         FINISH: 'finish',
         APPEND: 'append',
         CONFIRM: 'confirm',
