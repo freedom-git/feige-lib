@@ -38,9 +38,14 @@ export interface User extends UserSafe {
         BUSINESS_PLACE: CertificatePath;
         BUSINESS_SITE: CertificatePath;
         CASHIER_SCENE: CertificatePath;
+        OTHER_IDCARD_FRONT?: CertificatePath;
+        OTHER_IDCARD_BACK?: CertificatePath;
+        OTHER_AUTH_PHOTO?: CertificatePath;
+        FOOD_SAFETY_LICENSE?: CertificatePath;
     };
     readonly realInfo: {
         type: YeepayTypeEnum;
+        toOther: boolean;
         legalName: string;
         merLegalPhone: string;
         legalIdCard: string;
@@ -64,6 +69,13 @@ export interface User extends UserSafe {
         contactMobile: string;
         contactEmail: string;
         contactType: string;
+        bankCardPhone: string;
+        toOtherName?: string;
+        toOtherIdCard?: string;
+        licenseTimeBegin: string;
+        licenseTimeEnd: string;
+        legalTimeBegin?: string;
+        legalTimeEnd?: string;
     };
     readonly pay: {
         active: boolean;

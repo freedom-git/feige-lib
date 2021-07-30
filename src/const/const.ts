@@ -340,6 +340,26 @@ class Const {
             KEY: 'CASHIER_SCENE',
             FUBEI_TYPE: 'store',
         },
+        OTHER_IDCARD_FRONT: {
+            DESCRIPTION: '非法人结算人身份证正面',
+            KEY: 'OTHER_IDCARD_FRONT',
+            FUBEI_TYPE: 'idCard',
+        },
+        OTHER_IDCARD_BACK: {
+            DESCRIPTION: '非法人结算人身份证背面',
+            KEY: 'OTHER_IDCARD_BACK',
+            FUBEI_TYPE: 'idCard',
+        },
+        OTHER_AUTH_PHOTO: {
+            DESCRIPTION: '非法人结算授权书',
+            KEY: 'OTHER_AUTH_PHOTO',
+            FUBEI_TYPE: 'license',
+        },
+        FOOD_SAFETY_LICENSE: {
+            DESCRIPTION: '食品安全许可证',
+            KEY: 'FOOD_SAFETY_LICENSE',
+            FUBEI_TYPE: 'license',
+        },
     };
     REFUND_STATUS = {
         PROCESSING: 'PROCESSING',
