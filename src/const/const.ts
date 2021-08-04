@@ -576,6 +576,17 @@ class Const {
             zh: '加拿大',
             phoneCode: '1',
             zhHead: 'J',
+            setting: {
+                defaultCurrency: 'đ',
+                timeZoneNum: 7,
+                agent: {
+                    instruction: '我是加拿大代理',
+                    showPriceInStore: false,
+                    qrCode: undefined,
+                    phone: '111111',
+                    email: '666667777@qq.com',
+                },
+            },
         },
         {
             en: 'Cayman Is.',
