@@ -41,6 +41,8 @@ export interface Store {
         orderReminderInterval: number;
         disableAppendInterval: number;
         canDeleteOrder: boolean;
+        tableOrderAutoCheckout: boolean;
+        tableOrderAutoCleanTime: number;
     };
     readonly takeoutSetting: {
         startingPrice: number;

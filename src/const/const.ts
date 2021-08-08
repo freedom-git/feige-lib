@@ -576,6 +576,17 @@ class Const {
             zh: '加拿大',
             phoneCode: '1',
             zhHead: 'J',
+            setting: {
+                defaultCurrency: '$',
+                timeZoneNum: -4,
+                agent: {
+                    instruction: undefined,
+                    showPriceInStore: false,
+                    qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/canada.jpeg',
+                    phone: '（438）506-5128',
+                    email: 'info@feige.ca',
+                },
+            },
         },
         {
             en: 'Cayman Is.',
