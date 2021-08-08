@@ -582,7 +582,7 @@ class Const {
                 agent: {
                     instruction: '我是加拿大代理',
                     showPriceInStore: false,
-                    qrCode: undefined,
+                    qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/canada.jpeg',
                     phone: '（438）506-5128',
                     email: 'info@feige.ca',
                 },
