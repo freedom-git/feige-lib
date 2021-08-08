@@ -578,7 +578,7 @@ class Const {
             zhHead: 'J',
             setting: {
                 defaultCurrency: '$',
-                timeZoneNum: -4,
+                timeZoneNum: -5,
                 agent: {
                     instruction: undefined,
                     showPriceInStore: false,
