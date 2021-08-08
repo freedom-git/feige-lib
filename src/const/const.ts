@@ -580,7 +580,7 @@ class Const {
                 defaultCurrency: 'đ',
                 timeZoneNum: 7,
                 agent: {
-                    instruction: '我是加拿大代理',
+                    instruction: undefined,
                     showPriceInStore: false,
                     qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/canada.jpeg',
                     phone: '（438）506-5128',
