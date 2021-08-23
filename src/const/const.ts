@@ -125,6 +125,10 @@ class Const {
             ID: 'sms',
             NAME: '短信数量充值',
         },
+        MP: {
+            ID: 'mp',
+            NAME: '小程序功能',
+        },
     };
     PROBATION = 10; // 公共试用期，当具体模块下没有该字段时，取这里的数据，单位：日
     LANGUAGE = [
