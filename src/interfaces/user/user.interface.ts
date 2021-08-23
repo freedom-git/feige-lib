@@ -112,6 +112,7 @@ export interface User extends UserSafe {
         appRefreshToken: string;
         appAuthToken: string;
         templateVersion: string;
+        pid: string;
     };
     readonly mpWechat?: {
         fasteRegisterStatus: string;
