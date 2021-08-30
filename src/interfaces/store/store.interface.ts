@@ -4,6 +4,7 @@ import { Specification } from './specification.interface';
 import { Subscription } from './subscription.interface';
 import { MemberSavingRule } from './member.interface';
 import { TaxTypeEnum } from '../../enum/tax.enum';
+import { PrinterDeviceTypeEnum, PrinterWidthEnum } from '../../enum/printer.enum';
 
 export interface Store {
     readonly _id: string;
@@ -76,5 +77,35 @@ export interface Store {
     readonly priceHaveTaxBindOrderTaxes: {
         name: string;
         rate: number;
+    }[];
+    readonly receptionPrinters: {
+        name: string;
+        type: PrinterDeviceTypeEnum;
+        address: string;
+        bluetoothName: string;
+        printerWidth: PrinterWidthEnum;
+        printerNum: number;
+        disabled: boolean;
+        mergeDishes: boolean;
+        bigFont: boolean;
+        isPrepayOrderPrinteWithTotalPrice: boolean;
+        isAutoPrinteAfterConfirm: boolean;
+        isAutoPrinteAfterCheckout: boolean;
+        preferLang: string;
+    }[];
+    readonly chefPrinters: {
+        name: string;
+        type: PrinterDeviceTypeEnum;
+        address: string;
+        bluetoothName: string;
+        printerWidth: PrinterWidthEnum;
+        printerNum: number;
+        disabled: boolean;
+        bigFont: boolean;
+        dishIds: string[];
+        mergeDishes: boolean;
+        isSeparateDishes: boolean;
+        isSeparateDishesWithTotal: boolean;
+        preferLang: string;
     }[];
 }
