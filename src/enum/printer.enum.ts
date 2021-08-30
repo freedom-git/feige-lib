@@ -8,6 +8,9 @@ export enum PrinterDeviceTypeEnum {
     Usb = 'Usb',
     Network = 'Network',
     System = 'System',
+    FeieYun = 'FeieYun',
+    XinyeYun = 'XinyeYun',
+    AiyinYun = 'AiyinYun',
 }
 export enum PrinterWidthEnum {
     '_58' = 58,
