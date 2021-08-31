@@ -78,34 +78,38 @@ export interface Store {
         name: string;
         rate: number;
     }[];
-    readonly receptionPrinters: {
-        name: string;
-        type: PrinterDeviceTypeEnum;
-        address: string;
-        bluetoothName: string;
-        printerWidth: PrinterWidthEnum;
-        printerNum: number;
-        disabled: boolean;
-        mergeDishes: boolean;
-        bigFont: boolean;
-        isPrepayOrderPrinteWithTotalPrice: boolean;
-        isAutoPrinteAfterConfirm: boolean;
-        isAutoPrinteAfterCheckout: boolean;
-        preferLang: string;
-    }[];
-    readonly chefPrinters: {
-        name: string;
-        type: PrinterDeviceTypeEnum;
-        address: string;
-        bluetoothName: string;
-        printerWidth: PrinterWidthEnum;
-        printerNum: number;
-        disabled: boolean;
-        bigFont: boolean;
-        dishIds: string[];
-        mergeDishes: boolean;
-        isSeparateDishes: boolean;
-        isSeparateDishesWithTotal: boolean;
-        preferLang: string;
-    }[];
+    readonly receptionPrinters: ReceptionPrinter[];
+    readonly chefPrinters: ChefPrinter[];
+}
+
+export interface ReceptionPrinter {
+    name: string;
+    type: PrinterDeviceTypeEnum;
+    address: string;
+    bluetoothName: string;
+    printerWidth: PrinterWidthEnum;
+    printerNum: number;
+    disabled: boolean;
+    mergeDishes: boolean;
+    bigFont: boolean;
+    isPrepayOrderPrinteWithTotalPrice: boolean;
+    isAutoPrinteAfterConfirm: boolean;
+    isAutoPrinteAfterCheckout: boolean;
+    preferLang: string;
+}
+
+export interface ChefPrinter {
+    name: string;
+    type: PrinterDeviceTypeEnum;
+    address: string;
+    bluetoothName: string;
+    printerWidth: PrinterWidthEnum;
+    printerNum: number;
+    disabled: boolean;
+    bigFont: boolean;
+    dishIds: string[];
+    mergeDishes: boolean;
+    isSeparateDishes: boolean;
+    isSeparateDishesWithTotal: boolean;
+    preferLang: string;
 }

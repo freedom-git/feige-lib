@@ -19,6 +19,7 @@ export * from './enum/visit-task.enum';
 export * from './enum/from.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
+export * from './interfaces/store/store.interface';
 export { PayCompanyEnum } from './enum/pay-company.enum';
 import * as moment from 'moment';
 import { TaxTypeEnum } from './enum/tax.enum';
@@ -29,7 +30,6 @@ export {
     Checkout,
     CONST,
     DishSnapshot,
-    Store,
     User,
     UserSafe,
     CertificatePath,
