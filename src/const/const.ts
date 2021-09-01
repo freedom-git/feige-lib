@@ -85,6 +85,7 @@ class Const {
         VND: 'đ',
         RSD: 'RSD',
     };
+    LARGE_CURRENCY = ['đ']; //币值比较大，不需要小数而且需要三位打逗号的货币
     UPPER_LIMIT = {
         WAITER_NUM: 10,
         CHEF_NUM: 5,
