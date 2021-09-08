@@ -170,6 +170,7 @@ class Const {
             fontFamily: 'UG',
             dateFormat: 'YEAR_MONTH_DAY',
             defaultAreaCode: '86',
+            rtl: true,
         },
         {
             name: 'Tiếng Việt',

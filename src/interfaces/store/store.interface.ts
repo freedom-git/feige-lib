@@ -95,7 +95,7 @@ export interface ReceptionPrinter {
     isPrepayOrderPrinteWithTotalPrice: boolean;
     isAutoPrinteAfterConfirm: boolean;
     isAutoPrinteAfterCheckout: boolean;
-    preferLang: string;
+    preferLang?: string;
 }
 
 export interface ChefPrinter {
@@ -111,5 +111,5 @@ export interface ChefPrinter {
     mergeDishes: boolean;
     isSeparateDishes: boolean;
     isSeparateDishesWithTotal: boolean;
-    preferLang: string;
+    preferLang?: string;
 }
