@@ -80,10 +80,11 @@ class Const {
         RMB: '¥',
         USD: '$',
         EUR: '€',
+        VND: 'đ',
         GBP: '￡',
         PHP: '₱',
-        VND: 'đ',
         RSD: 'RSD',
+        RM: 'RM',
     };
     LARGE_CURRENCY = ['đ']; //币值比较大，不需要小数而且需要三位打逗号的货币
     CHINA_TYPE_DISCOUNT_LANGS = ['zh', 'zh-tw']; //以中文习惯打折的语言
