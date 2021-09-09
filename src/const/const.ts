@@ -169,7 +169,7 @@ class Const {
             speechCode: 'ug-CN',
             printCode: 'img',
             fontFamily: 'UG',
-            dateFormat: 'YEAR_MONTH_DAY',
+            dateFormat: 'YEAR_MONTH_DAY_REVERSE',
             defaultAreaCode: '86',
             rtl: true,
         },
@@ -258,6 +258,12 @@ class Const {
             date: 'DD-MM-YYYY',
             yearMonth: 'MM-YYYY',
             yearMonthDayHourMinute: 'DD-MM-YYYY HH:mm',
+        },
+        YEAR_MONTH_DAY_REVERSE: {
+            dateTime: 'HH:mm:ss YYYY-MM-DD',
+            date: 'YYYY-MM-DD',
+            yearMonth: 'YYYY-MM',
+            yearMonthDayHourMinute: 'HH:mm YYYY-MM-DD',
         },
     };
     INIT_LANGUAGE = 'zh';
