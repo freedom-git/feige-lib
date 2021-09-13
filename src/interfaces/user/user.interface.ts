@@ -76,6 +76,7 @@ export interface User extends UserSafe {
         licenseTimeEnd: string;
         legalTimeBegin?: string;
         legalTimeEnd?: string;
+        merCertAddress?: string;
     };
     readonly pay: {
         active: boolean;

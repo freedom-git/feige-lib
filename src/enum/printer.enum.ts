@@ -16,3 +16,7 @@ export enum PrinterWidthEnum {
     '_58' = 58,
     '_80' = 80,
 }
+export enum PrintTypeEnum {
+    Receiption = 'reception',
+    Chef = 'chef',
+}
