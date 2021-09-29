@@ -5,6 +5,8 @@ import { Subscription } from './subscription.interface';
 import { MemberSavingRule } from './member.interface';
 import { TaxTypeEnum } from '../../enum/tax.enum';
 import { PrinterDeviceTypeEnum, PrinterWidthEnum } from '../../enum/printer.enum';
+import { TimeMenuLoopMode } from '../../enum/time-menu.enum';
+import { WeekEnum } from '../../enum/common.enum';
 
 export interface Store {
     readonly _id: string;
@@ -81,6 +83,42 @@ export interface Store {
     }[];
     readonly receptionPrinters: ReceptionPrinter[];
     readonly chefPrinters: ChefPrinter[];
+    readonly timeMenu: {
+        enable: boolean;
+        hideDisabledProductions: boolean;
+        loopMode: TimeMenuLoopMode;
+        dayLoop: DayLoopItem[];
+        weekLoop: {
+            Mon: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+            Tue: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+            Wed: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+            Thu: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+            Fri: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+            Sat: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+            Sun: {
+                sameAs: WeekEnum;
+                dayLoop: DayLoopItem[];
+            };
+        };
+    };
 }
 
 export interface ReceptionPrinter {
@@ -113,4 +151,11 @@ export interface ChefPrinter {
     isSeparateDishes: boolean;
     isSeparateDishesWithTotal: boolean;
     preferLang?: string;
+}
+
+interface DayLoopItem {
+    startMinute: number;
+    endMinute: number;
+    removeMode: boolean;
+    dishId: string[];
 }
