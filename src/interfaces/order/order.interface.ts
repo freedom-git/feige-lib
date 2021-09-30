@@ -82,6 +82,7 @@ export interface Checkout {
     readonly _id?: string;
     readonly type: string;
     readonly amount: number;
+    readonly realCash?: number;
     readonly retreated?: boolean;
     readonly date?: Date | string;
     readonly payRecordId?: string;
