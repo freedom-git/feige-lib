@@ -122,6 +122,7 @@ export interface Store {
 }
 
 export interface ReceptionPrinter {
+    _id: string;
     name: string;
     type: PrinterDeviceTypeEnum;
     address: string;
@@ -135,6 +136,12 @@ export interface ReceptionPrinter {
     isAutoPrinteAfterConfirm: boolean;
     isAutoPrinteAfterCheckout: boolean;
     preferLang?: string;
+    printChineseAndEnglishAsImg?: boolean;
+    largeLineHeight?: boolean;
+    lineBetweenDishes?: boolean;
+    specificationInNewLine?: boolean;
+    customInformationAtStart?: string;
+    customInformationAtEnd?: string;
 }
 
 export interface ChefPrinter {
@@ -151,6 +158,11 @@ export interface ChefPrinter {
     isSeparateDishes: boolean;
     isSeparateDishesWithTotal: boolean;
     preferLang?: string;
+    printChineseAndEnglishAsImg?: boolean;
+    largeLineHeight?: boolean;
+    lineBetweenDishes?: boolean;
+    specificationInNewLine?: boolean;
+    countFront?: boolean;
 }
 
 interface DayLoopItem {
