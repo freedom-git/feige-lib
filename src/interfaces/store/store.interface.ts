@@ -47,6 +47,7 @@ export interface Store {
         tableOrderAutoCheckout: boolean;
         tableOrderAutoCleanTime: number;
         mustPayVersion: boolean;
+        freeVersion: boolean;
     };
     readonly takeoutSetting: {
         startingPrice: number;
