@@ -33,6 +33,7 @@ export interface Order {
     readonly taxType?: TaxTypeEnum;
     readonly reserveTime?: Date;
     readonly selfPickUp?: boolean;
+    readonly pack?: boolean;
     readonly priceHaveTaxBindOrderTaxes?: {
         name: string;
         rate: number;
