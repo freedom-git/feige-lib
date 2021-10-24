@@ -31,6 +31,8 @@ export interface Order {
     readonly retreated?: boolean;
     readonly noTax?: boolean;
     readonly taxType?: TaxTypeEnum;
+    readonly reserveTime?: Date;
+    readonly selfPickUp?: boolean;
     readonly priceHaveTaxBindOrderTaxes?: {
         name: string;
         rate: number;

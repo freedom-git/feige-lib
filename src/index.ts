@@ -99,7 +99,7 @@ export function calcTotalPrice(order: Order): number {
     order.content.forEach((orderContentItem) => {
         totalPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
     });
-    if (order.deliveryFee) {
+    if (order.deliveryFee && !order.selfPickUp) {
         totalPrice += order.deliveryFee;
     }
     return parseMoney(totalPrice);
