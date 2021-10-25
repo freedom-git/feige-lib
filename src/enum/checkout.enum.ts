@@ -3,6 +3,7 @@ export enum CheckoutTypeEnum {
     Wechat = 'wechat',
     Alipay = 'alipay',
     Member = 'member',
+    Custom = 'costom',
 }
 
 export enum MemberCheckoutTypeEnum {
