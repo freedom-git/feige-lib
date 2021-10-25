@@ -16,9 +16,9 @@ class Const {
             TYPE: 'cash',
             TEXT: '现金',
         },
-        MYQR: {
-            TYPE: 'myqr',
-            TEXT: '商家收款码',
+        CUSTOM: {
+            TYPE: 'custom',
+            TEXT: '自定义',
         },
         WECHAT: {
             TYPE: 'wechat',

@@ -84,6 +84,7 @@ export interface Process {
 export interface Checkout {
     readonly _id?: string;
     readonly type: string;
+    readonly customType?: string;
     readonly amount: number;
     readonly realCash?: number;
     readonly retreated?: boolean;

@@ -120,6 +120,10 @@ export interface Store {
             };
         };
     };
+    readonly customPayment: {
+        name: string;
+        enabled: boolean;
+    }[];
 }
 
 export interface ReceptionPrinter {

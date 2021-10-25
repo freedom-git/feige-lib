@@ -274,7 +274,7 @@ describe('开始运行单元测试', () => {
                         amount: 45.64,
                     },
                     {
-                        type: CONST.CHECKOUT_TYPE.MYQR.TYPE,
+                        type: CONST.CHECKOUT_TYPE.WECHAT.TYPE,
                         amount: 66.87,
                     },
                 ]),
@@ -288,11 +288,11 @@ describe('开始运行单元测试', () => {
                         amount: 45.64,
                     },
                     {
-                        type: CONST.CHECKOUT_TYPE.MYQR.TYPE,
+                        type: CONST.CHECKOUT_TYPE.WECHAT.TYPE,
                         amount: 66.87,
                     },
                     {
-                        type: CONST.CHECKOUT_TYPE.MYQR.TYPE,
+                        type: CONST.CHECKOUT_TYPE.WECHAT.TYPE,
                         amount: 66.87,
                         retreated: true,
                     },
