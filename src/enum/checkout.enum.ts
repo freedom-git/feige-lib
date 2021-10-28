@@ -10,4 +10,5 @@ export enum MemberCheckoutTypeEnum {
     Cash = 'cash',
     Wechat = 'wechat',
     Alipay = 'alipay',
+    Custom = 'custom',
 }
