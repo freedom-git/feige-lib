@@ -3,6 +3,8 @@ class Const {
         MANAGER: 'manager',
         WAITER: 'waiter',
         CHEF: 'chef',
+        RECEPTIONIST: 'receptionist',
+        PARTNER: 'partner',
     };
     TASK_TYPE = {
         CHECK: 'check',
