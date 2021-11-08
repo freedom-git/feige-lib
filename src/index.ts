@@ -19,6 +19,7 @@ export * from './enum/tax.enum';
 export * from './enum/dish.enum';
 export * from './enum/user-status.enum';
 export * from './enum/visit-task.enum';
+export * from './enum/receptionist.enum';
 export * from './enum/from.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
