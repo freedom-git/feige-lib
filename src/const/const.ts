@@ -277,6 +277,7 @@ class Const {
     };
     SOCKET_CHANNEL = {
         ORDER: 'order',
+        STORE: 'store',
         MEMBER: 'member',
         SMS_NUM: 'smsNum',
         PAY: 'pay',
