@@ -12,6 +12,11 @@ export enum PrinterDeviceTypeEnum {
     XinyeYun = 'XinyeYun',
     AiyinYun = 'AiyinYun',
 }
+
+export enum TagPrinterDeviceTypeEnum {
+    XinyeYun = 'XinyeYun',
+}
+
 export enum PrinterWidthEnum {
     '_58' = 58,
     '_80' = 80,
