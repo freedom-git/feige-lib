@@ -84,6 +84,7 @@ export interface Store {
     }[];
     readonly receptionPrinters: ReceptionPrinter[];
     readonly chefPrinters: ChefPrinter[];
+    readonly labelPrinters: LabelPrinter[];
     readonly timeMenu: {
         enable: boolean;
         hideDisabledProductions: boolean;
@@ -168,6 +169,15 @@ export interface ChefPrinter {
     lineBetweenDishes?: boolean;
     specificationInNewLine?: boolean;
     countFront?: boolean;
+}
+
+export interface LabelPrinter {
+    name: string;
+    type: PrinterDeviceTypeEnum;
+    address: string;
+    printerNum: number;
+    disabled: boolean;
+    dishIds: string[];
 }
 
 interface DayLoopItem {
