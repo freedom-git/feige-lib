@@ -4,7 +4,7 @@ import { Specification } from './specification.interface';
 import { Subscription } from './subscription.interface';
 import { MemberSavingRule } from './member.interface';
 import { TaxTypeEnum } from '../../enum/tax.enum';
-import { PrinterDeviceTypeEnum, PrinterWidthEnum } from '../../enum/printer.enum';
+import { PrinterDeviceTypeEnum, PrinterWidthEnum, TagPrinterDeviceTypeEnum } from '../../enum/printer.enum';
 import { TimeMenuLoopMode } from '../../enum/time-menu.enum';
 import { WeekEnum } from '../../enum/common.enum';
 
@@ -72,6 +72,7 @@ export interface Store {
         memberPayout: boolean;
         takeoutConfirm: boolean;
         takeoutCancel: boolean;
+        takeoutComplete: boolean;
     };
     readonly taxes: {
         name: string;
@@ -173,11 +174,12 @@ export interface ChefPrinter {
 
 export interface LabelPrinter {
     name: string;
-    type: PrinterDeviceTypeEnum;
+    type: TagPrinterDeviceTypeEnum;
     address: string;
     printerNum: number;
     disabled: boolean;
     dishIds: string[];
+    preferLang?: string;
 }
 
 interface DayLoopItem {
