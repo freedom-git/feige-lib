@@ -9,4 +9,5 @@ export enum SmsConsumptionTypeEnum {
     MemberPayout = 'memberPayout',
     TakeoutConfirm = 'takeoutConfirm',
     TakeoutCancel = 'takeoutCancel',
+    TakeoutComplete = 'takeoutComplete',
 }
