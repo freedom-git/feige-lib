@@ -11,6 +11,7 @@ export enum PrinterDeviceTypeEnum {
     FeieYun = 'FeieYun',
     XinyeYun = 'XinyeYun',
     AiyinYun = 'AiyinYun',
+    YilianYun = 'YilianYun',
 }
 
 export enum TagPrinterDeviceTypeEnum {
