@@ -13,7 +13,7 @@ export interface Order {
     readonly nickName?: string;
     readonly note?: string;
     readonly merchantNote?: string;
-    readonly printed: string[];
+    readonly printerPrinted: string[];
     readonly kdsPrinted: string[];
     readonly printStatus: PrintStatusEnum;
     readonly content: Content[];
@@ -68,7 +68,7 @@ export interface Task {
     callReason?: string;
     content?: Content[];
     valet?: boolean;
-    printed: string[];
+    printerPrinted: string[];
     kdsPrinted: string[];
     printStatus: PrintStatusEnum;
     clientId: string;
