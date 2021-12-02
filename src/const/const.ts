@@ -256,18 +256,21 @@ class Const {
             dateTime: 'YYYY-MM-DD HH:mm:ss',
             date: 'YYYY-MM-DD',
             yearMonth: 'YYYY-MM',
+            MonthDay: 'MM-DD HH:mm',
             yearMonthDayHourMinute: 'YYYY-MM-DD HH:mm',
         },
         DAY_MONTH_YEAR: {
             dateTime: 'DD-MM-YYYY HH:mm:ss',
             date: 'DD-MM-YYYY',
             yearMonth: 'MM-YYYY',
+            MonthDay: 'DD-MM HH:mm',
             yearMonthDayHourMinute: 'DD-MM-YYYY HH:mm',
         },
         YEAR_MONTH_DAY_REVERSE: {
             dateTime: 'HH:mm:ss YYYY-MM-DD',
             date: 'YYYY-MM-DD',
             yearMonth: 'YYYY-MM',
+            MonthDay: 'MM-DD HH:mm',
             yearMonthDayHourMinute: 'HH:mm YYYY-MM-DD',
         },
     };
