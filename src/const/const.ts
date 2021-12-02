@@ -307,6 +307,7 @@ class Const {
         PRINT_FINISHED: 'printFinished',
         CHANGE_ORDER_OPERATOR: 'changeOrderOperator',
         CHANGE_TABLE: 'changeTable',
+        MERGE_TABLE: 'mergeTable',
         WAITER_OFFLINE_CHANGE_ORDER_OPERATOR: 'waiterOfflineChangeOrderOperator', // 该动作会触发多次，通常保持静默
         WAITER_OFFLINE_CHANGE_ORDER_OPERATOR_FINISHED: 'waiterOfflineChangeOrderOperatorFinished',
         WAITER_ONLINE_CHANGE_ORDER_OPERATOR_FINISHED: 'waiterOnlineChangeOrderOperatorFinished',
