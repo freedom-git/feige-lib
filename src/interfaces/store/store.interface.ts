@@ -149,6 +149,7 @@ export interface ReceptionPrinter {
     specificationInNewLine?: boolean;
     customInformationAtStart?: string;
     customInformationAtEnd?: string;
+    showWaiterName?: boolean;
 }
 
 export interface ChefPrinter {
