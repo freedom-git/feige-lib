@@ -4,6 +4,7 @@ import { OrderTypeEnum } from '../../enum/order.enum';
 import { TaxTypeEnum } from '../../enum/tax.enum';
 export interface Order {
     readonly _id: string;
+    readonly serialOrderId: string;
     readonly type: OrderTypeEnum;
     readonly tableNum?: string;
     readonly serialNum?: string;
