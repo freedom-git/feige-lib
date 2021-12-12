@@ -126,6 +126,14 @@ export interface Store {
         name: string;
         enabled: boolean;
     }[];
+    readonly areas: {
+        name: string;
+    }[];
+    readonly tables: {
+        name: string;
+        seatNum: number;
+        areaId: string;
+    }[];
 }
 
 export interface ReceptionPrinter {
