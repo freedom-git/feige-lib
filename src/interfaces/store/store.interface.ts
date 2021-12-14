@@ -126,14 +126,7 @@ export interface Store {
         name: string;
         enabled: boolean;
     }[];
-    readonly areas: {
-        name: string;
-    }[];
-    readonly tables: {
-        name: string;
-        seatNum: number;
-        areaId: string;
-    }[];
+    readonly areas: Area[];
 }
 
 export interface ReceptionPrinter {
@@ -196,4 +189,16 @@ interface DayLoopItem {
     endMinute: number;
     removeMode: boolean;
     dishId: string[];
+}
+
+export interface Area {
+    readonly _id?: string;
+    readonly name: string;
+    readonly tables: Table[];
+}
+
+export interface Table {
+    readonly _id?: string;
+    readonly name: string;
+    readonly seatNum: number;
 }
