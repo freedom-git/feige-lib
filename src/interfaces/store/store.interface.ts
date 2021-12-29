@@ -151,6 +151,7 @@ export interface ReceptionPrinter {
     customInformationAtStart?: string;
     customInformationAtEnd?: string;
     showWaiterName?: boolean;
+    showUnitPrice?: boolean;
 }
 
 export interface ChefPrinter {
