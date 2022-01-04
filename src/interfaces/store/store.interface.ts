@@ -47,7 +47,6 @@ export interface Store {
         tableOrderAutoCheckout: boolean;
         tableOrderAutoCleanTime: number;
         serialOrderAutoCleanTime: number;
-        phoneOrderAutoCleanTime: number;
         mustPayVersion: boolean;
         freeVersion: boolean;
     };
