@@ -22,6 +22,7 @@ export interface Order {
     readonly storeId: string;
     readonly clientId: string;
     readonly date: Date | string;
+    readonly autoCleanTime?: Date | string;
     readonly status: string;
     readonly checkoutFirst: boolean;
     readonly operatorId: string;
