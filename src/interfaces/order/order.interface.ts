@@ -26,6 +26,7 @@ export interface Order {
     readonly status: string;
     readonly checkoutFirst: boolean;
     readonly operatorId: string;
+    readonly salesmanId: string;
     readonly __v: number;
     readonly process?: Process[];
     readonly checkout?: Checkout[];
