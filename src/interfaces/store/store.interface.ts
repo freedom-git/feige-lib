@@ -152,7 +152,9 @@ export interface ReceptionPrinter {
     customInformationAtStart?: string;
     customInformationAtEnd?: string;
     showWaiterName?: boolean;
+    showSalesmanName?: boolean;
     showUnitPrice?: boolean;
+    edgeSpace?: number;
 }
 
 export interface ChefPrinter {
@@ -174,6 +176,9 @@ export interface ChefPrinter {
     lineBetweenDishes?: boolean;
     specificationInNewLine?: boolean;
     countFront?: boolean;
+    showWaiterName?: boolean;
+    showSalesmanName?: boolean;
+    edgeSpace?: number;
 }
 
 export interface LabelPrinter {
