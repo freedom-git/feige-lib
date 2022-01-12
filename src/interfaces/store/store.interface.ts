@@ -154,7 +154,6 @@ export interface ReceptionPrinter {
     showWaiterName?: boolean;
     showSalesmanName?: boolean;
     showUnitPrice?: boolean;
-    edgeSpace?: number;
 }
 
 export interface ChefPrinter {
@@ -178,7 +177,6 @@ export interface ChefPrinter {
     countFront?: boolean;
     showWaiterName?: boolean;
     showSalesmanName?: boolean;
-    edgeSpace?: number;
 }
 
 export interface LabelPrinter {
