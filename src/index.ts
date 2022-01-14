@@ -27,6 +27,7 @@ export * from './interfaces/member/member-transaction.interface';
 export * from './interfaces/store/store.interface';
 export { PayCompanyEnum } from './enum/pay-company.enum';
 import * as moment from 'moment';
+import Big from 'big.js';
 import { TaxTypeEnum } from './enum/tax.enum';
 export {
     Order,
@@ -44,6 +45,7 @@ export {
     PrintStatusEnum,
     PrinterDeviceTypeEnum,
     PrinterWidthEnum,
+    Big,
 };
 
 /**
@@ -200,7 +202,7 @@ export function calcReceivablePrice(
             const sharedMarkDown = (totalMarkDown * dishTotalPrice) / receivablePriceAfterDiscount;
             orderContentItem.dishSnapshot.taxes.forEach((tax) => {
                 const taxFare = (dishTotalPrice - sharedMarkDown) * tax.rate;
-                const taxKey = `${tax.name}(${tax.rate * 100}%)`;
+                const taxKey = `${tax.name}(${Big(tax.rate).times(100)}%)`;
                 taxObj[taxKey] = (taxObj[taxKey] || 0) + parseMoney(taxFare);
             });
         });
@@ -212,7 +214,7 @@ export function calcReceivablePrice(
         const totalTaxFare = receivablePrice - receivablePrice / (totalTaxRate + 1);
         order.priceHaveTaxBindOrderTaxes.forEach((item) => {
             const taxFare = (item.rate / totalTaxRate) * totalTaxFare;
-            const taxKey = `${item.name}(${item.rate * 100}%)`;
+            const taxKey = `${item.name}(${Big(item.rate).times(100)}%)`;
             taxObj[taxKey] = (taxObj[taxKey] || 0) + parseMoney(taxFare);
         });
     }
