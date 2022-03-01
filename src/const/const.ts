@@ -1376,6 +1376,17 @@ class Const {
             zh: '西班牙',
             phoneCode: '34',
             zhHead: 'X',
+            setting: {
+                defaultCurrency: '€',
+                timeZoneNum: 1,
+                agent: {
+                    instruction: undefined,
+                    showPriceInStore: false,
+                    qrCode: '',
+                    phone: '624871896 / 642726636',
+                    email: 'tecnopaloma.com',
+                },
+            },
         },
         {
             en: 'Sri Lanka',
