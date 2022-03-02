@@ -58,6 +58,13 @@ export interface Store {
         endTime: number;
         open: boolean;
         autoConfirm: boolean;
+        selfPickUp: boolean;
+        enableDelivery: boolean;
+        reserveSwitch: boolean;
+        reserveTimeLow: number;
+        reserveTimeHigh: number;
+        nonPaymentSmsVerification: boolean;
+        smsVerificationAreaCode: string[];
     };
     readonly memberSetting: {
         savingRules: MemberSavingRule[];
