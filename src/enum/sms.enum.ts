@@ -10,4 +10,5 @@ export enum SmsConsumptionTypeEnum {
     TakeoutConfirm = 'takeoutConfirm',
     TakeoutCancel = 'takeoutCancel',
     TakeoutComplete = 'takeoutComplete',
+    TakeoutSmsVerification = 'takeoutSmsVerification',
 }
