@@ -603,6 +603,7 @@ class Const {
             zh: '加拿大',
             phoneCode: '1',
             zhHead: 'J',
+            cost: 1,
             setting: {
                 defaultCurrency: '$',
                 timeZoneNum: -5,
@@ -644,6 +645,7 @@ class Const {
             zh: '中国',
             phoneCode: '86',
             zhHead: 'Z',
+            cost: 1,
         },
         {
             en: 'Colombia',
@@ -845,7 +847,7 @@ class Const {
         },
         {
             en: 'Hongkong',
-            zh: '香港',
+            zh: '中国香港',
             phoneCode: '852',
             zhHead: 'X',
         },
@@ -1019,7 +1021,7 @@ class Const {
         },
         {
             en: 'Macao',
-            zh: '澳门',
+            zh: '中国澳门',
             phoneCode: '853',
             zhHead: 'A',
         },
@@ -1316,6 +1318,7 @@ class Const {
             zh: '沙特阿拉伯',
             phoneCode: '966',
             zhHead: 'S',
+            cost: 5,
         },
         {
             en: 'Senegal',
@@ -1376,6 +1379,7 @@ class Const {
             zh: '西班牙',
             phoneCode: '34',
             zhHead: 'X',
+            cost: 12,
             setting: {
                 defaultCurrency: '€',
                 timeZoneNum: 1,
@@ -1444,9 +1448,10 @@ class Const {
         },
         {
             en: 'Taiwan',
-            zh: '台湾',
+            zh: '中国台湾',
             phoneCode: '886',
             zhHead: 'T',
+            cost: 7,
         },
         {
             en: 'Tajikstan',
@@ -1531,6 +1536,7 @@ class Const {
             zh: '美国',
             phoneCode: '1',
             zhHead: 'M',
+            cost: 1,
         },
         {
             en: 'Uruguay',
@@ -1555,6 +1561,7 @@ class Const {
             zh: '越南',
             phoneCode: '84',
             zhHead: 'Y',
+            cost: 7,
             setting: {
                 defaultCurrency: 'đ',
                 timeZoneNum: 7,
