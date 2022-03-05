@@ -1379,7 +1379,7 @@ class Const {
             zh: '西班牙',
             phoneCode: '34',
             zhHead: 'X',
-            cost: 12,
+            cost: 10,
             setting: {
                 defaultCurrency: '€',
                 timeZoneNum: 1,
