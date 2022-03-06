@@ -1524,6 +1524,7 @@ class Const {
             zh: '阿拉伯联合酋长国',
             phoneCode: '971',
             zhHead: 'A',
+            cost: 6,
         },
         {
             en: 'United Kiongdom',
