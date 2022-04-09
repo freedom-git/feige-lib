@@ -135,6 +135,7 @@ export interface Store {
         enabled: boolean;
     }[];
     readonly areas: Area[];
+    readonly cashDenominations: number[];
 }
 
 export interface ReceptionPrinter {

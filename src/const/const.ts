@@ -611,7 +611,7 @@ class Const {
                     instruction: undefined,
                     showPriceInStore: false,
                     qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/canada.jpeg',
-                    phone: '（438）506-5128',
+                    phone: '5148986618',
                     email: 'info@feige.ca',
                 },
             },
@@ -1571,6 +1571,7 @@ class Const {
                     showPriceInStore: false,
                     qrCode: 'https://feige-img-hub.oss-cn-hangzhou.aliyuncs.com/feige/agent/vi-agent-qr.jpeg',
                 },
+                cashDenominations: [500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000],
             },
         },
         {
