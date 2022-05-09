@@ -80,6 +80,7 @@ class Const {
     };
     CURRENCY_SYMBOL = {
         RMB: '¥',
+        JPY: '￥',
         USD: '$',
         EUR: '€',
         VND: 'đ',
@@ -89,8 +90,9 @@ class Const {
         RM: 'RM',
         PEN: 'S/. ', //秘鲁新索尔
         AED: 'AED', //阿联酋迪拉姆
+        FT: 'Ft', //匈牙利福林
     };
-    LARGE_CURRENCY = ['đ']; //币值比较大，不需要小数而且需要三位打逗号的货币
+    LARGE_CURRENCY = ['đ', '￥']; //币值比较大，不需要小数而且需要三位打逗号的货币
     CHINA_TYPE_DISCOUNT_LANGS = ['zh', 'zh-tw']; //以中文习惯打折的语言
     UPPER_LIMIT = {
         WAITER_NUM: 10,
