@@ -185,6 +185,7 @@ export interface ChefPrinter {
     countFront?: boolean;
     showWaiterName?: boolean;
     showSalesmanName?: boolean;
+    addTableNumBeforeDishName?: boolean;
 }
 
 export interface LabelPrinter {
