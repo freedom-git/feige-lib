@@ -27,3 +27,9 @@ export enum PrintTypeEnum {
     Chef = 'chef',
     Label = 'label',
 }
+
+export enum EncodeTypeEnum {
+    IMG = 'img',
+    CODEPAGE = 'codepage',
+    UTF_8 = 'utf-8',
+}

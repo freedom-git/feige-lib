@@ -4,7 +4,12 @@ import { Specification } from './specification.interface';
 import { Subscription } from './subscription.interface';
 import { MemberSavingRule } from './member.interface';
 import { TaxTypeEnum } from '../../enum/tax.enum';
-import { PrinterDeviceTypeEnum, PrinterWidthEnum, TagPrinterDeviceTypeEnum } from '../../enum/printer.enum';
+import {
+    PrinterDeviceTypeEnum,
+    PrinterWidthEnum,
+    TagPrinterDeviceTypeEnum,
+    EncodeTypeEnum,
+} from '../../enum/printer.enum';
 import { TimeMenuLoopMode } from '../../enum/time-menu.enum';
 import { WeekEnum } from '../../enum/common.enum';
 
@@ -162,6 +167,7 @@ export interface ReceptionPrinter {
     showWaiterName?: boolean;
     showSalesmanName?: boolean;
     showUnitPrice?: boolean;
+    encodeType?: EncodeTypeEnum;
 }
 
 export interface ChefPrinter {
@@ -186,6 +192,7 @@ export interface ChefPrinter {
     showWaiterName?: boolean;
     showSalesmanName?: boolean;
     addTableNumBeforeDishName?: boolean;
+    encodeType?: EncodeTypeEnum;
 }
 
 export interface LabelPrinter {
