@@ -91,6 +91,18 @@ class Const {
         PEN: 'S/. ', //秘鲁新索尔
         AED: 'AED', //阿联酋迪拉姆
         FT: 'Ft', //匈牙利福林
+        CHF: 'Fr', //瑞士法郎
+        DKK: 'kr', //丹麦克朗
+        INR: '₨', //印度卢比
+        KES: 'Sh', //肯尼亚先令
+        KRW: '₩', //韩元
+        LAK: '₭', //老挝基普
+        MMK: 'K', //缅甸缅元
+        THB: '฿', //泰国泰铢
+        TRY: '₤', // 土耳其新里拉
+        PLN: 'zł', //波兰兹罗提
+        UAH: '₴', //乌克兰格里夫纳
+        BRL: 'R$', //巴西巴西雷亚尔
     };
     LARGE_CURRENCY = ['đ', '￥']; //币值比较大，不需要小数而且需要三位打逗号的货币
     CHINA_TYPE_DISCOUNT_LANGS = ['zh', 'zh-tw']; //以中文习惯打折的语言
@@ -147,27 +159,30 @@ class Const {
             img: '',
             code: 'zh',
             speechCode: 'zh-CN',
-            printCode: 'cp936',
             dateFormat: 'YEAR_MONTH_DAY',
             defaultAreaCode: '86',
+            codepage: 'cp936',
+            defaultPrintEncodeType: 'codepage',
         },
         {
             name: 'English',
             img: '',
             code: 'en',
             speechCode: 'en-US',
-            printCode: 'cp936',
             dateFormat: 'DAY_MONTH_YEAR',
             defaultAreaCode: '61',
+            codepage: 'pc850',
+            defaultPrintEncodeType: 'codepage',
         },
         {
             name: '漢語',
             img: '',
             code: 'zh-tw',
             speechCode: 'zh-tw',
-            printCode: 'cp936',
             dateFormat: 'YEAR_MONTH_DAY',
             defaultAreaCode: '852',
+            codepage: 'cp936',
+            defaultPrintEncodeType: 'codepage',
         },
         {
             name: 'ئۇيغۇرچە',
@@ -175,83 +190,92 @@ class Const {
             code: 'ug',
             speechCode: 'zh-CN',
             speechLang: 'zh',
-            printCode: 'img',
             fontFamily: 'UG',
             dateFormat: 'YEAR_MONTH_DAY_REVERSE',
             defaultAreaCode: '86',
             rtl: true,
+            codepage: 'utf-8',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: 'Tiếng Việt',
             img: '',
             code: 'vi',
             speechCode: 'vi-VN',
-            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
             defaultAreaCode: '84',
+            codepage: 'cp1258',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: 'Deutsch',
             img: '',
             code: 'de',
             speechCode: 'de-DE',
-            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
             defaultAreaCode: '49',
+            codepage: 'cp850',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: '日本語',
             img: '',
             code: 'ja',
             speechCode: 'ja-JP',
-            printCode: 'cp936',
             dateFormat: 'YEAR_MONTH_DAY',
             defaultAreaCode: '81',
+            codepage: 'cp936',
+            defaultPrintEncodeType: 'codepage',
         },
         {
             name: '한국어',
             img: '',
             code: 'ko',
             speechCode: 'ko-KR',
-            printCode: 'img',
             dateFormat: 'YEAR_MONTH_DAY',
             defaultAreaCode: '82',
+            codepage: 'cp949',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: 'Español',
             img: '',
             code: 'es',
             speechCode: 'es-ES',
-            printCode: 'img',
             dateFormat: 'YEAR_MONTH_DAY',
             defaultAreaCode: '34',
+            codepage: 'cp850',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: 'Português',
             img: '',
             code: 'pt',
             speechCode: 'pt-PT',
-            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
             defaultAreaCode: '351',
+            codepage: 'cp850',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: 'Français',
             img: '',
             code: 'fr',
             speechCode: 'fr-FR',
-            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
             defaultAreaCode: '33',
+            codepage: 'cp850',
+            defaultPrintEncodeType: 'img',
         },
         {
             name: 'Italiano',
             img: '',
             code: 'it',
             speechCode: 'it-IT',
-            printCode: 'img',
             dateFormat: 'DAY_MONTH_YEAR',
             defaultAreaCode: '39',
+            codepage: 'cp850',
+            defaultPrintEncodeType: 'img',
         },
     ];
     DATE_FORMAT = {
