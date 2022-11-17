@@ -25,6 +25,7 @@ export * from './enum/role.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
 export * from './interfaces/store/store.interface';
+export * from './interfaces/common/language.interface';
 export { PayCompanyEnum } from './enum/pay-company.enum';
 import * as moment from 'moment';
 import Big from 'big.js';

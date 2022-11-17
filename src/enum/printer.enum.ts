@@ -29,6 +29,7 @@ export enum PrintTypeEnum {
 }
 
 export enum EncodeTypeEnum {
+    DEFAULT = 'default',
     IMG = 'img',
     CODEPAGE = 'codepage',
     UTF_8 = 'utf-8',
