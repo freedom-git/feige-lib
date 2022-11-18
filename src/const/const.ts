@@ -174,7 +174,7 @@ class Const {
             speechCode: 'en-US',
             dateFormat: DateFormat.DAY_MONTH_YEAR,
             defaultAreaCode: '61',
-            codepage: 'pc850',
+            codepage: 'cp850',
             defaultPrintEncodeType: EncodeTypeEnum.CODEPAGE,
         },
         {
