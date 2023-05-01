@@ -9,6 +9,7 @@ import {
     PrinterWidthEnum,
     TagPrinterDeviceTypeEnum,
     EncodeTypeEnum,
+    MultiLangDirectionEnum,
 } from '../../enum/printer.enum';
 import { TimeMenuLoopMode } from '../../enum/time-menu.enum';
 import { WeekEnum } from '../../enum/common.enum';
@@ -168,6 +169,8 @@ export interface ReceptionPrinter {
     showSalesmanName?: boolean;
     showUnitPrice?: boolean;
     encodeType?: EncodeTypeEnum;
+    extendedPrintingLangs?: string[];
+    multiLangDirection?: MultiLangDirectionEnum;
 }
 
 export interface ChefPrinter {
@@ -193,6 +196,8 @@ export interface ChefPrinter {
     showSalesmanName?: boolean;
     addTableNumBeforeDishName?: boolean;
     encodeType?: EncodeTypeEnum;
+    extendedPrintingLangs?: string[];
+    multiLangDirection?: MultiLangDirectionEnum;
 }
 
 export interface LabelPrinter {
