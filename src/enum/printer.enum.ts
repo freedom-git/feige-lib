@@ -34,3 +34,8 @@ export enum EncodeTypeEnum {
     CODEPAGE = 'codepage',
     UTF_8 = 'utf-8',
 }
+
+export enum MultiLangDirectionEnum {
+    HORIZONTAL = 'horizontal',
+    VERTICAL = 'vertical',
+}
