@@ -194,7 +194,7 @@ class Const {
             speechCode: 'zh-CN',
             speechLang: 'zh',
             fontFamily: 'UG',
-            dateFormat: DateFormat.YEAR_MONTH_DAY_REVERSE,
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
             defaultAreaCode: '86',
             rtl: true,
             codepage: 'utf-8',

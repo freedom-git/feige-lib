@@ -1,3 +1,6 @@
+# 4.38.1
+- change ug dateFormat to DateFormat.YEAR_MONTH_DAY,
+
 # 4.38.0
 - add extendedPrintingLangs and multiLangDirection to store printer interface
 
