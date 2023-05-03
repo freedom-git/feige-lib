@@ -280,6 +280,19 @@ class Const {
             codepage: 'cp850',
             defaultPrintEncodeType: EncodeTypeEnum.IMG,
         },
+        {
+            name: 'قازاقشا',
+            img: '',
+            code: 'kk-Arab-CN',
+            speechCode: 'zh-CN',
+            speechLang: 'zh',
+            fontFamily: 'UG',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '86',
+            rtl: true,
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
     ];
     DATE_FORMAT = {
         YEAR_MONTH_DAY: {
