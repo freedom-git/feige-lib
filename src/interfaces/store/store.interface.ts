@@ -55,6 +55,7 @@ export interface Store {
         serialOrderAutoCleanTime: number;
         mustPayVersion: boolean;
         freeVersion: boolean;
+        proclamationPopUp: boolean;
     };
     readonly takeoutSetting: {
         startingPrice: number;

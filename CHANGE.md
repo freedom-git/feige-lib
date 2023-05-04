@@ -1,3 +1,7 @@
+
+# 4.40.0
+- add proclamationPopUp
+
 # 4.39.0
 - add China Kazakh language kk-Arab-CN
 
