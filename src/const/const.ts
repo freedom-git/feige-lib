@@ -106,8 +106,10 @@ class Const {
         PLN: 'zł', //波兰兹罗提
         UAH: '₴', //乌克兰格里夫纳
         BRL: 'R$', //巴西巴西雷亚尔
+        CZK: 'Kč', //捷克克朗
     };
-    LARGE_CURRENCY = ['đ', '￥']; //币值比较大，不需要小数而且需要三位打逗号的货币
+    LARGE_CURRENCY = ['đ', '￥', 'Kč']; //币值比较大，不需要小数而且需要三位打逗号的货币
+    SUFFIX_CURRENCY = ['Kč']; // 货币符号在数字后面的货币
     CHINA_TYPE_DISCOUNT_LANGS = ['zh', 'zh-tw']; //以中文习惯打折的语言
     UPPER_LIMIT = {
         WAITER_NUM: 10,

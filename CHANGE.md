@@ -1,4 +1,6 @@
 
+# 4.41.0
+- add currency CZK
 # 4.40.0
 - add proclamationPopUp
 
