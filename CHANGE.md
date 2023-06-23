@@ -1,4 +1,6 @@
 
+# 4.42.0
+- add STORE_DESCRIPTION_MAX_LENGTH
 # 4.41.0
 - add currency CZK
 # 4.40.0
