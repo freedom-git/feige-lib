@@ -1,4 +1,6 @@
 
+# 4.43.0
+- add Czech language
 # 4.42.0
 - add STORE_DESCRIPTION_MAX_LENGTH
 # 4.41.0

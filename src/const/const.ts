@@ -296,6 +296,16 @@ class Const {
             codepage: 'utf-8',
             defaultPrintEncodeType: EncodeTypeEnum.IMG,
         },
+        {
+            name: 'čeština',
+            img: '',
+            code: 'cs',
+            speechCode: 'cs',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '420',
+            codepage: 'cp852',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
     ];
     DATE_FORMAT = {
         YEAR_MONTH_DAY: {
