@@ -1,4 +1,5 @@
-
+# 4.44.0
+- add half hour timezone
 # 4.43.0
 - add Czech language
 # 4.42.0
