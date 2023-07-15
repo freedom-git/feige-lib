@@ -1,3 +1,5 @@
+# 4.45.0
+- add store auditedNames
 # 4.44.0
 - add half hour timezone
 # 4.43.0
