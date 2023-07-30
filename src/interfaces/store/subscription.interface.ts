@@ -2,6 +2,8 @@ export interface Subscription {
     base: {
         expires: string | Date;
         permanent: boolean;
+        note?: string;
+        activation?: Activation;
     };
     waiter: {
         expires: string | Date;
@@ -24,4 +26,17 @@ export interface Subscription {
         expires: string | Date;
         permanent: boolean;
     };
+}
+export interface Activation {
+    readonly receptionPrinterCountLimit: number;
+    readonly chefPrinterCountLimit: number;
+    readonly labelPrinterCountLimit: number;
+    readonly dishCountLimit: number;
+    readonly tableCountLimit: number;
+    readonly memberFunction: boolean;
+    readonly deliveryFunction: boolean;
+    readonly waiterCountLimit: number;
+    readonly kdsCountLimit: number;
+    readonly multiLanguageCountLimit: number;
+    readonly renewPrice: number;
 }
