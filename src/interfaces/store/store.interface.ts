@@ -75,6 +75,26 @@ export interface Store {
         nonPaymentSmsVerification: boolean;
         smsVerificationAreaCode: string[];
     };
+    readonly buffetSetting: {
+        enable: boolean;
+        buffetCombos: {
+            names: object;
+            price: {
+                adult: number;
+                child: number;
+            };
+            dishes: [
+                {
+                    dishId: string;
+                    upperLimit: {
+                        enable: boolean;
+                        adult: number;
+                        child: number;
+                    };
+                },
+            ];
+        }[];
+    };
     readonly memberSetting: {
         savingRules: MemberSavingRule[];
         security: {
