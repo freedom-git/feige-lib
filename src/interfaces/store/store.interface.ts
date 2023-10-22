@@ -14,6 +14,25 @@ import {
 import { TimeMenuLoopMode } from '../../enum/time-menu.enum';
 import { WeekEnum } from '../../enum/common.enum';
 
+export interface BuffetDishItem {
+    dishId: string;
+    upperLimit: {
+        enable: boolean;
+        adult: number;
+        child: number;
+    };
+}
+
+export interface BuffetCombosItems {
+    _id: string;
+    names: object;
+    price: {
+        adult: number;
+        child: number;
+    };
+    dishes: BuffetDishItem[];
+}
+
 export interface Store {
     readonly _id: string;
     name: string;
@@ -77,23 +96,7 @@ export interface Store {
     };
     readonly buffetSetting: {
         enable: boolean;
-        buffetCombos: {
-            names: object;
-            price: {
-                adult: number;
-                child: number;
-            };
-            dishes: [
-                {
-                    dishId: string;
-                    upperLimit: {
-                        enable: boolean;
-                        adult: number;
-                        child: number;
-                    };
-                },
-            ];
-        }[];
+        buffetCombos: BuffetCombosItems[];
     };
     readonly memberSetting: {
         savingRules: MemberSavingRule[];
