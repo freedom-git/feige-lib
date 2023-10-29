@@ -33,6 +33,13 @@ export interface BuffetCombosItems {
     dishes: BuffetDishItem[];
 }
 
+export interface AllergenItem {
+    _id: string;
+    names: object;
+    img: string;
+    dishIds: string[];
+}
+
 export interface Store {
     readonly _id: string;
     name: string;
@@ -97,6 +104,10 @@ export interface Store {
     readonly buffetSetting: {
         enable: boolean;
         buffetCombos: BuffetCombosItems[];
+    };
+    readonly allergenSetting: {
+        enable: boolean;
+        allergens: AllergenItem[];
     };
     readonly memberSetting: {
         savingRules: MemberSavingRule[];
