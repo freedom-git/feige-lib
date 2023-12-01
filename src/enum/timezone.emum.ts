@@ -26,6 +26,7 @@ export enum TimeZoneEnum {
     'UTC+8' = 8,
     'UTC+9' = 9,
     'UTC+9.5' = 9.5,
+    'UTC+10.5' = 10.5,
     'UTC+10' = 10,
     'UTC+11' = 11,
     'UTC+12' = 12,
