@@ -2,6 +2,7 @@ import { DishSnapshot } from '../store/dishSnapshot.interface';
 import { PrintStatusEnum } from '../../enum/printer.enum';
 import { OrderTypeEnum } from '../../enum/order.enum';
 import { TaxTypeEnum } from '../../enum/tax.enum';
+import { BuffetCombosItems } from '../store/store.interface';
 export interface Order {
     readonly _id: string;
     readonly serialOrderId: string;
@@ -45,6 +46,11 @@ export interface Order {
         name: string;
         volume: number;
     }[];
+    readonly buffet?: {
+        snapshot: BuffetCombosItems;
+    };
+    readonly adultNum?: number;
+    readonly childNum?: number;
 }
 
 export interface Content {

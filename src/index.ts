@@ -1,5 +1,5 @@
 import { Order, Process, Content, Checkout, Task } from './interfaces/order/order.interface';
-import { Store } from './interfaces/store/store.interface';
+import { BuffetCombosItems, Store } from './interfaces/store/store.interface';
 import { VisitTask } from './interfaces/visit-task/visit-task.interface';
 import { User, UserSafe, CertificatePath } from './interfaces/user/user.interface';
 import { DishSnapshot } from './interfaces/store/dishSnapshot.interface';
@@ -32,6 +32,9 @@ export { PayCompanyEnum } from './enum/pay-company.enum';
 import * as moment from 'moment';
 import Big from 'big.js';
 import { TaxTypeEnum } from './enum/tax.enum';
+import { OrderTypeEnum } from './enum/order.enum';
+import { calcBuffetTotalPrice, getDishItemInBuffet, getMaxBuffetDishUpperLimit } from './buffet/index';
+export * from './buffet/index';
 export {
     Order,
     Process,
@@ -104,12 +107,81 @@ export function calcDishFinalPrice(conent: Content): number {
 export function calcTotalPrice(order: Order): number {
     let totalPrice = 0;
     order.content.forEach((orderContentItem) => {
-        totalPrice += orderContentItem.count * calcDishFinalPrice(orderContentItem);
+        totalPrice += calcContentPrice({
+            orderContentItem,
+            buffetItem: order.buffet?.snapshot,
+            orderType: order.type,
+            adultNum: order.adultNum,
+            childNum: order.childNum,
+            contents: order.content,
+        });
     });
     if (order.deliveryFee && !order.selfPickUp) {
         totalPrice += order.deliveryFee;
     }
+    if (order.type === OrderTypeEnum.Buffet) {
+        totalPrice += calcBuffetTotalPrice(order.buffet.snapshot, order.adultNum, order.childNum);
+    }
     return parseMoney(totalPrice);
+}
+
+/**
+ *
+ */
+export function calcContentPrice({
+    orderContentItem,
+    buffetItem,
+    orderType,
+    adultNum,
+    childNum,
+    contents,
+}: {
+    orderContentItem: Content;
+    buffetItem: BuffetCombosItems;
+    orderType: OrderTypeEnum;
+    adultNum: number;
+    childNum: number;
+    contents: Content[];
+}): number {
+    if (orderType === OrderTypeEnum.Buffet) {
+        const buffetDishItem = getDishItemInBuffet({ dishId: orderContentItem.dishSnapshot._id, buffet: buffetItem });
+        if (buffetDishItem) {
+            const maxUpperLimit = getMaxBuffetDishUpperLimit({
+                buffetDishItem,
+                adultNum: adultNum,
+                childNum: childNum,
+            });
+            const beforeCount = getOrderedCountByDishId(
+                orderContentItem.dishSnapshot._id,
+                contents,
+                orderContentItem._id,
+            );
+            const maxUpperLimitForThisItem = Math.max(maxUpperLimit - beforeCount, 0);
+            if (maxUpperLimitForThisItem >= orderContentItem.count) {
+                return 0;
+            } else {
+                return (orderContentItem.count - maxUpperLimitForThisItem) * calcDishFinalPrice(orderContentItem);
+            }
+        } else {
+            return orderContentItem.count * calcDishFinalPrice(orderContentItem);
+        }
+    } else {
+        return orderContentItem.count * calcDishFinalPrice(orderContentItem);
+    }
+}
+
+/**
+ * @param dishId
+ * @param contents
+ * @param beforeKey
+ */
+export function getOrderedCountByDishId(dishId, contents: Content[], beforeKey?: string): number {
+    let count = 0;
+    for (const content of contents.filter((content) => String(content.dishSnapshot._id) === String(dishId))) {
+        if (beforeKey && String(content._id) === String(beforeKey)) break;
+        count += content.count;
+    }
+    return count;
 }
 
 /**
@@ -155,10 +227,22 @@ export function calcReceivablePrice(
                 if (orderContentItem.dishSnapshot.noFullOrderDiscount) {
                     return;
                 }
-                const dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
+                const dishTotalPrice = calcContentPrice({
+                    orderContentItem,
+                    buffetItem: order.buffet?.snapshot,
+                    orderType: order.type,
+                    adultNum: order.adultNum,
+                    childNum: order.childNum,
+                    contents: order.content,
+                });
                 totalDiscountPrice += dishTotalPrice;
                 volume += dishTotalPrice * rate;
             });
+            if (order.type === OrderTypeEnum.Buffet) {
+                const buffetTotalPrice = calcBuffetTotalPrice(order.buffet.snapshot, order.adultNum, order.childNum);
+                totalDiscountPrice += buffetTotalPrice;
+                volume += buffetTotalPrice * rate;
+            }
             resultProcessArr.push({
                 type: process.type,
                 value: process.value,
@@ -197,7 +281,14 @@ export function calcReceivablePrice(
             const discountValue = sortedProcessArr.find(
                 (process) => process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
             )?.value;
-            let dishTotalPrice = orderContentItem.count * calcDishFinalPrice(orderContentItem);
+            let dishTotalPrice = calcContentPrice({
+                orderContentItem,
+                buffetItem: order.buffet?.snapshot,
+                orderType: order.type,
+                adultNum: order.adultNum,
+                childNum: order.childNum,
+                contents: order.content,
+            });
             if (discountValue && !orderContentItem.dishSnapshot.noFullOrderDiscount) {
                 const rate = -(10 - discountValue) / 10;
                 dishTotalPrice += dishTotalPrice * rate;
