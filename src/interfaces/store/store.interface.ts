@@ -13,7 +13,11 @@ import {
 } from '../../enum/printer.enum';
 import { TimeMenuLoopMode } from '../../enum/time-menu.enum';
 import { WeekEnum } from '../../enum/common.enum';
+import { AnnouncementTargetEnum, AnnouncementTypeEnum } from '../../index';
 
+export interface LangList {
+    [key: string]: string;
+}
 export interface BuffetDishItem {
     dishId: string;
     upperLimit: {
@@ -38,6 +42,15 @@ export interface AllergenItem {
     names: object;
     img: string;
     dishIds: string[];
+}
+
+export interface AnnouncementItem {
+    enable: boolean;
+    titles: LangList;
+    type: AnnouncementTypeEnum;
+    targets: AnnouncementTargetEnum[];
+    textContents: LangList;
+    imageContents: LangList;
 }
 
 export interface Store {
@@ -108,6 +121,9 @@ export interface Store {
     readonly allergenSetting: {
         enable: boolean;
         allergens: AllergenItem[];
+    };
+    readonly announcementSetting: {
+        announcements: AnnouncementItem[];
     };
     readonly memberSetting: {
         savingRules: MemberSavingRule[];

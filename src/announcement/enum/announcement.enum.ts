@@ -1,9 +1,9 @@
-export enum AnnouncementType {
+export enum AnnouncementTypeEnum {
     Text = 'text',
     Image = 'image',
 }
 
-export enum AnnouncementTarget {
+export enum AnnouncementTargetEnum {
     Table = 'table',
     Buffet = 'buffet',
     Serial = 'serial',
