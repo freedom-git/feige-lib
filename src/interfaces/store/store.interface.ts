@@ -19,7 +19,7 @@ export interface LangList {
     [key: string]: string;
 }
 export interface BuffetDishItem {
-    dishId: string;
+    readonly dishId: string;
     upperLimit: {
         enable: boolean;
         adult: number;
@@ -28,7 +28,7 @@ export interface BuffetDishItem {
 }
 
 export interface BuffetCombosItems {
-    _id: string;
+    readonly _id: string;
     names: object;
     price: {
         adult: number;
@@ -38,13 +38,14 @@ export interface BuffetCombosItems {
 }
 
 export interface AllergenItem {
-    _id: string;
+    readonly _id: string;
     names: object;
     img: string;
     dishIds: string[];
 }
 
 export interface AnnouncementItem {
+    readonly _id: string;
     enable: boolean;
     titles: LangList;
     type: AnnouncementTypeEnum;
