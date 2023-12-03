@@ -144,6 +144,7 @@ export function calcContentPrice({
     childNum: number;
     contents: Content[];
 }): number {
+    if (orderContentItem.retreated) return 0;
     if (orderType === OrderTypeEnum.Buffet) {
         const buffetDishItem = getDishItemInBuffet({ dishId: orderContentItem.dishSnapshot._id, buffet: buffetItem });
         if (buffetDishItem) {
@@ -178,7 +179,9 @@ export function calcContentPrice({
  */
 export function getOrderedCountByDishId(dishId, contents: Content[], beforeKey?: string): number {
     let count = 0;
-    for (const content of contents.filter((content) => String(content.dishSnapshot._id) === String(dishId))) {
+    for (const content of contents.filter(
+        (content) => !content.retreated && String(content.dishSnapshot._id) === String(dishId),
+    )) {
         if (beforeKey && String(content._id) === String(beforeKey)) break;
         count += content.count;
     }
@@ -559,4 +562,28 @@ export function getLanguageFromCountryCode(countryCode): string {
     };
     const languageCode = data[String(countryCode)] || 'en';
     return languageCode;
+}
+
+/**
+ * 根据dishID返回已经下单的数量
+ *
+ * @param {Order} order  店铺
+ * @param dishId
+ * @returns {number} 返回当前数量
+ */
+export function getDishCountByIdInAllUncanceledTasks(order: Order, dishId: string): number {
+    let count = 0;
+    if (order.tasks) {
+        count = order.tasks
+            .filter((task) => task.status !== CONST.STATUS.CANCELLED)
+            .reduce((count, task) => {
+                return (
+                    count +
+                    task.content
+                        .filter((item) => String(item.dishSnapshot._id) === String(dishId))
+                        .reduce((value, item) => value + item.count, 0)
+                );
+            }, 0);
+    }
+    return count;
 }
