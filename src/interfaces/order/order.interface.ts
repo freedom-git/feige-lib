@@ -48,6 +48,10 @@ export interface Order {
     }[];
     readonly buffet?: {
         snapshot: BuffetCombosItems;
+        taxes: {
+            name: string;
+            rate: number;
+        }[];
     };
     readonly adultNum?: number;
     readonly childNum?: number;

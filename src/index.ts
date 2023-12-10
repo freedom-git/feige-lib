@@ -304,6 +304,16 @@ export function calcReceivablePrice(
                 taxObj[taxKey] = (taxObj[taxKey] || 0) + parseMoney(taxFare);
             });
         });
+        // buffet price
+        if (order.type === OrderTypeEnum.Buffet) {
+            const buffetTotalPrice = calcBuffetTotalPrice(order.buffet?.snapshot, order.adultNum, order.childNum);
+            const sharedMarkDown = (totalMarkDown * buffetTotalPrice) / receivablePriceAfterDiscount;
+            order.buffet.taxes.forEach((tax) => {
+                const taxFare = (buffetTotalPrice - sharedMarkDown) * tax.rate;
+                const taxKey = `${tax.name}(${Big(tax.rate).times(100)}%)`;
+                taxObj[taxKey] = (taxObj[taxKey] || 0) + parseMoney(taxFare);
+            });
+        }
     } else if (order.taxType === TaxTypeEnum.PriceHaveTaxBindOrder && !noTax) {
         let totalTaxRate = 0;
         order.priceHaveTaxBindOrderTaxes.forEach((item) => {
