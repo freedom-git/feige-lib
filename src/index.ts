@@ -306,7 +306,14 @@ export function calcReceivablePrice(
         });
         // buffet price
         if (order.type === OrderTypeEnum.Buffet) {
-            const buffetTotalPrice = calcBuffetTotalPrice(order.buffet?.snapshot, order.adultNum, order.childNum);
+            const discountValue = sortedProcessArr.find(
+                (process) => process.type === CONST.RECEIVABLE_PROCESSING_TYPE.DISCOUNT.TYPE,
+            )?.value;
+            let buffetTotalPrice = calcBuffetTotalPrice(order.buffet?.snapshot, order.adultNum, order.childNum);
+            if (discountValue) {
+                const rate = -(10 - discountValue) / 10;
+                buffetTotalPrice += buffetTotalPrice * rate;
+            }
             const sharedMarkDown = (totalMarkDown * buffetTotalPrice) / receivablePriceAfterDiscount;
             order.buffet.taxes.forEach((tax) => {
                 const taxFare = (buffetTotalPrice - sharedMarkDown) * tax.rate;
