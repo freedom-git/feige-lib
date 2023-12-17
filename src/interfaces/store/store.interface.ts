@@ -117,7 +117,7 @@ export interface Store {
     };
     readonly buffetSetting: {
         enable: boolean;
-        showDishesOutOfBuffetInClinet: boolean;
+        showDishesOutOfBuffetInClient: boolean;
         allowDishNumberExceedSetLimitInClient: boolean;
         buffetCombos: BuffetCombosItems[];
     };
