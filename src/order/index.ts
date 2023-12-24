@@ -70,19 +70,16 @@ export function getDishArrFromContents({
     });
     if (showBuffet && order.type === OrderTypeEnum.Buffet) {
         const specifications = [];
-        if (specificationInNewLine) {
-            if (order.adultNum) {
-                specifications.push(`${text?.adult}${order.adultNum}`);
-            }
-            if (order.childNum) {
-                specifications.push(`${text?.child}${order.childNum}`);
-            }
+        if (order.adultNum) {
+            specifications.push(`${text?.adult}${order.adultNum}`);
+        }
+        if (order.childNum) {
+            specifications.push(`${text?.child}${order.childNum}`);
         }
         result.unshift({
             name:
-                getNameFromNames(order.buffet.snapshot.names, lang, CONST.DEFALUT_LANGUAGE) + specificationInNewLine
-                    ? ''
-                    : `(${specifications.join()})`,
+                getNameFromNames(order.buffet.snapshot.names, lang, CONST.DEFALUT_LANGUAGE) +
+                (specificationInNewLine ? '' : `(${specifications.join()})`),
             count: 1,
             price: calcBuffetTotalPrice(order.buffet.snapshot, order.adultNum, order.childNum),
             specifications: specifications,
