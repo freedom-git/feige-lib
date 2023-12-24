@@ -19,19 +19,24 @@ export interface PrinteDishInfo {
 /**
  *
  */
-export async function getDishArrFromContents({
+export function getDishArrFromContents({
     contents,
     lang,
     specificationInNewLine,
     order,
     showBuffet,
+    text,
 }: {
     contents: Content[];
     lang: string;
     specificationInNewLine: boolean;
     order: Order;
     showBuffet?: boolean;
-}): Promise<PrinteDishInfo[]> {
+    text?: {
+        adult: string;
+        child: string;
+    };
+}): PrinteDishInfo[] {
     const result = contents.map((dishGroup) => {
         const selectedNames = [];
         dishGroup.dishSnapshot.selectedSpecifications.forEach((selectedItems) => {
@@ -39,7 +44,7 @@ export async function getDishArrFromContents({
                 selectedNames.push(tag.name);
             });
         });
-        let name = dishGroup.dishSnapshot.name;
+        let name = getNameFromNames(dishGroup.dishSnapshot.names, lang, CONST.DEFALUT_LANGUAGE) || '';
         if (!specificationInNewLine && selectedNames.length > 0) {
             name += `(${selectedNames.join()})`;
         }
@@ -65,16 +70,19 @@ export async function getDishArrFromContents({
     });
     if (showBuffet && order.type === OrderTypeEnum.Buffet) {
         const specifications = [];
-        if (order.adultNum) {
-            specifications.push(`${await this.i18n.translate('printer.TEMPLATE.ADULT', { lang })}${order.adultNum}`);
-        }
-        if (order.childNum) {
-            specifications.push(`${await this.i18n.translate('printer.TEMPLATE.CHILD', { lang })}${order.childNum}`);
+        if (specificationInNewLine) {
+            if (order.adultNum) {
+                specifications.push(`${text?.adult}${order.adultNum}`);
+            }
+            if (order.childNum) {
+                specifications.push(`${text?.child}${order.childNum}`);
+            }
         }
         result.unshift({
             name:
-                getNameFromNames(order.buffet.snapshot.names, lang, CONST.DEFALUT_LANGUAGE) +
-                `(${specifications.join()})`,
+                getNameFromNames(order.buffet.snapshot.names, lang, CONST.DEFALUT_LANGUAGE) + specificationInNewLine
+                    ? ''
+                    : `(${specifications.join()})`,
             count: 1,
             price: calcBuffetTotalPrice(order.buffet.snapshot, order.adultNum, order.childNum),
             specifications: specifications,
