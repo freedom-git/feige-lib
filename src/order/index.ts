@@ -22,14 +22,12 @@ export interface PrinteDishInfo {
 export function getDishArrFromContents({
     contents,
     lang,
-    specificationInNewLine,
     order,
     showBuffet,
     text,
 }: {
     contents: Content[];
     lang: string;
-    specificationInNewLine: boolean;
     order: Order;
     showBuffet?: boolean;
     text?: {
@@ -45,9 +43,6 @@ export function getDishArrFromContents({
             });
         });
         let name = getNameFromNames(dishGroup.dishSnapshot.names, lang, CONST.DEFALUT_LANGUAGE) || '';
-        if (!specificationInNewLine && selectedNames.length > 0) {
-            name += `(${selectedNames.join()})`;
-        }
         if (dishGroup.dishSnapshot.type === DishType.Weigh) {
             name += `(${dishGroup.weight}${
                 getNameFromNames(dishGroup.dishSnapshot.units, lang, CONST.DEFALUT_LANGUAGE) || ''
@@ -77,9 +72,7 @@ export function getDishArrFromContents({
             specifications.push(`${text?.child}${order.childNum}`);
         }
         result.unshift({
-            name:
-                getNameFromNames(order.buffet.snapshot.names, lang, CONST.DEFALUT_LANGUAGE) +
-                (specificationInNewLine ? '' : `(${specifications.join()})`),
+            name: getNameFromNames(order.buffet.snapshot.names, lang, CONST.DEFALUT_LANGUAGE),
             count: 1,
             price: calcBuffetTotalPrice(order.buffet.snapshot, order.adultNum, order.childNum),
             specifications: specifications,
