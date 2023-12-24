@@ -25,6 +25,7 @@ export function getDishArrFromContents({
     order,
     showBuffet,
     text,
+    addSpecificationsAfterName,
 }: {
     contents: Content[];
     lang: string;
@@ -34,6 +35,7 @@ export function getDishArrFromContents({
         adult: string;
         child: string;
     };
+    addSpecificationsAfterName?: boolean;
 }): PrinteDishInfo[] {
     const result = contents.map((dishGroup) => {
         const selectedNames = [];
@@ -76,6 +78,11 @@ export function getDishArrFromContents({
             count: 1,
             price: calcBuffetTotalPrice(order.buffet.snapshot, order.adultNum, order.childNum),
             specifications: specifications,
+        });
+    }
+    if (addSpecificationsAfterName) {
+        result.forEach((item) => {
+            item.name += item.specifications.length > 0 ? `(${item.specifications.join()})` : '';
         });
     }
     return result;
