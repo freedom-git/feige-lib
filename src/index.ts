@@ -36,6 +36,7 @@ import { TaxTypeEnum } from './enum/tax.enum';
 import { OrderTypeEnum } from './enum/order.enum';
 import { calcBuffetTotalPrice, getDishItemInBuffet, getMaxBuffetDishUpperLimit } from './buffet/index';
 export * from './buffet/index';
+export * from './order/index';
 export {
     Order,
     Process,
