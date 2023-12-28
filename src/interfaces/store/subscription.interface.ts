@@ -35,6 +35,7 @@ export interface Activation {
     readonly tableCountLimit: number;
     readonly memberFunction: boolean;
     readonly deliveryFunction: boolean;
+    readonly buffetFunction: boolean;
     readonly waiterCountLimit: number;
     readonly kdsCountLimit: number;
     readonly multiLanguageCountLimit: number;
