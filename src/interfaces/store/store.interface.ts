@@ -86,6 +86,8 @@ export interface Store {
         openCashBoxWhenPay: boolean;
         closeTime: number;
         enableTaxes: boolean;
+        enableBuffet: boolean;
+        enableAllergens: boolean;
         checkoutFirst: boolean;
         defalutNoTax: boolean;
         taxType?: TaxTypeEnum;
