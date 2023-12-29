@@ -21,6 +21,8 @@ import * as order3 from '../josn-hub/orders/点了固定加价-百分比加价�
 import * as order4 from '../josn-hub/orders/有一个菜的价格是负数的情况';
 import * as order5 from '../josn-hub/orders/整单价格都是负数的情况';
 import * as order6 from '../josn-hub/orders/点了未加价规格的订单并有配送费';
+import * as halfRetreatOrder from '../josn-hub/orders/部分退菜的情况';
+import * as buffetOrder from '../josn-hub/orders/自助餐的情况';
 import * as taxOrder from '../josn-hub/orders/tax-order';
 import * as taxHavePriceBindOrder from '../josn-hub/orders/tax-have-price-bind-order';
 
@@ -37,6 +39,12 @@ describe('开始运行单元测试', () => {
     // });
 
     describe('测试计算订单总价：calcTotalPrice', () => {
+        it('自助餐情况下总价检查', () => {
+            expect(calcTotalPrice(buffetOrder.order)).toBe(buffetOrder.expectPrice);
+        });
+        it('部分退菜情况下总价检查', () => {
+            expect(calcTotalPrice(halfRetreatOrder.order)).toBe(halfRetreatOrder.expectPrice);
+        });
         it('不加价规格订单总价检查', () => {
             expect(calcTotalPrice(order1.order)).toBe(order1.expectPrice);
         });

@@ -145,7 +145,6 @@ export function calcContentPrice({
     childNum: number;
     contents: Content[];
 }): number {
-    if (orderContentItem.retreated) return 0;
     if (orderType === OrderTypeEnum.Buffet) {
         const buffetDishItem = getDishItemInBuffet({ dishId: orderContentItem.dishSnapshot._id, buffet: buffetItem });
         if (buffetDishItem) {
@@ -180,9 +179,7 @@ export function calcContentPrice({
  */
 export function getOrderedCountByDishId(dishId, contents: Content[], beforeKey?: string): number {
     let count = 0;
-    for (const content of contents.filter(
-        (content) => !content.retreated && String(content.dishSnapshot._id) === String(dishId),
-    )) {
+    for (const content of contents.filter((content) => String(content.dishSnapshot._id) === String(dishId))) {
         if (beforeKey && String(content._id) === String(beforeKey)) break;
         count += content.count;
     }

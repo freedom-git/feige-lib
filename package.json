@@ -1,6 +1,6 @@
 {
   "name": "@freedom_sky/feige-lib",
-  "version": "4.59.1",
+  "version": "4.59.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
