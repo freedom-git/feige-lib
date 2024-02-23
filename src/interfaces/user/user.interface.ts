@@ -25,6 +25,7 @@ export interface UserSafe {
     readonly from: FromEnum;
     readonly visitCycle: number;
     readonly purchased: boolean;
+    readonly disabled: boolean;
 }
 export interface User extends UserSafe {
     readonly certificate: {
