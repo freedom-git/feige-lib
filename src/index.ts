@@ -22,6 +22,7 @@ export * from './enum/visit-task.enum';
 export * from './enum/receptionist.enum';
 export * from './enum/from.enum';
 export * from './enum/role.enum';
+export * from './enum/continent.enum';
 export * from './announcement/enum/announcement.enum';
 export * from './interfaces/member/member.interface';
 export * from './interfaces/member/member-transaction.interface';
