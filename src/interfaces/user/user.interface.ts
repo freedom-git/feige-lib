@@ -26,6 +26,17 @@ export interface UserSafe {
     readonly visitCycle: number;
     readonly purchased: boolean;
     readonly disabled: boolean;
+    readonly geoIp: {
+        ip: string;
+        city: string;
+        region: string;
+        country: string;
+        loc: string;
+        org: string;
+        postal: string;
+        timezone: string;
+        lastUpdateDate: Date;
+    };
 }
 export interface User extends UserSafe {
     readonly certificate: {
