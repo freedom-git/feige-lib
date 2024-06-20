@@ -1139,6 +1139,7 @@ class Const {
         {
             en: 'Italy',
             zh: '意大利',
+            cost: 10,
             phoneCode: '39',
             countryCode: 'IT',
             zhHead: 'Y',
