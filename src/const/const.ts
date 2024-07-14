@@ -1777,17 +1777,6 @@ class Const {
             cost: 10,
             countryCode: 'ES',
             zhHead: 'X',
-            setting: {
-                defaultCurrency: '€',
-                timeZoneNum: 1,
-                agent: {
-                    instruction: undefined,
-                    showPriceInStore: false,
-                    qrCode: '',
-                    phone: '624871896 / 642726636',
-                    email: 'tecnopaloma.com',
-                },
-            },
             continent: ContinentEnum.Europe,
         },
         {
