@@ -97,6 +97,7 @@ export interface Store {
         tableOrderAutoCheckout: boolean;
         tableOrderAutoCleanTime: number;
         serialOrderAutoCleanTime: number;
+        disableSerialOrder: boolean;
         mustPayVersion: boolean;
         freeVersion: boolean;
         proclamationPopUp: boolean;
