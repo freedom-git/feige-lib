@@ -8,7 +8,8 @@ export interface CertificatePath {
     fubei: string;
 }
 export interface UserSafe {
-    readonly mobile: string;
+    readonly mobile?: string;
+    readonly email?: string;
     readonly countryCode: string;
     readonly password: string;
     readonly salt: string;
