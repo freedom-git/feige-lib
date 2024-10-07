@@ -61,7 +61,7 @@ export interface Store {
     readonly auditedNames: object; //审核后的店铺名, 暂时用于发短信
     readonly needAuditNames: boolean; //如果店铺的名字有变化, 这里就要设置为需要重新审核
     readonly img: string;
-    readonly phone: string;
+    readonly phone?: string;
     description: string;
     readonly descriptions?: object;
     readonly type: string;

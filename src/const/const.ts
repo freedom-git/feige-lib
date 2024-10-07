@@ -309,6 +309,186 @@ class Const {
             codepage: 'cp852',
             defaultPrintEncodeType: EncodeTypeEnum.IMG,
         },
+        {
+            name: 'ភាសាខ្មែរ', // Khmer
+            img: '',
+            code: 'km',
+            speechCode: 'km-KH',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '855',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'ไทย', // Thai
+            img: '',
+            code: 'th',
+            speechCode: 'th-TH',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '66',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'ລາວ', // Lao
+            img: '',
+            code: 'lo',
+            speechCode: 'lo-LA',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '856',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'မြန်မာစာ', // Burmese
+            img: '',
+            code: 'my',
+            speechCode: 'my-MM',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '95',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Bahasa Melayu', // Malay
+            img: '',
+            code: 'ms',
+            speechCode: 'ms-MY',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '60',
+            codepage: 'cp1252',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Filipino', // Filipino
+            img: '',
+            code: 'fil',
+            speechCode: 'fil-PH',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '63',
+            codepage: 'cp1252',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Polski', // Polish
+            img: '',
+            code: 'pl',
+            speechCode: 'pl-PL',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '48',
+            codepage: 'cp852',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Nederlands', // Dutch
+            img: '',
+            code: 'nl',
+            speechCode: 'nl-NL',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '31',
+            codepage: 'cp850',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Magyar', // Hungarian
+            img: '',
+            code: 'hu',
+            speechCode: 'hu-HU',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '36',
+            codepage: 'cp852',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Íslenska', // Icelandic
+            img: '',
+            code: 'is',
+            speechCode: 'is-IS',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '354',
+            codepage: 'cp850',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Norsk', // Norwegian
+            img: '',
+            code: 'no',
+            speechCode: 'nb-NO',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '47',
+            codepage: 'cp850',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Sámegiella', // Sami
+            img: '',
+            code: 'se',
+            speechCode: 'se-NO',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '47',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Suomi', // Finnish
+            img: '',
+            code: 'fi',
+            speechCode: 'fi-FI',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '358',
+            codepage: 'cp850',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Svenska', // Swedish
+            img: '',
+            code: 'sv',
+            speechCode: 'sv-SE',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '46',
+            codepage: 'cp850',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Kiswahili', // Swahili
+            img: '',
+            code: 'sw',
+            speechCode: 'sw',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '254',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Српски', // Serbian (Cyrillic)
+            img: '',
+            code: 'sr',
+            speechCode: 'sr-RS',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '381',
+            codepage: 'cp1251',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Română', // Romanian
+            img: '',
+            code: 'ro',
+            speechCode: 'ro-RO',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '40',
+            codepage: 'cp1250',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Ελληνικά', // Greek
+            img: '',
+            code: 'el',
+            speechCode: 'el-GR',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '30',
+            codepage: 'cp1253',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
     ];
     DATE_FORMAT = {
         YEAR_MONTH_DAY: {
