@@ -58,7 +58,7 @@ export interface Store {
     readonly _id: string;
     name: string;
     readonly names?: object;
-    readonly auditedNames: Record<string, string>; //审核后的店铺名, 暂时用于发短信
+    readonly auditedNames?: Record<string, string>; //审核后的店铺名, 暂时用于发短信
     readonly needAuditNames: boolean; //如果店铺的名字有变化, 这里就要设置为需要重新审核
     readonly img: string;
     readonly phone?: string;
