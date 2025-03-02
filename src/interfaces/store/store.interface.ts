@@ -35,6 +35,12 @@ export interface BuffetCombosItems {
         child: number;
     };
     dishes: BuffetDishItem[];
+    orderingByTurns: {
+        enable: boolean;
+        interval: number;
+        maxOrdersPerRoundPerPerson: number;
+        maxRounds: number;
+    };
 }
 
 export interface AllergenItem {

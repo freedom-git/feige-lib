@@ -109,6 +109,7 @@ class Const {
         BRL: 'R$', //巴西巴西雷亚尔
         CZK: 'Kč', //捷克克朗
         MXN: 'MXN$', //墨西哥比索
+        HKD: 'HKD', //港币
     };
     LARGE_CURRENCY = ['đ', '￥', 'Kč']; //币值比较大，不需要小数而且需要三位打逗号的货币
     SUFFIX_CURRENCY = ['Kč']; // 货币符号在数字后面的货币
