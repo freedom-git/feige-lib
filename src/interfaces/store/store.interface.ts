@@ -128,6 +128,7 @@ export interface Store {
         enable: boolean;
         showDishesOutOfBuffetInClient: boolean;
         allowDishNumberExceedSetLimitInClient: boolean;
+        childStandard: string;
         buffetCombos: BuffetCombosItems[];
     };
     readonly allergenSetting: {
