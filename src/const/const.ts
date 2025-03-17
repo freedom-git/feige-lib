@@ -490,6 +490,18 @@ class Const {
             codepage: 'cp1253',
             defaultPrintEncodeType: EncodeTypeEnum.IMG,
         },
+        {
+            name: 'العربية',
+            img: '',
+            code: 'ar',
+            speechCode: 'ar-AE',
+            speechLang: 'ar',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '971',
+            rtl: true,
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
     ];
     DATE_FORMAT = {
         YEAR_MONTH_DAY: {
