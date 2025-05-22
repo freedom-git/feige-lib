@@ -502,6 +502,158 @@ class Const {
             codepage: 'utf-8',
             defaultPrintEncodeType: EncodeTypeEnum.IMG,
         },
+        {
+            name: 'Українська', // Ukrainian
+            img: '',
+            code: 'uk',
+            speechCode: 'uk-UA',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '380',
+            codepage: 'cp1251',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Български', // Bulgarian
+            img: '',
+            code: 'bg',
+            speechCode: 'bg-BG',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '359',
+            codepage: 'cp1251',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Hrvatski', // Croatian
+            img: '',
+            code: 'hr',
+            speechCode: 'hr-HR',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '385',
+            codepage: 'cp1250',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Slovenščina', // Slovenian
+            img: '',
+            code: 'sl',
+            speechCode: 'sl-SI',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '386',
+            codepage: 'cp1250',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Slovenský', // Slovak
+            img: '',
+            code: 'sk',
+            speechCode: 'sk-SK',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '421',
+            codepage: 'cp1250',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Lietuvių', // Lithuanian
+            img: '',
+            code: 'lt',
+            speechCode: 'lt-LT',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '370',
+            codepage: 'cp1257',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Türkçe', // Turkish
+            img: '',
+            code: 'tr',
+            speechCode: 'tr-TR',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '90',
+            codepage: 'cp1254',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Svenska', // Swedish
+            img: '',
+            code: 'sv',
+            speechCode: 'sv-SE',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '46',
+            codepage: 'cp1252',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Русский', // Russian
+            img: '',
+            code: 'ru',
+            speechCode: 'ru-RU',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '7',
+            codepage: 'cp1251',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'עברית', // Hebrew
+            img: '',
+            code: 'he',
+            speechCode: 'he-IL',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '972',
+            codepage: 'cp1255',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+            rtl: true,
+        },
+        {
+            name: 'فارسی', // Persian
+            img: '',
+            code: 'fa',
+            speechCode: 'fa-IR',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '98',
+            codepage: 'cp1256',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+            rtl: true,
+        },
+        {
+            name: 'Latviešu', // Latvian
+            img: '',
+            code: 'lv',
+            speechCode: 'lv-LV',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '371',
+            codepage: 'cp1257',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Eesti', // Estonian
+            img: '',
+            code: 'et',
+            speechCode: 'et-EE',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '372',
+            codepage: 'cp1257',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'ትግርኛ', // Tigrinya
+            img: '',
+            code: 'ti',
+            speechCode: 'ti-ER',
+            dateFormat: DateFormat.DAY_MONTH_YEAR,
+            defaultAreaCode: '291',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
+        {
+            name: 'Монгол', // Mongolian
+            img: '',
+            code: 'mn',
+            speechCode: 'mn-MN',
+            dateFormat: DateFormat.YEAR_MONTH_DAY,
+            defaultAreaCode: '976',
+            codepage: 'utf-8',
+            defaultPrintEncodeType: EncodeTypeEnum.IMG,
+        },
     ];
     DATE_FORMAT = {
         YEAR_MONTH_DAY: {
