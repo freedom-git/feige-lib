@@ -87,7 +87,7 @@ class Const {
         JPY: '￥',
         USD: '$',
         EUR: '€',
-        VND: 'đ',
+        VND: '₫', //越南盾
         GBP: '￡',
         PHP: '₱',
         RSD: 'RSD',
@@ -126,13 +126,13 @@ class Const {
         SAR: 'ر.س', //沙特阿拉伯里亚尔
         BGN: 'лв', //保加利亚列弗
     };
-    LARGE_CURRENCY = ['đ', '￥', 'Kč']; //币值比较大，不需要小数而且需要三位打逗号的货币
-    SUFFIX_CURRENCY = ['Kč']; // 货币符号在数字后面的货币
+    LARGE_CURRENCY = ['đ', '₫', '￥', 'Kč', '₭', '₮']; //币值比较大，不需要小数而且需要三位打逗号的货币, 有两个越南盾符号, 第一个是之前用错了的, 一部分老用户在用, 需要保留这里的配置
+    SUFFIX_CURRENCY = ['Kč', 'Ft', 'zł', 'Nfk']; // 货币符号在数字后面的货币
     CHINA_TYPE_DISCOUNT_LANGS = ['zh', 'zh-tw']; //以中文习惯打折的语言
     UPPER_LIMIT = {
         WAITER_NUM: 10,
         CHEF_NUM: 5,
-        DISH_PRICE: 9999999,
+        DISH_PRICE: 99999999,
         DISH_NAME_MAX_LENGTH: 60,
         DISH_DESCRIPTION_MAX_LENGTH: 300,
         SPECIFICATION_NAME_MAX_LENGTH: 60,
@@ -2366,7 +2366,7 @@ class Const {
             zhHead: 'Y',
             cost: 7,
             setting: {
-                defaultCurrency: 'đ',
+                defaultCurrency: '₫',
                 timeZoneNum: 7,
                 agent: {
                     instruction: 'Vui lòng quét mã để được hỗ trợ',

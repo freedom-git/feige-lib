@@ -118,6 +118,8 @@ export interface Store {
         autoConfirm: boolean;
         selfPickUp: boolean;
         enableDelivery: boolean;
+        autoCheckout: boolean;
+        autoCleanTime: number;
         reserveSwitch: boolean;
         reserveTimeLow: number;
         reserveTimeHigh: number;
