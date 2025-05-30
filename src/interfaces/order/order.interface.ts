@@ -37,6 +37,7 @@ export interface Order {
     readonly taxType?: TaxTypeEnum;
     readonly reserveTime?: Date;
     readonly selfPickUp?: boolean;
+    readonly selfPickUpUseDeliveryPrice?: boolean; //自取使用外卖价格, false表示使用堂食价格
     readonly pack?: boolean;
     readonly priceHaveTaxBindOrderTaxes?: {
         name: string;
