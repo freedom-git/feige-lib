@@ -117,7 +117,7 @@ export interface Store {
         open: boolean;
         autoConfirm: boolean;
         selfPickUp: boolean;
-        selfPickUpUseDeliveryPrice?: boolean; //自取使用外卖价格, false表示使用堂食价格
+        selfPickUpUseDeliveryMenu?: boolean; //自取使用外卖价格, false表示使用堂食价格
         enableDelivery: boolean;
         autoCheckout?: boolean;
         autoCleanTime?: number;
