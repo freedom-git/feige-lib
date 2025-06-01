@@ -1,4 +1,5 @@
-import { Order, Process, Content, Checkout, Task } from './interfaces/order/order.interface';
+import { Order } from './interfaces/order/order.interface';
+import { Process, Content, Checkout, Task } from './interfaces/order/baseOrder.interface';
 import { BuffetCombosItems, Store } from './interfaces/store/store.interface';
 import { VisitTask } from './interfaces/visit-task/visit-task.interface';
 import { User, UserSafe, CertificatePath } from './interfaces/user/user.interface';
@@ -30,6 +31,7 @@ export * from './interfaces/store/store.interface';
 export * from './interfaces/common/language.interface';
 export * from './interfaces/store/subscription.interface';
 export * from './interfaces/store/dish.interface';
+export * from './interfaces/order';
 export { PayCompanyEnum } from './enum/pay-company.enum';
 import * as moment from 'moment';
 import Big from 'big.js';

@@ -277,6 +277,7 @@ export interface LabelPrinter {
     disabled: boolean;
     dishIds: string[];
     preferLang?: string;
+    rotate?: boolean;
 }
 
 interface DayLoopItem {

@@ -1,8 +1,17 @@
 import { DishSnapshot } from '../store/dishSnapshot.interface';
 import { PrintStatusEnum } from '../../enum/printer.enum';
-import { OrderTypeEnum } from '../../enum/order.enum';
-import { TaxTypeEnum } from '../../enum/tax.enum';
+import { DeliveryOrder } from './deliveryOrder.interface';
+import { PickUpOrder } from './pickupOrder.interface';
+import { TableOrder } from './tableOrder.interface';
+import { BuffetOrder } from './buffetOrder.interface';
+import { SerialOrder } from './serialOrder.interface';
+import { OrderTypeEnum, TaxTypeEnum } from '../../index';
+import { Content } from './baseOrder.interface';
+import { Task } from './baseOrder.interface';
+import { Process } from './baseOrder.interface';
+import { Checkout } from './baseOrder.interface';
 import { BuffetCombosItems } from '../store/store.interface';
+
 export interface Order {
     readonly _id: string;
     readonly serialOrderId: string;
@@ -58,52 +67,18 @@ export interface Order {
     readonly childNum?: number;
 }
 
-export interface Content {
-    _id?: string;
-    dishSnapshot: DishSnapshot;
-    count: number;
-    weight?: number;
-    delivering?: number;
-    finished?: number;
-    retreated?: number;
-    retreatReason?: string;
-    date?: Date | string;
+export type AnyOrder = TableOrder | BuffetOrder | SerialOrder | DeliveryOrder | PickUpOrder;
+
+/**
+ * @param order
+ */
+export function isTableOrder(order: Order): order is TableOrder {
+    return order.type === OrderTypeEnum.Table;
 }
 
-export interface Task {
-    _id: string;
-    type: string;
-    date: Date | string;
-    dishGroupId?: string;
-    status: string;
-    operatorId?: string;
-    outletNum?: number;
-    count?: number;
-    callReason?: string;
-    content?: Content[];
-    valet?: boolean;
-    printerPrinted: string[];
-    kdsPrinted: string[];
-    printStatus: PrintStatusEnum;
-    clientId: string;
-}
-
-export interface Process {
-    readonly _id?: string;
-    readonly type: string;
-    readonly value: number;
-    readonly volume?: number;
-}
-
-export interface Checkout {
-    readonly _id?: string;
-    readonly type: string;
-    readonly customType?: string;
-    readonly amount: number;
-    readonly realCash?: number;
-    readonly retreated?: boolean;
-    readonly date?: Date | string;
-    readonly payRecordId?: string;
-    readonly memberTransactionId?: string;
-    readonly operatorId?: string;
+/**
+ * @param order
+ */
+export function isBuffetOrder(order: Order): order is TableOrder {
+    return order.type === OrderTypeEnum.Buffet;
 }
